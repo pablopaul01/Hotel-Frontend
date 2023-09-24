@@ -6,7 +6,7 @@ function App() {
 
   return (
     <>
-      Routes
+      En este lugar pondremos las rutas
     </>
   )
 }
