@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import NavBar from './components/navBar/Navbar'
 
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
 
   return (
     <>
-      En este lugar pondremos las rutas
+      <NavBar/>
     </>
   )
 }
