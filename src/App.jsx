@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import RegisterView from './pages/RegisterView'
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
   return (
     <>
       En este lugar pondremos las rutas
+      <RegisterView />
     </>
   )
 }

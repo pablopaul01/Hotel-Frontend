@@ -1,20 +1,9 @@
 import React from 'react'
+import "../css/register.css"
 
 const Register = () => {
     return (
-        <form classNameName="text-white">
-            <div className="mb-2 pt-2">
-                <label className="form-label">Nombre</label>
-                <input
-                    type="text"
-                    className="form-control" />
-            </div>
-            <div className="mb-2 pt-2">
-                <label className="form-label">Apellido</label>
-                <input
-                    type="text"
-                    className="form-control" />
-            </div>
+        <form className="text-white">
             <div className="mb-2 pt-2">
                 <label className="form-label">Correo electrónico</label>
                 <input
@@ -36,18 +25,7 @@ const Register = () => {
                     un dígito, al menos una minúscula y al menos una
                     mayúscula.</small>
             </div>
-
-            <div className="mb-1">
-                <input
-                    type="checkbox"
-                    className="form-check-input"
-                    required />
-                <label className="form-check-label">
-                    <small>Acepto términos y condiciones.
-                        <a href="./404.html" className="link">Ver</a>
-                    </small>
-                </label>
-            </div>
+         
 
             <div className="d-grid">
                 <button className="btn btn-danger boton-login" type="submit">Registrarme</button>
