@@ -7,7 +7,6 @@ function App() {
 
   return (
     <>
-      En este lugar pondremos las rutas
       <RegisterView />
     </>
   )
