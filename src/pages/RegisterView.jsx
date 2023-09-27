@@ -1,8 +1,11 @@
 import React from 'react'
+import Register from '../components'
 
 const RegisterView = () => {
   return (
-    <div>RegisterView</div>
+    <div>
+        <Register />
+    </div>
   )
 }
 
