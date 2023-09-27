@@ -5,10 +5,17 @@
 }
 
 .navbar-container {
-    background-color: #1a1a1a;
+    background-color: #1c1c1c;
 }
 .link-nav {
      font-family: "Knockout";
      color: #fff;
 
+}
+.link-nav:hover {
+    color: #8B653B;
+}
+
+.link-nav:visited {
+    color:#fff
 }
