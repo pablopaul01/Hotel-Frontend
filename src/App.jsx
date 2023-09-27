@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import "./assets/fonts/Knockout.otf"
 
 
 function App() {
@@ -6,7 +9,9 @@ function App() {
 
   return (
     <>
-      En este lugar pondremos las rutas
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
     </>
   )
 }
