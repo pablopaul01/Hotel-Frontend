@@ -16,7 +16,7 @@
 
 body {
     background-image: linear-gradient(rgba(5,7,12,.75),rgba(5,7,12,.75)),
-        url(../assets/fondo-registro.jpg);
+        url(https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
     background-repeat: no-repeat;
     background-size: cover;     
 }
@@ -26,13 +26,13 @@ body {
     backdrop-filter: blur(10px);
 }
 
-.btn-danger {
-    background-color: #8c0c0c;
+.btn-outline-light {
+    background-color: #95724c !important;
     color: white;
 }
 
-.btn-danger:hover {
-    background-color: #ff1818;
+.btn-outline-light:hover {
+    background-color: #8b653b !important;
 }
 
 a {
@@ -40,16 +40,17 @@ a {
 }
 
 .link {
-    color: #8c0c0c
+    color: #c19b76 !important;
 }
 
 .link:hover {
-    color: #ff2020;
-}
+    color: #8b653b !important;
+} 
+
 
 
 .form-control:focus {
-    box-shadow: -1px 1px 11px 1px rgba(237, 12, 12, 0.75);
-    -webkit-box-shadow: -1px 1px 11px 1px rgba(237, 12, 12, 0.75);
-    -moz-box-shadow: -1px 1px 11px 1px rgba(237, 12, 12, 0.75);
-}
+    box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    -webkit-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    -moz-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+} 

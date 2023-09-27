@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import RegisterView from './pages/RegisterView'
+import { Routes, Route } from 'react-router-dom'
+
 
 
 function App() {
@@ -7,7 +9,10 @@ function App() {
 
   return (
     <>
-      <RegisterView />
+      <Routes>
+        <Route path='/registro' element={<RegisterView />} />
+
+      </Routes>
     </>
   )
 }
