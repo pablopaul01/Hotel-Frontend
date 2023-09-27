@@ -7,7 +7,7 @@ import { REGISTRO_SCHEMA } from '../helpers/validationsSchemas'
 
 const Register = () => {
 
-    const { register, handleSubmit, formState: { erros }, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
 
@@ -15,6 +15,8 @@ const Register = () => {
         console.log(data);
         reset();
     }
+
+    console.log(errors);
 
     return (
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
@@ -27,6 +29,9 @@ const Register = () => {
                     {...register("name")}
                 />
             </div>
+            <p className="text-danger my-1">
+                {errors.name?.message}
+            </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Correo electrónico</label>
                 <input
@@ -36,6 +41,9 @@ const Register = () => {
                     {...register("username")}
                 />
             </div>
+            <p className="text-danger my-1">
+                {errors.username?.message}
+            </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Contraseña</label>
                 <input
@@ -45,6 +53,9 @@ const Register = () => {
                     {...register("password")}
                 />
             </div>
+            <p className="text-danger my-1">
+                {errors.password?.message}
+            </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Repetir Contraseña</label>
                 <input
@@ -53,12 +64,14 @@ const Register = () => {
                     name="repassword"
                     {...register("repassword")}
                 />
-                <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
-                    un dígito, al menos una minúscula y al menos una
-                    mayúscula.</small>
             </div>
-
-            <div className="d-grid">
+            <p className="text-danger my-1">
+                {errors.repassword?.message}
+            </p>
+            <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
+                un dígito, al menos una minúscula y al menos una
+                mayúscula.</small>
+            <div className="d-grid mt-2">
                 <button className="btn btn-outline-light boton-login" type="submit">Registrarme</button>
             </div>
             <div className="mt-3 text-center">
