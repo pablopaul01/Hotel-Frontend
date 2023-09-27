@@ -9,10 +9,10 @@ const RegisterView = () => {
           <div className="col-lg-5 col-md-7 col-sm-9 col-xs-10 px-5 shadow div-login">
             <div className="titulo border border-top-0 border-end-0 border-start-0">
               <div>
-                <h2 className="text-white titulo">Registrarme</h2>
+                <h2 className="text-white titulo ms-4">Registrarme</h2>
               </div>
               <div>
-                <img src="" className="img-fluid mx-4" alt="logo-Rolling-Hotel" />
+                <img src="../../public/RollingHotel-transparente.png" className="img-fluid mx-4" alt="logo-Rolling-Hotel" />
               </div>
             </div>
             <Register />
