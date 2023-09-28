@@ -14,7 +14,7 @@ const InfoHome1 = () => {
                 <img src="https://granhotelbuenosaires.com/wp-content/uploads/2021/08/relax-ghba.jpg" alt="theHotel" className='theHotel'/>
             </div>
         </div>
-
+ 
     </div>
   )
 }
