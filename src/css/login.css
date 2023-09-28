@@ -16,7 +16,7 @@
     font-weight: 300;
 }
 
-/* body {
+.login {
     background-image: linear-gradient(rgba(5, 7, 12, .75), rgba(5, 7, 12, .75)),
         url(../../public/fondo-login.jpg);
     background-repeat: no-repeat;
