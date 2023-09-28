@@ -10,27 +10,31 @@
 
 
 .service-description {
-    /* height: 100%; */
     align-items: center;
-    /* margin-top: 100px !important; */
-    /* margin-left: 50px !important; */
     justify-content: center;
 }
 
 .card-icon-services {
     justify-content: center;
-    /* margin-left: 100px; */
 }
 
 .card-icon-service {
-    background-color: white; 
-       
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
 }
 
-h2, h3 {
-    font-family: 'Gilda Display' !important;
+h2,
+h3 {
+    font-family: 'Gilda Display';
 }
 
 .parrafo-service {
-    font-family: 'Gilda Display' !important;
+    font-family: 'Gilda Display';
+}
+
+.sub-icon {
+    font-family: 'Gilda Display';
+    font-size: small;
 }

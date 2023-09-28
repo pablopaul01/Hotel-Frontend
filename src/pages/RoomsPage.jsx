@@ -1,8 +1,7 @@
 import React from 'react'
 import CategoryRooms from '../components/CategoryRooms'
-import ServicesRooms from '../components/ServicesRooms'
-
-
+import ServicesBanner from '../components/ServicesBanner'
+import ServiceRooms from '../components/ServiceRooms'
 
 const RoomsPage = () => {
     return (
@@ -10,7 +9,8 @@ const RoomsPage = () => {
             <div className='container'>
                 <CategoryRooms />
             </div>
-            <ServicesRooms />
+            <ServicesBanner />
+            <ServiceRooms />
         </>
     )
 }
