@@ -8,6 +8,14 @@
     margin-bottom: 5rem;
 }
 
+.titulo-galery {
+    font-family: 'Gilda Display', serif;
+    font-size: 3.5rem !important;
+}
+
+.titulos-galery {
+    margin-top: 100px;
+}
 
 .service-description {
     align-items: center;
