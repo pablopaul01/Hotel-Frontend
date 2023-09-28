@@ -3,9 +3,9 @@ import React from 'react'
 const ServiceRooms = () => {
     return (
         <div className='container'>
-            <div className='mb-5 titulos-galery'>
-                <h4 className='text-secondary text-center categoria'>HABITACIONES</h4>
-                <h2 className='text-dark text-center titulo-galery'>Incluidos</h2>
+            <div className='mb-5 titulos-recepcion'>
+                <h4 className='text-secondary text-center categoria-recepcion'>HABITACIONES</h4>
+                <h2 className='text-dark text-center titulo-recepcion'>Incluidos</h2>
             </div>
             <div className="row">
                 <div className="col-4">
@@ -28,9 +28,9 @@ const ServiceRooms = () => {
                 </div>
             </div>
 
-            <div className='my-5 titulos-galery'>
-                <h4 className='text-secondary text-center categoria'>EL HOTEL</h4>
-                <h2 className='text-dark text-center titulo-galery'>Opcionales</h2>
+            <div className='my-5 titulos-recepcion'>
+                <h4 className='text-secondary text-center categoria-recepcion'>EL HOTEL</h4>
+                <h2 className='text-dark text-center titulo-recepcion'>Opcionales</h2>
             </div>
             <div className="row">
                 <div className="col-4">

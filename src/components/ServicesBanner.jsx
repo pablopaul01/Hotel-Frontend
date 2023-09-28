@@ -3,11 +3,7 @@ import "../css/services.css"
 
 const ServicesBanner = () => {
     return (
-        <>
-            {/* <div className='mb-5 titulos-galery'>
-                <h4 className='text-secondary text-center categoria'>ÁREAS PÚBLICAS</h4>
-                <h2 className='text-dark text-center titulo-galery'>Espacio de trabajo</h2>
-            </div> */}
+        <>           
             <div className='container-fluid bg-img-services mt-5'>
                 <div className="row m-5">
                     <div className="col-lg-6 col-md-12 service-description mt-5">
