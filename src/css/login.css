@@ -26,11 +26,14 @@
         url(../../public/fondo-login.jpg);
     background-repeat: no-repeat;
     background-size: cover; 
+    max-height: 100vh;
+    height: 100vh;
 } 
 
 .div-login {
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);      
+    backdrop-filter: blur(10px);   
+    margin-top: 120px !important;
 }
 
 .btn-outline-light {
@@ -58,6 +61,7 @@ a {
     box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
     -webkit-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
     -moz-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    
 } 
 
 
