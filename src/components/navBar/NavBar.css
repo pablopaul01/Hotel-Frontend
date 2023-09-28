@@ -3,19 +3,32 @@
     font-family: "Knockout";
     src: url("../../assets/Fonts/Knockout.otf");
 }
-
+​
 .navbar-container {
     background-color: #1c1c1c;
 }
 .link-nav {
      font-family: "Knockout";
+     font-size: 20px;
      color: #fff;
-
+​
 }
 .link-nav:hover {
     color: #8B653B;
+    cursor: pointer;
 }
-
+​
 .link-nav:visited {
     color:#fff
 }
+.navbar-toggler {
+    border-color: #ffffff !important; 
+  }
+​
+  .navbar-toggler:active {
+   outline: #ffffff !important; 
+  }
+​
+  .navbar-toggler-icon {
+    color: #fff !important;
+  }
