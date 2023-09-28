@@ -12,15 +12,15 @@ const InfoHome2 = () => {
                         <img className="commonarea" src="https://images.unsplash.com/photo-1525905708812-b271b5e3b2f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1529&q=80" alt="area1" />
                     </div>
                     <div className='container-img'>
-                        <img className="commonarea" src="https://images.unsplash.com/photo-1525905708812-b271b5e3b2f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1529&q=80" alt="area1" />
+                        <img className="commonarea" src="https://images.unsplash.com/photo-1600767421554-069608adb34d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80" alt="area1" />
                     </div>
                 </div>
                 <div className='d-flex'>
                     <div className='container-img'>
-                        <img className="commonarea" src="https://images.unsplash.com/photo-1525905708812-b271b5e3b2f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1529&q=80" alt="area1" />
+                        <img className="commonarea" src="https://images.unsplash.com/photo-1494194069000-cb794f31d82c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="area1" />
                     </div>
                     <div className='container-img'>
-                        <img className="commonarea" src="https://images.unsplash.com/photo-1525905708812-b271b5e3b2f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1529&q=80" alt="area1" />
+                        <img className="commonarea" src="https://images.unsplash.com/photo-1672983665896-e02f28d14173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="area1" />
                     </div>
                 </div>
             </div>
