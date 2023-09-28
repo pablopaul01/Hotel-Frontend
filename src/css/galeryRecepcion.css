@@ -12,6 +12,10 @@
     font-size: 3.5rem !important;
 }
 
+.titulos-galery {
+    margin-top: 100px;
+}
+
 .categoria {
     font-size: .8rem !important;
     position: relative;
