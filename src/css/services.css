@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
+
+.bg-img-services {
+    background-image: linear-gradient(rgba(56, 53, 53, .5), rgba(56, 53, 53, .5)),
+        url("https://images.unsplash.com/photo-1663659511138-fdfa5a9a245b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    margin-bottom: 5rem;
+}
+
+/* .title-service {
+    margin-top: 100px; 
+    display: flex;
+    font-family: 'Gilda Display';
+    align-items: center;
+    height: 100%; 
+    margin-left: 5rem;
+} */
+
+.service-description {
+    height: 100%;
+    align-items: center;
+}
