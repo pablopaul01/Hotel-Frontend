@@ -24,4 +24,8 @@
     .iconService {
         width: 50px;
     }
+    .serviceTitle {
+        font-size: 25px;
+    }
+    
   }

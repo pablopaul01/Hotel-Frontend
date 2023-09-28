@@ -58,3 +58,13 @@
     padding: 10px;
     color: #fff;
 }
+
+@media (max-width: 767px) {
+    .infoTitle{
+        font-size: 40px;
+        text-align: left;
+    }
+    .infoSubtitle {
+        font-size: 12px;
+    }
+  }
