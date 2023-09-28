@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
+
+.card-img-room {
+    filter: grayscale(40%);
+    transition: all .5s;
+    text-align: center;
+}
+
+.card-img-room:hover {
+    filter: none;
+    transform: scale(1.02);
+}
