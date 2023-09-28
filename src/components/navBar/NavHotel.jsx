@@ -9,8 +9,7 @@ import {FaBars} from 'react-icons/fa'
 const NavHotel = () => {
   return (
     <div>
-        <div>
-      <Navbar expand="lg" className="navbar-container p-0" sticky="top">
+      <Navbar expand="lg" className="navbar-container p-0" fixed="top">
         <Container fluid className='d-flex justify-content-between'>
           <Navbar.Brand href="#" className='p-0'><img src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1695793253/RollingHotel-transparente_vk9yak.png" alt="logo Rolling" style={{width:"140px"}}/></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
@@ -36,8 +35,6 @@ const NavHotel = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-​
-    </div>
     </div>
   )
 }
