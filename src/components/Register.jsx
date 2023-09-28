@@ -74,7 +74,7 @@ const Register = () => {
             <div className="d-grid mt-2">
                 <button className="btn btn-outline-light boton-login" type="submit">Registrarme</button>
             </div>
-            <div className="mt-3 text-center">
+            <div className="mt-3 mb-4 text-center">
                 <span>¿Ya tienes una cuenta?
                     <a href="#" className="btn link">Iniciar Sesión</a>
                 </span>
