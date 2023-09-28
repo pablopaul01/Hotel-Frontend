@@ -10,9 +10,13 @@
 .infoTitle1 {
     font-family: "Gilda Display";
     font-size: 80px;
-    /* font-weight: 100;     */
 }
 
 .theHotel {
     width: 60%;
+}
+
+.infoText1 {
+    color: #878787;
+    font-weight: 200;
 }
