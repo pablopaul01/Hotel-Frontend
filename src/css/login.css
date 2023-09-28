@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'Roboto', serif;
     color: white;
-}
+} 
 
 .titulo {
     display: flex;
@@ -21,7 +21,7 @@
         url(../../public/fondo-login.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-}
+} 
 
 .div-login {
     background: rgba(0, 0, 0, 0.5);
