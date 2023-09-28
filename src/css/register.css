@@ -2,10 +2,9 @@
 
 * {
     margin: 0;
-    padding: 0;
+    padding: 0; 
     box-sizing: border-box;
     font-family: 'Roboto', serif;
-    color: white;
 }
 
 .titulo {
@@ -13,18 +12,17 @@
     align-items: center;
     padding-top: -20px;
     font-family: 'Gilda Display', serif;
-    font-weight: 300;
 }
 
 body {
-    background-image: linear-gradient(rgba(5, 7, 12, .75), rgba(5, 7, 12, .75)),
-        url(../../public/fondo-login.jpg);
+    background-image: linear-gradient(rgba(5,7,12,.75),rgba(5,7,12,.75)),
+        url(https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;     
 }
 
 .div-login {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
 }
 
@@ -56,5 +54,3 @@ a {
     -webkit-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
     -moz-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
 } 
-
-
