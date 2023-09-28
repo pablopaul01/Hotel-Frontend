@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import NavBar from './components/navBar/Navbar'
+import NavHotel from './components/navBar/NavHotel'
 
 
 function App() {
@@ -7,7 +7,6 @@ function App() {
 
   return (
     <>
-      <NavBar/>
     </>
   )
 }
