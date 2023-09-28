@@ -6,7 +6,7 @@ const ServicesBanner = () => {
         <>           
             <div className='container-fluid bg-img-services mt-5'>
                 <div className="row m-5">
-                    <div className="col-lg-6 col-md-12 service-description mt-5">
+                    <div className="col-lg-6 col-md-12 service-description d-flex">
                         <div className='title-service'>
                             <h2 className='fs-1 text-light'>Servicios</h2>
                             <p className='text-light parrafo-service'>RollingGranHotel cuenta una gran variedad de servicios y comodidades para que puedas disfrutar de una excelente estadía.</p>
@@ -39,14 +39,8 @@ const ServicesBanner = () => {
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
-
                 </div>
-
-
             </div>
         </>
     )
