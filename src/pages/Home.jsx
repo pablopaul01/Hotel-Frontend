@@ -10,7 +10,6 @@ import BottomBannerHome from '../components/bottomBannerHome/BottomBannerHome'
 const Home = () => {
   return (
     <div>
-
         <BannerHome />
         <InfoHome1 />
         <InfoHome2 />
