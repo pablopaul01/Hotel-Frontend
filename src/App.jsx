@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
 import Home from './pages/Home'
 import GaleryPage from './pages/GaleryPage'
+import NavHotel from './components/navBar/NavHotel'
 
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
 
   return (
     <>
+      <NavHotel />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />
