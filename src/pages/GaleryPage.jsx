@@ -1,11 +1,14 @@
 import React from 'react'
 import GaleryRecepcion from '../components/GaleryRecepcion'
+import GaleryRestaurant from '../components/GaleryRestaurant'
+GaleryRestaurant
 
 
 const GaleryPage = () => {
   return (
-    <div>
+    <div className='container'>
         <GaleryRecepcion />
+        <GaleryRestaurant />
     </div>
   )
 }

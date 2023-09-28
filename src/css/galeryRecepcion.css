@@ -27,3 +27,10 @@
     transform: translate(50%, -50%);
 }
 
+.img-galeria {
+    transition: all .5s;
+}
+
+.img-galeria:hover {
+    transform: scale(1.05);
+}
