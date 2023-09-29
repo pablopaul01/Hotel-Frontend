@@ -1,8 +1,8 @@
 import React from 'react'
-import "../css/register.css"
+import "./register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { REGISTRO_SCHEMA } from '../helpers/validationsSchemas'
+import { REGISTRO_SCHEMA } from '../../helpers/validationsSchemas'
 
 
 const Register = () => {

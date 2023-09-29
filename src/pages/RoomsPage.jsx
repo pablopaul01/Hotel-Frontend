@@ -1,7 +1,7 @@
 import React from 'react'
-import CategoryRooms from '../components/CategoryRooms'
-import ServicesBanner from '../components/ServicesBanner'
-import ServiceRooms from '../components/ServiceRooms'
+import CategoryRooms from '../components/categoryRooms/CategoryRooms'
+import ServicesBanner from '../components/categoryRooms/ServicesBanner'
+import ServiceRooms from '../components/categoryRooms/ServiceRooms'
 
 const RoomsPage = () => {
     return (

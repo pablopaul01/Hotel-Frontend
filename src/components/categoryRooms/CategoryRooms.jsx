@@ -1,6 +1,6 @@
 import React from 'react'
-import "../css/categoryRooms.css"
-import { rooms } from '../helpers/data.js'
+import "./categoryRooms.css"
+import { rooms } from '../../helpers/data.js'
 import CategoryItem from './CategoryItem'
 
 const CategoryRooms = () => {

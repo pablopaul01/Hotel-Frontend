@@ -19,7 +19,7 @@ function App() {
         <Route path='/registro' element={<RegisterView />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
-        <Route path='/habitaciones' element={<RoomsPage />} />
+        <Route path='/categoria-habitaciones' element={<RoomsPage />} />
       </Routes>
     </>
   )

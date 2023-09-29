@@ -1,5 +1,5 @@
 import React from 'react'
-import "../css/galeryRecepcion.css"
+import "./galeryRecepcion.css"
 
 const GaleryRecepcion = () => {
     return (

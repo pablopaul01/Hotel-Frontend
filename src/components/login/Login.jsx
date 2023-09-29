@@ -1,8 +1,8 @@
 import React from 'react'
-import "../css/login.css"
+import "./login.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { LOGIN_SCHEMA } from '../helpers/validationsSchemas'
+import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
 
 const Login = () => {
 
