@@ -7,7 +7,7 @@ import GaleryHabitaciones from '../components/GaleryHabitaciones'
 
 const GaleryPage = () => {
   return (
-    <div className='container'>
+    <div className='container container-galery'>
         <GaleryRecepcion />        
         <GaleryRestaurant />        
         <GalerySolarium /> 

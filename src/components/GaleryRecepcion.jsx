@@ -4,7 +4,7 @@ import "../css/galeryRecepcion.css"
 const GaleryRecepcion = () => {
     return (
         <>
-            <div className='mb-5 mt-5 titulos-galery'>
+            <div className='my-5 mt-5 titulos-galery'>
                 <h4 className='text-secondary text-center categoria'>ÁREAS PÚBLICAS</h4>
                 <h2 className='text-dark text-center titulo-galery'>Recepción</h2>
             </div>

@@ -7,6 +7,10 @@
     font-family: 'Roboto', serif;
 }
 
+.container-galery {
+    margin-top: 180px;
+}
+
 .titulo-galery {
     font-family: 'Gilda Display', serif;
     font-size: 3.5rem !important;
