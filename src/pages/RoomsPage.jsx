@@ -6,7 +6,7 @@ import ServiceRooms from '../components/ServiceRooms'
 const RoomsPage = () => {
     return (
         <>
-            <div className='container'>
+            <div className='container container-rooms'>
                 <CategoryRooms />
             </div>
             <ServicesBanner />
