@@ -26,14 +26,15 @@
         url(../../public/fondo-login.jpg);
     background-repeat: no-repeat;
     background-size: cover; 
-    max-height: 100vh;
-    height: 100vh;
 } 
 
 .div-login {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);   
-    margin-top: 120px !important;
+    margin-top: 130px !important;
+}
+.row-login {
+    padding-bottom: 60px;
 }
 
 .btn-outline-light {
