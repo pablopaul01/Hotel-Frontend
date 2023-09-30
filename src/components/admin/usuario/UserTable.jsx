@@ -2,6 +2,7 @@ import React from 'react'
 import {users} from '../../../helpers/users'
 import DataTable from 'react-data-table-component';
 import './usuarios.css'
+import './formcreate.css'
 import {BiEdit} from 'react-icons/bi'
 import { TiDeleteOutline } from 'react-icons/ti'
 import {MdBlock} from 'react-icons/md'
@@ -82,7 +83,7 @@ const UserTable = () => {
         selectAllRowsItemText: 'Todos',
     };
   return (
-<div className='d-flex flex-column align-items-end pe-2'>
+<div className='d-flex flex-column align-items-end'>
 <DataTable 
     columns={columns }
     data={users}

@@ -1,5 +1,5 @@
 import React from 'react'
-import "../css/services.css"
+import "./services.css"
 
 const ServicesBanner = () => {
     return (

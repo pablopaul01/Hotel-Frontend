@@ -1,40 +1,77 @@
 import React from 'react'
-
-
+import "../../register/register.css"
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { REGISTRO_SCHEMA } from '../../../helpers/validationsSchemas'
 
 const FormCreate = () => {
-    // const handleSubmit = async () => {
-    // }
+
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: yupResolver(REGISTRO_SCHEMA)
+    })
+
+    const onSubmit = (data) => {
+        console.log(data);
+        reset();
+    }
+
+    console.log(errors);
   return (
     <div>
-        <form>
-            <div className="form-group mb-3">
-                <label htmlFor="nombre">Nombre</label>
-                <input type="text" className="form-control" id="title" name="title" />
+ <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Nombre Completo</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    name="name"
+                    {...register("name")}
+                />
             </div>
-            <div className="form-group mb-3">
-                <label htmlFor="nombre">DNI</label>
-                <input type="number" className="form-control" id="detalle" name='detalle' />
+            <p className="text-danger my-1">
+                {errors.name?.message}
+            </p>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Correo electrónico</label>
+                <input
+                    type="email"
+                    className="form-control"
+                    name="username"
+                    {...register("username")}
+                />
             </div>
-            <div className="form-group mb-3">
-                <label htmlFor="nombre">Celular</label>
-                <input type="text" className="form-control" id="video" name="video" />
+            <p className="text-danger my-1">
+                {errors.username?.message}
+            </p>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Contraseña</label>
+                <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    {...register("password")}
+                />
             </div>
-            <div className="form-group mb-3">
-                <label htmlFor="nombre">E-mail</label>
-                <input type="email" className="form-control" id="mentor" name="mentor" />
+            <p className="text-danger my-1">
+                {errors.password?.message}
+            </p>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Repetir Contraseña</label>
+                <input
+                    type="password"
+                    className="form-control"
+                    name="repassword"
+                    {...register("repassword")}
+                />
             </div>
-            {/* <div className="form-group mb-3">
-                <label htmlFor="nombre">Categoria</label>
-                <select name="categoria" className="form-control">
-                    {categorias.map((categoria, index) => (
-                        <option key={categoria._id} value={categoria._id}>{categoria.name}</option>
-                    ))}
-                </select>
-            </div> */}
-            {/* create button to send form */}
-            <div className='form-group'>
-            <button type="submit" className="btn btn-primary">Guardar</button>
+            <p className="text-danger my-1">
+                {errors.repassword?.message}
+            </p>
+            <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
+                un dígito, al menos una minúscula y al menos una
+                mayúscula.</small>
+            <div className="d-grid mt-2 mb-4">
+                <button className="btn btn-outline-light boton-login" type="submit">Crear usuario</button>
             </div>
         </form>
     </div>

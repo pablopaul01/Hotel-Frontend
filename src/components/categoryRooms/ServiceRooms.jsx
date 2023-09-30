@@ -3,7 +3,7 @@ import React from 'react'
 const ServiceRooms = () => {
     return (
         <div className='container'>
-            <div className='mb-5 titulos-recepcion'>
+            <div className='my-5 titulos-recepcion'>
                 <h4 className='text-secondary text-center categoria-recepcion'>HABITACIONES</h4>
                 <h2 className='text-dark text-center titulo-recepcion'>Incluidos</h2>
             </div>
@@ -27,7 +27,7 @@ const ServiceRooms = () => {
                     <p className="parrafo-service">WIFI</p>
                 </div>
             </div>
-
+            <hr className='my-5'/>
             <div className='my-5 titulos-recepcion'>
                 <h4 className='text-secondary text-center categoria-recepcion'>EL HOTEL</h4>
                 <h2 className='text-dark text-center titulo-recepcion'>Opcionales</h2>
@@ -45,7 +45,7 @@ const ServiceRooms = () => {
                     <img src="https://granhotelbuenosaires.com/wp-content/uploads/2021/08/icon-business.png" alt="" />
                     <p className="parrafo-service">Centro de negocios</p>
                 </div>
-                <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div className="col-lg-4 col-md-4 col-sm-6 col-xs-6 mb-5">
                     <img src="https://granhotelbuenosaires.com/wp-content/uploads/2021/08/icon-conferences.png" alt="" />
                     <p className="parrafo-service">Sala de reuniones</p>
                     <img src="https://granhotelbuenosaires.com/wp-content/uploads/2021/08/icon-17-b.png" alt="" />
