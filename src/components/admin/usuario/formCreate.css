@@ -7,9 +7,9 @@
     font-family: 'Roboto', serif;
     color: white;
 }   */
-.modal-header {
+/* .modal-header {
     border-bottom: none !important;
-}
+} */
 .title-formuser {
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
 .modal-container {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);   
-    margin-top: 130px !important;
+
 }
 
  .modal-body {
