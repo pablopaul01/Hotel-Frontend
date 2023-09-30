@@ -1,8 +1,8 @@
 import React from 'react'
-import "../css/login.css"
+import "./login.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { LOGIN_SCHEMA } from '../helpers/validationsSchemas'
+import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
 
 const Login = () => {
 
@@ -44,7 +44,7 @@ const Login = () => {
                 {errors.password?.message}
             </p>
 
-            <div className="d-grid">
+            <div className="d-grid mt-3">
                 <button className="btn btn-outline-light boton-login mt-2">Iniciar Sesión</button>
             </div>
             <div className="mt-3 text-center" id="btn-registro">
@@ -52,7 +52,7 @@ const Login = () => {
                     <a href="#" className="btn link">Regístrate</a></span>
             </div>
             <div className="text-center">
-                <a href="#" className="btn link">¿Olvidaste tu contraseña?</a>
+                <a href="#" className="btn link mb-4">¿Olvidaste tu contraseña?</a>
             </div>
         </form>
     )

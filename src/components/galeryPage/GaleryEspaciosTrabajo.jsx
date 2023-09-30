@@ -3,7 +3,7 @@ import React from 'react'
 const GaleryEspaciosTrabajo = () => {
     return (
         <>
-            <div className='mb-5 titulos-galery'>
+            <div className='my-5 titulos-galery'>
                 <h4 className='text-secondary text-center categoria'>ÁREAS PÚBLICAS</h4>
                 <h2 className='text-dark text-center titulo-galery'>Espacio de trabajo</h2>
             </div>

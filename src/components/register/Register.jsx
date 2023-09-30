@@ -1,8 +1,8 @@
 import React from 'react'
-import "../css/register.css"
+import "./register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { REGISTRO_SCHEMA } from '../helpers/validationsSchemas'
+import { REGISTRO_SCHEMA } from '../../helpers/validationsSchemas'
 
 
 const Register = () => {
@@ -74,7 +74,7 @@ const Register = () => {
             <div className="d-grid mt-2">
                 <button className="btn btn-outline-light boton-login" type="submit">Registrarme</button>
             </div>
-            <div className="mt-3 text-center">
+            <div className="mt-3 mb-4 text-center">
                 <span>¿Ya tienes una cuenta?
                     <a href="#" className="btn link">Iniciar Sesión</a>
                 </span>

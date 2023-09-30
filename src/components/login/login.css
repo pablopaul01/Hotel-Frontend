@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'Roboto', serif;
     color: white;
-}  */
+}   */
 
 .titulo {
     display: flex;
@@ -30,7 +30,11 @@
 
 .div-login {
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);      
+    backdrop-filter: blur(10px);   
+    margin-top: 130px !important;
+}
+.row-login {
+    padding-bottom: 60px;
 }
 
 .btn-outline-light {
@@ -58,6 +62,7 @@ a {
     box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
     -webkit-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
     -moz-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    
 } 
 
 

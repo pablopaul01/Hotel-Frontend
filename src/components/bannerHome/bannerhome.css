@@ -36,6 +36,7 @@
 @media (max-width: 767px) {
     .img-banner {
       height: 80vh;
+      width: 120%;
     }
     .titleBanner, .subtitleBanner{
         font-size: 40px;
@@ -43,7 +44,7 @@
     }
     .carousel-caption {
         position: absolute;
-        top:10%;
+        top:40%;
     }
     .sloganBanner {
         text-align: center;
