@@ -5,6 +5,7 @@ import LoginPage from './pages/LoginPage'
 import Home from './pages/Home'
 import GaleryPage from './pages/GaleryPage'
 import NavHotel from './components/navBar/NavHotel'
+import FooterHotel from './components/footer/FooterHotel'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
       </Routes>
+      <FooterHotel/>
     </>
   )
 }
