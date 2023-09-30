@@ -23,7 +23,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 2 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Sus habitaciones cuentan con TV por cable; cama sommier en todos los cuartos; teléfono con DDI/DDN; secador de Cabello; servicio de cuna; baño privado en cada cuarto; calefacción central; cofre de seguridad con medidas especiales para notebooks hasta 16”",
         tipo: "DOBLE TWIN STANDARD",
         precio: 10000,
         disponibilidad: true
@@ -52,7 +52,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 4 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "DOBLE MATRIMONIAL",
         precio: 12000,
         disponibilidad: true
@@ -81,7 +81,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 3 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Sus habitaciones cuentan con TV por cable; cama sommier en todos los cuartos; teléfono con DDI/DDN; secador de Cabello; servicio de cuna; baño privado en cada cuarto; calefacción central; cofre de seguridad con medidas especiales para notebooks hasta 16”",
         tipo: "TRIPLE STANDARD",
         precio: 13000,
         disponibilidad: true
@@ -110,7 +110,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 2 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "SUITE",
         precio: 20000,
         disponibilidad: true
@@ -139,7 +139,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 3 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Las habitaciones del Hotel Plaza son cómodas y cuentan con TV de pantalla plana y baño privado. También incluyen caja fuerte. Hay servicio de lavandería.",
         tipo: "TRIPLE STANDARD",
         precio: 14000,
         disponibilidad: true
@@ -168,7 +168,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 2 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Las habitaciones del Internacional Hotel tienen suelos de moqueta y muebles de madera. Todas están equipadas con TV por cable, calefacción y baño privado.",
         tipo: "SUITE",
         precio: 20000,
         disponibilidad: true
@@ -197,7 +197,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 2 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Las habitaciones del Hotel Plaza son cómodas y cuentan con TV de pantalla plana y baño privado. También incluyen caja fuerte. Hay servicio de lavandería.",
         tipo: "DOBLE TWIN STANDARD",
         precio: 10000,
         disponibilidad: true
@@ -226,7 +226,7 @@ export const rooms = [
                 img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 id: 5
             }],
-        descripcion: "Esta habitación es ideal para 3 personas que deseen relajarse. Ideal para familias o amigos.",
+        descripcion: "Las habitaciones del Cambria disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "DOBLE MATRIMONIAL",
         precio: 13000,
         disponibilidad: true

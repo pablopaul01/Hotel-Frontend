@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { rooms } from '../helpers/data'
-import RoomCarrousel from '../components/rooms/RoomCarrousel'
+// import RoomCarrousel from '../components/rooms/RoomCarrousel'
 import RoomDetail from '../components/rooms/RoomDetail'
 import { useParams } from 'react-router'
 
@@ -44,14 +44,7 @@ const Room = () => {
                 {
                     user.length > 0 ?
                         <>
-                            <div className="row">
-                                <div className="col-6">
-                                    <RoomCarrousel room={room} />
-                                </div>
-                                <div className="col-6">
-                                    <RoomDetail room={room} />
-                                </div>
-                            </div>
+                            <RoomDetail room={room}/>
                         </>
                         :
                         <>
