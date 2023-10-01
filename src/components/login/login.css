@@ -44,6 +44,7 @@
 
 .btn-outline-light:hover {
     background-color: #8b653b !important;
+    color: white !important;
 }
 
 a {
