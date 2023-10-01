@@ -1,5 +1,5 @@
 import React from 'react'
-import {users} from '../../../helpers/users'
+import {rooms} from '../../../helpers/data'
 import DataTable from 'react-data-table-component';
 import './usuarios.css'
 import './formcreate.css'
@@ -10,65 +10,46 @@ import {MdBlock} from 'react-icons/md'
 const RoomsTable = () => {
     const columns = [
         {
-            name: "Nombre",
+            name: "N° Habitación",
             selector: row => {
-                return <p className='mb-0 text-table'>{row.nombre}</p>},
+                return <p className='mb-0 text-table'>{row.roomNumber}</p>},
             sortable: true,
             center:true,
             maxWidth: "200px"
         },
         {
-            name: "DNI",
+            name: "Tipo",
             selector: row => {
-                return <p className='mb-0 text-table'>{row.dni}</p>},
+                return <p className='mb-0 text-table'>{row.tipo}</p>},
             sortable: true,
             center:true,
             maxWidth: "180px"
 
         },
         {
-            name: "Celular",
+            name: "Precio",
             selector: row => {
-                return <p className='mb-0 text-table'>{row.celular}</p>},
+                return <p className='mb-0 text-table'>{row.precio}</p>},
             center:true,
             maxWidth: "180px"
 
         },
         {
-            name: "User",
+            name: "Descripción",
             selector: row => {
-                return <p className='mb-0 text-table'>{row.username}</p>},
+                return <p className='mb-0 text-table'>{row.descripcion}</p>},
             sortable: true,
             center:true,
-            maxWidth: "240px"
-
-        },
-        {
-            name: "Rol",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.rol}</p>},
-            sortable: true,
-            center:true,
-            maxWidth: "120px"
-
-        },
-        {
-            name: "Estado de Cuenta",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.state}</p>},
-            sortable: true,
-            center:true,
-            maxWidth: "150px"
+            maxWidth: "400px"
 
         },
         {
             name:"Acciones",
             selector: row => {
                 return (
-                    <div style={{display:"flex", gap:"10px", justifyContent:"center"}}>
+                    <div style={{display:"flex", gap:"20px", justifyContent:"center"}}>
                         <button className="btn btn-warning btn-sm mr-2"><BiEdit className='icon-crud'/></button>
                         <button className="btn btn-danger btn-sm"><TiDeleteOutline className='icon-crud'/></button>
-                        <button className="btn btn-danger btn-sm"><MdBlock className='icon-crud'/></button>
                     </div>
                 )
             },
@@ -86,7 +67,7 @@ const RoomsTable = () => {
 <div className='d-flex flex-column align-items-end'>
 <DataTable 
     columns={columns }
-    data={users}
+    data={rooms}
     pagination
     paginationComponentOptions={paginationComponentOptions}
 />

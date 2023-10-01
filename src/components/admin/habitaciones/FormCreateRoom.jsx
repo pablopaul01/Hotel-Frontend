@@ -3,6 +3,7 @@ import "../../register/register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { REGISTRO_SCHEMA } from '../../../helpers/validationsSchemas'
+import {categories} from '../../../helpers/data'
 
 const FormCreate = () => {
 
@@ -20,7 +21,7 @@ const FormCreate = () => {
     <div>
  <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-2">
-                <label className="form-label">Nombre Completo</label>
+                <label className="form-label">Nro de Habitación</label>
                 <input
                     type="text"
                     className="form-control"
@@ -32,45 +33,53 @@ const FormCreate = () => {
                 {errors.name?.message}
             </p>
             <div className="mb-2 pt-2">
-                <label className="form-label">Correo electrónico</label>
-                <input
-                    type="email"
-                    className="form-control"
-                    name="username"
-                    {...register("username")}
-                />
+                <label className="form-label">Tipo de habitación</label>
+                <select name="tipo" className="form-control">
+                    <option >----- Seleccione el tipo de habitación ----- </option>
+                    {
+                        categories.map((category,index) => (
+                            <option value={category.id} key={category.id}>{category.title}</option>
+                        ))
+                    }
+                </select>
             </div>
             <p className="text-danger my-1">
                 {errors.username?.message}
             </p>
             <div className="mb-2 pt-2">
-                <label className="form-label">Contraseña</label>
+                <label className="form-label">Precio</label>
                 <input
-                    type="password"
+                    type="number"
                     className="form-control"
-                    name="password"
+                    name="precio"
                     {...register("password")}
+                />
+            </div>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Imagenes de la habitación</label>
+                <input
+                    type="file"
+                    className="form-control"
+                    name="imagen"
+                    multiple
                 />
             </div>
             <p className="text-danger my-1">
                 {errors.password?.message}
             </p>
             <div className="mb-2 pt-2">
-                <label className="form-label">Repetir Contraseña</label>
-                <input
-                    type="password"
+                <label className="form-label">Descripción</label>
+                <textarea
                     className="form-control"
-                    name="repassword"
+                    name="descripcion"
+                    rows="4"
                     {...register("repassword")}
                 />
             </div>
             <p className="text-danger my-1">
                 {errors.repassword?.message}
             </p>
-            <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
-                un dígito, al menos una minúscula y al menos una
-                mayúscula.</small>
-            <div className="d-grid mt-2 mb-4">
+            <div className="d-grid mt-5 mb-4">
                 <button className="btn btn-outline-light boton-login" type="submit">Crear usuario</button>
             </div>
         </form>

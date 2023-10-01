@@ -56,7 +56,6 @@ export const rooms = [
         descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "DOBLE MATRIMONIAL",
         precio: 12000,
-        precio: 12000,
         disponibilidad: true,
         roomNumber: "102"
     },
@@ -238,6 +237,7 @@ export const rooms = [
         tipo: "DOBLE MATRIMONIAL",
         precio: 13000,
         disponibilidad: true,
+        roomNumber: "181"
     },
 ]
 

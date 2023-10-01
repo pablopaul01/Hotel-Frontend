@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import '../components/admin/usuario/usuarios.css'
 import RoomsTable from '../components/admin/habitaciones/RoomsTable'
-import ModalCreate from '../components/admin/usuario/ModalCreate'
+import ModalCreateRoom from '../components/admin/habitaciones/ModalCreateRoom'
 
 
 const RoomsAdmin = () => {
@@ -21,7 +21,7 @@ const RoomsAdmin = () => {
       <div className="row">
         <div className="col mt-5"><RoomsTable /></div>
       </div>
-      <ModalCreate show={show} handleClose={handleClose}/>
+      <ModalCreateRoom show={show} handleClose={handleClose}/>
     </div>
   )
 }
