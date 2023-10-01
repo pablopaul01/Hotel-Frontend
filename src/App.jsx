@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <NavHotel />
+      {/* <NavHotel /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />

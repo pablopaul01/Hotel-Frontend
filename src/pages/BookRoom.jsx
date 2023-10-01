@@ -13,7 +13,7 @@ const BookRoom = () => {
         <>
             <div className='my-5 mt-5 titulos-galery'>
                 <h4 className='text-secondary text-center categoria'>RESERVA</h4>
-                <h2 className='text-dark text-center titulo-galery'>Habitaciones disponibles</h2>
+                <h2 className='text-dark text-center titulo-galery'>Categoría de habitaciones</h2>
             </div>
             <div className="container-fluid">
                 {
