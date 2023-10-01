@@ -1,5 +1,9 @@
 import React from 'react'
 import "./Footer.css"
+import {FaInstagram} from 'react-icons/fa'
+import {FaFacebookSquare} from 'react-icons/fa'
+import {FaYoutube} from 'react-icons/fa'
+import {FaTiktok} from 'react-icons/fa'
 
 const FooterHotel = () => {
   return (
@@ -14,6 +18,16 @@ const FooterHotel = () => {
                 <p className='subtitle-footer mb-0'>San Miguel de Tucuman, Tucumán, Argentina</p>
                 <p className='subtitle-footer mb-0'>Tel.:(54-381)4324813</p>
                 <p className='subtitle-footer mb-0'>reservas@rollingranhotel.com</p>
+                <div>
+
+                    <FaInstagram/>
+                    <FaFacebookSquare/>
+                    <FaYoutube/>
+                    <FaTiktok/>
+
+                
+                    
+                </div>
                 
             </div>
             <div className="reserva-col col-4">
