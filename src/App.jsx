@@ -7,6 +7,7 @@ import GaleryPage from './pages/GaleryPage'
 import NavHotel from './components/navBar/NavHotel'
 import RoomsPage from './pages/RoomsPage'
 import Usuarios from './pages/Usuarios'
+import RoomsAdmin from './pages/RoomsAdmin'
 
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
+        
         <Route path='/usuarios' element={<Usuarios/>} />
+        <Route path='/admin/rooms' element={<RoomsAdmin/>} />
       </Routes>
     </>
   )
