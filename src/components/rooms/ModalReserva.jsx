@@ -4,60 +4,97 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 function ModalReserva() {
-  const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-  return (
-    <>
-      <Button variant="primary" size="lg" className='btn-outline-light text-light' active onClick={handleShow}>
-       Reservar ahora
-      </Button>
+    return (
+        <>
+            <Button variant="primary" size="lg" className='btn-outline-light text-light' active onClick={handleShow}>
+                Reservar ahora
+            </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Detalle de reserva</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
-              />
-            </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
-          <hr />
-          <p className='mb-0 text-center'>
-            Cantidad de noches seleccionadas: <span className='fs-4 text-secondary text-align-end'>5</span>
-          </p>
-          
-          <hr />
-          <p className='fs-3'>
-            Su total es <span className='text-secondary'>$100000</span>
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Detalle de reserva</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className='mt-3'>
+                    <form class="row g-3">
+                        <div className="col-md-6">
+                            <label for="inputEmail4" className="form-label">Nombre</label>
+                            <input type="email" className="form-control" id="inputEmail4" />
+                        </div>
+                        <div className="col-md-6">
+                            <label for="inputPassword4" className="form-label">Apellido</label>
+                            <input type="password" className="form-control" id="inputPassword4" />
+                        </div>
+                        <div className="col-12">
+                            <label for="inputNumber" className="form-label">Cel</label>
+                            <input type="text" className="form-control" id="inputNumber" placeholder="" />
+                        </div>
+                        <div className="col-12">
+                            <label for="inputAddress" className="form-label">Dirección</label>
+                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                        </div>
+                        <div className="col-md-8">
+                            <label for="inputCity" className="form-label">Ciudad</label>
+                            <input type="text" className="form-control" id="inputCity" />
+                        </div>
+                        <div className="col-md-4">
+                            <label for="inputZip" className="form-label">Cod. postal</label>
+                            <input type="text" className="form-control" id="inputZip" />
+                        </div>
+                        <div className="col-6 mb-3">
+                            <label for="inputAddress" className="form-label">Fecha de ingreso</label>
+                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
+                        </div>
+                        <div className="col-6 mb-3">
+                            <label for="inputAddress2" className="form-label">Fecha de salida</label>
+                            <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+                        </div>
+                    </form>
+                    <div className="row m-2">
+                        <div className="col-12">
+                            <div className="row">
+                                <hr />
+                                <div className="col-6">
+                                    <p className='mb-0 text-start fs-6'>
+                                        Cantidad de noches seleccionadas:
+                                    </p>
+                                </div>
+                                <div className="col-6 text-end">
+                                    <p className='fs-6 text-align-end'>5 noches</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-12">
+                            <div className="row">
+                                <hr className='mt-3' />
+                                <div className="col-6">
+                                    <p className='mb-0 text-start fs-3'>
+                                        Total:
+                                    </p>
+                                </div>
+                                <div className="col-6 text-end">
+                                    <p className='fs-3 text-align-end'>$123984,33</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                    </Button>
+                    <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
 }
 
 export default ModalReserva;
