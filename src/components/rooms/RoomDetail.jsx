@@ -3,6 +3,7 @@ import AccordionRoom from './AccordionRoom'
 import RoomCarrousel from './RoomCarrousel'
 import Button from 'react-bootstrap/Button'
 import './roomDetail.css'
+import ModalReserva from './ModalReserva'
 
 
 const RoomDetail = ({ room }) => {
@@ -46,8 +47,12 @@ const RoomDetail = ({ room }) => {
           El alojamiento ofrece todos los días el desayuno. Los huéspedes podrán cocinar en la comodidad de su alojamiento, en su asador.
           Las comodidades incluyen estacionamiento limitado gratis, venta de entradas, centro de negocios y zona de picnic. Los huéspedes también podrán disfrutar de jardín y tv en zonas comunes. Por un cargo, la propiedad cuenta con servicio de traslado al aeropuerto, servicio de guarda-equipaje y servicio de lavandería.</p>
       </div>
-
-      <h3 className="mb-4 text-center"><i>Reserva ahora por un precio de <b className='text-secondary'>${data.precio}</b></i></h3>
+      <h3 className="mb-4 text-center">
+        <i>Reserva ahora por un precio de
+          <b className='text-secondary'> ${data.precio}</b>
+        </i>
+        <small className='fs-6 text-secondary'>/noche</small>
+      </h3>
       <div className="row">
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
           <RoomCarrousel room={room} />
@@ -55,10 +60,8 @@ const RoomDetail = ({ room }) => {
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
           <AccordionRoom />
           <div className="mt-4">
-            <Button variant="primary" size="lg" className='btn-outline-light text-light' active>
-              Reservar ahora
-            </Button>{' '}
-            <Button variant="secondary" size="lg" className='btn-outline-light text-light' active>
+            <ModalReserva />
+            <Button variant="secondary" size='lg' className='mx-2'>
               Volver
             </Button>
           </div>
