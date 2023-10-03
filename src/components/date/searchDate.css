@@ -4,6 +4,9 @@
 .searchBar{
  background-color: #f9f9f9;
 }
+.searchDate {
+    position: relative;
+}
 
 .inputSearchPeople {
     width: 40px;
@@ -20,7 +23,6 @@
 }
 
 .rangePlaceHolder {
-    position: relative;
     font-family: "Roboto";
     text-align: center;
     font-size: 12px;
@@ -52,7 +54,7 @@
 
 .calendar {
     position: absolute;
-    top: 30px;
+    top: 50px;
     left: 0px;
     z-index: 2;
   }
