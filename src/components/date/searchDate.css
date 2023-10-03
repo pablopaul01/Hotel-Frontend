@@ -33,6 +33,7 @@
     background-color: #c19b76;
     font-family: "Roboto";
     color: #fff;
+    font-size: 13px;
 }
 
 .btn.btnSearch:hover {
@@ -44,6 +45,7 @@
     background-color: #8b653b !important;
     outline: none;
     border: none;
+
 }
 
 .calendar {
