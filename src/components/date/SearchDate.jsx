@@ -19,21 +19,22 @@ const SearchDate = () => {
       <div className="optionsWrap d-flex gap-2 gap-lg-5 flex-column flex-md-row">
         <div className="searchDate text-center">
           <p className='textDateRange mb-0'>Seleccionar fechas</p>
-          <span className='rangePlaceHolder' onClick={()=>setOpen(!open)}>{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`} <BiCalendar/></span>
-          {open &&
-              <div className="calendar d-flex flex-column">
-                <DateRange
-                  locale={es}
-                  editableDateInputs={true}
-                  onChange={item => setDate([item.selection])}
-                  moveRangeOnFirstSelection={false}
-                  ranges={date}
-                  // className="calendar"
-                  minDate={new Date()}
-                />
-                <span className='closeCalendarBtn'  onClick={()=>setOpen(!open)}>CERRAR X</span>
-              </div>
-          }
+          <span className='rangePlaceHolder' onClick={()=>setOpen(!open)}>{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`} <BiCalendar/>
+            {open &&
+                <div className="calendar d-flex flex-column">
+                  <DateRange
+                    locale={es}
+                    editableDateInputs={true}
+                    onChange={item => setDate([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={date}
+                    minDate={new Date()}
+                  />
+                  <span className='closeCalendarBtn'  onClick={()=>setOpen(!open)}>CERRAR X</span>
+                </div>
+            }
+          </span>
+
         </div>
         <div className="qtyPeople d-flex gap-2 justify-content-center">
           <div className="adultsContainer text-center">
