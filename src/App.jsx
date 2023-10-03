@@ -7,6 +7,7 @@ import GaleryPage from './pages/GaleryPage'
 import NavHotel from './components/navBar/NavHotel'
 import RoomsPage from './pages/RoomsPage'
 import Usuarios from './pages/Usuarios'
+import SearchDate from './components/date/SearchDate'
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
 
   return (
     <>
-      <NavHotel />
+      {/* <NavHotel /> */}
+      <SearchDate/>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />

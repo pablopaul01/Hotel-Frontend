@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+.searchBar{
+ background-color: #f9f9f9;
+}
+
+.inputSearchPeople {
+    width: 40px;
+    text-align: center;
+    font-size: 13px;
+    padding: 1px 0;
+}
+
+.textDateRange {
+    font-family: "Roboto";
+    font-weight: bold;
+    text-align: center;
+    font-size: 13px;
+}
+
+.rangePlaceHolder {
+    font-family: "Roboto";
+    text-align: center;
+    font-size: 12px;
+    color: #999999;
+    border: 1px solid #000;
+    padding: 5px 20px;
+    border-radius: 3px;
+}
+
+.btn.btnSearch {
+    background-color: #c19b76;
+    font-family: "Roboto";
+    color: #fff;
+}
+
+.btn.btnSearch:hover {
+   background-color:  #8b653b;
+   color: #fff;
+}
+
+.btn.btnSearch:active {
+    background-color: #8b653b !important;
+    outline: none;
+    border: none;
+}
+
+.calendar {
+    position: absolute;
+    top: 70px;
+    left: 110px;
+    z-index: 2;
+  }
