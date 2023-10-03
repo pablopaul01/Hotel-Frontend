@@ -8,6 +8,7 @@ import NavHotel from './components/navBar/NavHotel'
 import RoomsPage from './pages/RoomsPage'
 import BookRoom from './pages/BookRoom'
 import Room from './pages/Room'
+import FooterHotel from './components/footer/FooterHotel'
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path='/reserva-habitaciones' element={<BookRoom />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
       </Routes>
+      <FooterHotel/>
     </>
   )
 }
