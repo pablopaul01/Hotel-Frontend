@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import RoomList from '../components/rooms/RoomList'
+import SearchDate from '../components/date/SearchDate'
+
 
 const BookRoom = () => {
 
@@ -19,7 +21,10 @@ const BookRoom = () => {
                 {
                     user.length > 0 ?
                         <>
+                            <SearchDate />
                             <RoomList></RoomList>
+
+
                         </>
                         :
                         <>
