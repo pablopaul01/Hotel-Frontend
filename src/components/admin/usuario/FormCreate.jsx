@@ -1,13 +1,10 @@
 import React from 'react'
-import "./register.css"
+import "../../register/register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { REGISTRO_SCHEMA } from '../../helpers/validationsSchemas'
-import { Link } from 'react-router-dom'
+import { REGISTRO_SCHEMA } from '../../../helpers/validationsSchemas'
 
-
-
-const Register = () => {
+const FormCreate = () => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(REGISTRO_SCHEMA)
@@ -19,9 +16,9 @@ const Register = () => {
     }
 
     console.log(errors);
-
-    return (
-        <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
+  return (
+    <div>
+ <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-2">
                 <label className="form-label">Nombre Completo</label>
                 <input
@@ -73,16 +70,12 @@ const Register = () => {
             <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
                 un dígito, al menos una minúscula y al menos una
                 mayúscula.</small>
-            <div className="d-grid mt-2">
-                <button className="btn btn-outline-light boton-login" type="submit">Registrarme</button>
-            </div>
-            <div className="mt-3 mb-4 text-center">
-                <span>¿Ya tienes una cuenta?
-                    <Link to="/login" className="btn link">Iniciar Sesión</Link>
-                </span>
+            <div className="d-grid mt-2 mb-4">
+                <button className="btn btn-outline-light boton-login" type="submit">Crear usuario</button>
             </div>
         </form>
-    )
+    </div>
+  )
 }
 
-export default Register
+export default FormCreate

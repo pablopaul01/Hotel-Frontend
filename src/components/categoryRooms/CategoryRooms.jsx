@@ -1,6 +1,6 @@
 import React from 'react'
 import "./categoryRooms.css"
-import { rooms } from '../../helpers/data.js'
+import { categories } from '../../helpers/data.js'
 import CategoryItem from './CategoryItem'
 
 const CategoryRooms = () => {
@@ -17,8 +17,8 @@ const CategoryRooms = () => {
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div className="row">
                         {
-                            rooms.map((room) => (
-                                <CategoryItem room={room} key={room.id} />
+                            categories.map((category) => (
+                                <CategoryItem category={category} key={category.id} />
                             ))
                         }
                     </div>
