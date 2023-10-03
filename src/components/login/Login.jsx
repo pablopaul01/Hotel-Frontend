@@ -3,6 +3,8 @@ import "./login.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
+import { Link } from 'react-router-dom'
+
 
 const Login = () => {
 
@@ -49,10 +51,10 @@ const Login = () => {
             </div>
             <div className="mt-3 text-center" id="btn-registro">
                 <span>¿No tienes una cuenta registrada?
-                    <a href="#" className="btn link">Regístrate</a></span>
+                    <Link to="/registro" className="btn link">Regístrate</Link></span>
             </div>
             <div className="text-center">
-                <a href="#" className="btn link mb-4">¿Olvidaste tu contraseña?</a>
+                <Link to="/error" className="btn link mb-4">¿Olvidaste tu contraseña?</Link>
             </div>
         </form>
     )

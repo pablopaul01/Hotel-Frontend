@@ -3,6 +3,8 @@ import "./register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { REGISTRO_SCHEMA } from '../../helpers/validationsSchemas'
+import { Link } from 'react-router-dom'
+
 
 
 const Register = () => {
@@ -76,7 +78,7 @@ const Register = () => {
             </div>
             <div className="mt-3 mb-4 text-center">
                 <span>¿Ya tienes una cuenta?
-                    <a href="#" className="btn link">Iniciar Sesión</a>
+                    <Link to="/login" className="btn link">Iniciar Sesión</Link>
                 </span>
             </div>
         </form>

@@ -8,17 +8,14 @@ import NavHotel from './components/navBar/NavHotel'
 import RoomsPage from './pages/RoomsPage'
 import BookRoom from './pages/BookRoom'
 import Room from './pages/Room'
-import Usuarios from './pages/Usuarios'
-import RoomsAdmin from './pages/RoomsAdmin'
-import SearchDate from './components/date/SearchDate.jsx'
 
 
 function App() {
+  const [count, setCount] = useState(0)
 
   return (
     <>
-      <SearchDate />
-      {/* <NavHotel /> */}
+      <NavHotel />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />
@@ -27,8 +24,6 @@ function App() {
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones' element={<BookRoom />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
-        <Route path='/usuarios' element={<Usuarios/>} />
-        <Route path='/admin/rooms' element={<RoomsAdmin/>} />
       </Routes>
     </>
   )
