@@ -27,7 +27,7 @@ const BookRoom = () => {
                             {
                                 !isFilter ?
                                     (
-                                        <div className="alert alert-danger text-center w-100" role="alert">
+                                        <div className="alert alert-danger text-center w-100 my-5" role="alert">
                                             Seleccione una fecha
                                         </div>
                                     )

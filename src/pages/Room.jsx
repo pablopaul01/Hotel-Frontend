@@ -40,9 +40,9 @@ const Room = () => {
                 category.data ?
                     (
                         <>
-                            <div className='my-5 mt-5 titulos-galery'>
-                                <h4 className='text-secondary text-center categoria'>HOTEL</h4>
-                                <h2 className='text-dark text-center titulo-galery'>Reserva</h2>
+                            <div className='titulos-rooms'>
+                                <h4 className='text-secondary text-center categoria'>EL HOTEL</h4>
+                                <h2 className='text-dark text-center titulo-galery'>Detalle</h2>
                             </div>
                             <div className="container">
                                 {
