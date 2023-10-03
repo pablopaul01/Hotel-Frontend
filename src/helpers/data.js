@@ -24,32 +24,10 @@ export const rooms = [
                 id: 5
             }],
         descripcion: "Sus habitaciones cuentan con TV por cable; cama sommier en todos los cuartos; teléfono con DDI/DDN; secador de Cabello; servicio de cuna; baño privado en cada cuarto; calefacción central; cofre de seguridad con medidas especiales para notebooks hasta 16”",
-        title: "DOBLE TWIN STANDARD BLUE",
-        imagen: [
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 1
-            },
-            {
-                img: "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 2
-            },
-            {
-                img: "https://images.unsplash.com/photo-1619128395560-8a749ac9926d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-                id: 3
-            },
-            {
-                img: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 4
-            },
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 5
-            }],
-        descripcion: "Sus habitaciones cuentan con TV por cable; cama sommier en todos los cuartos; teléfono con DDI/DDN; secador de Cabello; servicio de cuna; baño privado en cada cuarto; calefacción central; cofre de seguridad con medidas especiales para notebooks hasta 16”",
         tipo: "DOBLE TWIN STANDARD",
         precio: 10000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "101"
     },
     {
         id: 2,
@@ -76,33 +54,10 @@ export const rooms = [
                 id: 5
             }],
         descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
-        title: "DOBLE MATRIMONIAL RED",
-        imagen: [
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 1
-            },
-            {
-                img: "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 2
-            },
-            {
-                img: "https://images.unsplash.com/photo-1619128395560-8a749ac9926d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-                id: 3
-            },
-            {
-                img: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 4
-            },
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 5
-            }],
-        descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "DOBLE MATRIMONIAL",
         precio: 12000,
-        precio: 12000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "102"
     },
     {
         id: 3,
@@ -131,7 +86,8 @@ export const rooms = [
         descripcion: "Sus habitaciones cuentan con TV por cable; cama sommier en todos los cuartos; teléfono con DDI/DDN; secador de Cabello; servicio de cuna; baño privado en cada cuarto; calefacción central; cofre de seguridad con medidas especiales para notebooks hasta 16”",
         tipo: "TRIPLE STANDARD",
         precio: 13000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "103",
     },
     {
         id: 4,
@@ -160,7 +116,8 @@ export const rooms = [
         descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "SUITE",
         precio: 20000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "106"
     },
     {
         id: 5,
@@ -189,7 +146,8 @@ export const rooms = [
         descripcion: "Las habitaciones del Hotel Plaza son cómodas y cuentan con TV de pantalla plana y baño privado. También incluyen caja fuerte. Hay servicio de lavandería.",
         tipo: "TRIPLE STANDARD",
         precio: 14000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "111"
     },
     {
         id: 6,
@@ -218,7 +176,8 @@ export const rooms = [
         descripcion: "Las habitaciones del Internacional Hotel tienen suelos de moqueta y muebles de madera. Todas están equipadas con TV por cable, calefacción y baño privado.",
         tipo: "SUITE",
         precio: 20000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "141"
     },
     {
         id: 7,
@@ -247,7 +206,8 @@ export const rooms = [
         descripcion: "Las habitaciones del Hotel Plaza son cómodas y cuentan con TV de pantalla plana y baño privado. También incluyen caja fuerte. Hay servicio de lavandería.",
         tipo: "DOBLE TWIN STANDARD",
         precio: 10000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "161"
     },
     {
         id: 8,
@@ -276,7 +236,8 @@ export const rooms = [
         descripcion: "Las habitaciones del Cambria disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
         tipo: "DOBLE MATRIMONIAL",
         precio: 13000,
-        disponibilidad: true
+        disponibilidad: true,
+        roomNumber: "181"
     },
 ]
 

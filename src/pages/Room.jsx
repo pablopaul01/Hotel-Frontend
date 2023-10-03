@@ -33,27 +33,35 @@ const Room = () => {
         getRoom()
     }, [])
 
-
+ console.log("de data en rooms", room.data)
     return (
         <>
-            <div className='my-5 mt-5 titulos-galery'>
-                <h4 className='text-secondary text-center categoria'>HOTEL</h4>
-                <h2 className='text-dark text-center titulo-galery'>Reserva</h2>
-            </div>
-            <div className="container">
-                {
-                    user.length > 0 ?
+            {
+                room.data ? (
                         <>
-                            <RoomDetail room={room}/>
+                                                <div className='my-5 mt-5 titulos-galery'>
+                    <h4 className='text-secondary text-center categoria'>HOTEL</h4>
+                    <h2 className='text-dark text-center titulo-galery'>Reserva</h2>
+                </div>
+                <div className="container">
+                    {
+                        user.length > 0 ?
+                            <>
+                                <RoomDetail room={room}/>
+                            </>
+                            :
+                            <>
+                                <div className="alert alert-danger text-center w-100" role="alert">
+                                    Para reservar una habitación debe iniciar sesión
+                                </div>
+                            </>
+                    }
+                </div>
                         </>
-                        :
-                        <>
-                            <div className="alert alert-danger text-center w-100" role="alert">
-                                Para reservar una habitación debe iniciar sesión
-                            </div>
-                        </>
-                }
-            </div>
+                ) : (
+                    <h1>ERROR</h1>
+                )
+            }
         </>
     )
 }
