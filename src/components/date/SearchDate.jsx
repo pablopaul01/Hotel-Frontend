@@ -49,6 +49,7 @@ const SearchDate = () => {
       </div>
       <button className='btn btnSearch' >COMPROBAR DISPONIBILIDAD</button>
     </div>
+    
   )
 }
 
