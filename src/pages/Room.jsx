@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { rooms } from '../helpers/data'
+// import { rooms } from '../helpers/data'
 // import RoomCarrousel from '../components/rooms/RoomCarrousel'
 import RoomDetail from '../components/rooms/RoomDetail'
 import { useParams } from 'react-router'
