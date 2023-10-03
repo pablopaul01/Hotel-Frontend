@@ -51,6 +51,23 @@
 .calendar {
     position: absolute;
     top: 70px;
-    left: 110px;
+    left: 80px;
     z-index: 2;
+  }
+
+.closeCalendarBtn {
+    background-color: #fff;
+    font-family: "Roboto";
+    font-size: 13px;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 767px) {
+    .calendar {
+        position: absolute;
+        top: 70px;
+        left: 10px;
+        z-index: 2;
+      }
   }

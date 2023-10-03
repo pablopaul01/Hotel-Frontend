@@ -10,12 +10,14 @@ import BookRoom from './pages/BookRoom'
 import Room from './pages/Room'
 import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
+import SearchDate from './components/date/SearchDate'
 
 function App() {
 
   return (
     <>
-      <NavHotel />
+    <SearchDate />
+      {/* <NavHotel /> */}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />

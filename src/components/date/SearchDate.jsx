@@ -15,23 +15,27 @@ const SearchDate = () => {
   ]);
   const [open, setOpen] = useState(false)
   return (
-    <div className='container px-5 d-flex justify-content-between py-4 searchBar'>
-      <div className="optionsWrap d-flex gap-5 ">
+    <div className='container px-5 d-flex justify-content-between py-4 searchBar flex-column flex-md-row gap-2 gap-lg-0'>
+      <div className="optionsWrap d-flex gap-2 gap-lg-5 flex-column flex-md-row">
         <div className="searchDate text-center">
           <p className='textDateRange mb-0'>Seleccionar fechas</p>
           <span className='rangePlaceHolder' onClick={()=>setOpen(!open)}>{`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`} <BiCalendar/></span>
           {open &&
-            <DateRange
-            locale={es}
-            editableDateInputs={true}
-            onChange={item => setDate([item.selection])}
-            moveRangeOnFirstSelection={false}
-            ranges={date}
-            className="calendar"
-            minDate={new Date()}
-          />}
+              <div className="calendar d-flex flex-column">
+                <DateRange
+                  locale={es}
+                  editableDateInputs={true}
+                  onChange={item => setDate([item.selection])}
+                  moveRangeOnFirstSelection={false}
+                  ranges={date}
+                  // className="calendar"
+                  minDate={new Date()}
+                />
+                <span className='closeCalendarBtn'  onClick={()=>setOpen(!open)}>CERRAR X</span>
+              </div>
+          }
         </div>
-        <div className="qtyPeople d-flex gap-2">
+        <div className="qtyPeople d-flex gap-2 justify-content-center">
           <div className="adultsContainer text-center">
             <p className='textDateRange mb-0'>Adultos</p>
             <input type="number" defaultValue={1} className='inputSearchPeople'/>
@@ -42,7 +46,7 @@ const SearchDate = () => {
           </div>
         </div>
       </div>
-      <button className='btn btnSearch'>COMPROBAR DISPONIBILIDAD</button>
+      <button className='btn btnSearch' >COMPROBAR DISPONIBILIDAD</button>
     </div>
   )
 }
