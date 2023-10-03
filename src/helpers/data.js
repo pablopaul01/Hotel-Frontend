@@ -29,18 +29,22 @@ export const categories = [
             }],
         roomNumbers: [
             {
+                id: 11,
                 number: 101,
                 unavailableDates: { type: [Date] }
             },
             {
+                id: 12,
                 number: 102,
                 unavailableDates: { type: [Date] }
             },
             {
+                id: 13,
                 number: 103,
                 unavailableDates: { type: [Date] }
             },
             {
+                id: 14,
                 number: 104,
                 unavailableDates: { type: [Date] }
             }],
@@ -74,14 +78,17 @@ export const categories = [
             }],
         roomNumbers: [
             {
+                id: 21,
                 number: 201,
                 unavailableDates: { type: [Date] }
             },
             {
+                id: 22,
                 number: 202,
                 unavailableDates: { type: [Date] }
             },
             {
+                id: 23,
                 number: 203,
                 unavailableDates: { type: [Date] }
             }],
@@ -115,10 +122,12 @@ export const categories = [
             }],
         roomNumbers: [
             {
+                id: 31,
                 number: 301,
                 unavailableDates: { type: [Date] }
             },
             {
+                id: 32,
                 number: 302,
                 unavailableDates: { type: [Date] }
             }],
@@ -152,6 +161,7 @@ export const categories = [
             }],
         roomNumbers: [
             {
+                id: 35,
                 number: 305,
                 unavailableDates: { type: [Date] }
             }],
