@@ -1,9 +1,9 @@
 import Carousel from 'react-bootstrap/Carousel';
 import "./rooms.css"
 
-const RoomCarrousel = ({ room }) => {
+const RoomCarrousel = ({ category }) => {
 
-    const { data } = room;
+    const { data } = category;
 
     return (
         <>

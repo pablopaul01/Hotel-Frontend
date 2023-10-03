@@ -3,6 +3,7 @@ import RoomList from '../components/rooms/RoomList'
 import SearchDate from '../components/date/SearchDate'
 
 
+
 const BookRoom = () => {
 
     const [user, setuser] = useState([1])
@@ -10,10 +11,11 @@ const BookRoom = () => {
         data: [],
         loading: true
     })
+    const [isFilter, setIsFilter] = useState(false)
 
     return (
         <>
-            <div className='my-5 mt-5 titulos-galery'>
+            <div className='titulos-rooms mb-4'>
                 <h4 className='text-secondary text-center categoria'>RESERVA</h4>
                 <h2 className='text-dark text-center titulo-galery'>Categoría de habitaciones</h2>
             </div>
@@ -21,10 +23,21 @@ const BookRoom = () => {
                 {
                     user.length > 0 ?
                         <>
-                            <SearchDate />
-                            <RoomList></RoomList>
-
-
+                            <SearchDate setIsFilter={setIsFilter} isFilter={isFilter} />
+                            {
+                                !isFilter ?
+                                    (
+                                        <div className="alert alert-danger text-center w-100" role="alert">
+                                            Seleccione una fecha
+                                        </div>
+                                    )
+                                    :
+                                    (
+                                        <>
+                                            <RoomList></RoomList>
+                                        </>
+                                    )
+                            }
                         </>
                         :
                         <>

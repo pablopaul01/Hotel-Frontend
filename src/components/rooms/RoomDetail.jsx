@@ -6,10 +6,10 @@ import './roomDetail.css'
 import ModalReserva from './ModalReserva'
 
 
-const RoomDetail = ({ room }) => {
-  console.log("room en detail", room)
+const RoomDetail = ({ category }) => {
+  console.log("room en detail", category)
 
-  const { data } = room;
+  const { data } = category;
 
   return (
     <>
@@ -55,7 +55,7 @@ const RoomDetail = ({ room }) => {
       </h3>
       <div className="row">
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
-          <RoomCarrousel room={room} />
+          <RoomCarrousel category={category} />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
           <AccordionRoom />

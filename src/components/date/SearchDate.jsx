@@ -5,7 +5,7 @@ import { DateRange } from 'react-date-range';
 import { es } from 'date-fns/locale';
 import {format} from "date-fns"
 
-const SearchDate = () => {
+const SearchDate = ({setIsFilter, isFilter}) => {
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -14,8 +14,13 @@ const SearchDate = () => {
     }
   ]);
   const [open, setOpen] = useState(false)
+
+  const handleClick = () => {
+    setIsFilter(!isFilter)
+  }
+
   return (
-    <div className='container px-5 d-flex justify-content-between py-4 searchBar flex-column flex-md-row gap-2 gap-lg-0'>
+    <div className='container px-5 d-flex justify-content-between py-4 searchBar flex-column flex-md-row gap-2 gap-lg-0 mb-3'>
       <div className="optionsWrap d-flex gap-2 gap-lg-5 flex-column flex-md-row">
         <div className="searchDate text-center">
           <p className='textDateRange mb-0'>Seleccionar fechas</p>
@@ -46,7 +51,7 @@ const SearchDate = () => {
           </div>
         </div>
       </div>
-      <button className='btn btnSearch' >COMPROBAR DISPONIBILIDAD</button>
+      <button className='btn btnSearch' onClick={handleClick} >COMPROBAR DISPONIBILIDAD</button>
     </div>
     
   )
