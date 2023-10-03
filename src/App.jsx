@@ -12,7 +12,6 @@ import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
