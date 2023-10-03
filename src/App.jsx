@@ -6,12 +6,13 @@ import Home from './pages/Home'
 import GaleryPage from './pages/GaleryPage'
 import NavHotel from './components/navBar/NavHotel'
 import RoomsPage from './pages/RoomsPage'
+import BookRoom from './pages/BookRoom'
+import Room from './pages/Room'
 import Usuarios from './pages/Usuarios'
+import RoomsAdmin from './pages/RoomsAdmin'
 import SearchDate from './components/date/SearchDate'
 
-
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -23,7 +24,10 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
+        <Route path='/reserva-habitaciones' element={<BookRoom />} />
+        <Route path='/reserva-habitaciones/:id' element={<Room />} />
         <Route path='/usuarios' element={<Usuarios/>} />
+        <Route path='/admin/rooms' element={<RoomsAdmin/>} />
       </Routes>
     </>
   )
