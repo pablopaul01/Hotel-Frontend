@@ -43,8 +43,8 @@ const Room = ({ category }) => {
                                         <select className="mx-2">
                                             <option selected value="0">0</option>
                                             {
-                                                roomNumbers.map((roomNumber) => (
-                                                    <option value={roomNumber.number} roomNumber={roomNumber} key={roomNumber.id}>{roomNumber.number}</option>
+                                                roomNumbers.map((roomNumber,index) => (
+                                                    <option value={roomNumber.number} roomNumber={roomNumber} key={roomNumber.id}>{index+1}</option>
                                                 ))
                                             }
                                         </select>
