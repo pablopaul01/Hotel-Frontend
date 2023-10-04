@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', serif;
+    color: white;
+}   */
+/* .modal-header {
+    border-bottom: none !important;
+} */
+.title-formuser {
+    display: flex;
+    align-items: center;
+    padding-top: -20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-bottom: 1px solid #fff;
+}
+
+.title-formuser {  
+    font-family: 'Gilda Display', serif;
+    font-weight: 300;
+    color: #1c1c1c;
+    font-size: 2.5rem;
+}
+
+
+.modal-container {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);   
+}
+
+ .modal-body {
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.form-container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.header-container {
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+}
+
+
+.row-login {
+    padding-bottom: 60px;
+}
+
+.btn-outline-light {
+    background-color: #95724c !important;
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background-color: #8b653b !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link {
+    color: #c19b76 !important;
+}
+
+.link:hover {
+    color: #8b653b !important;
+} 
+
+.form-control:focus {
+    box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    -webkit-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    -moz-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
+    
+} 
+

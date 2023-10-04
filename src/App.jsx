@@ -10,6 +10,8 @@ import BookRoom from './pages/BookRoom'
 import Room from './pages/Room'
 import FooterHotel from './components/footer/FooterHotel'
 import ScrollToTop from './helpers/ScrollToTop'
+import Usuarios from './pages/Usuarios'
+import RoomsAdmin from './pages/RoomsAdmin'
 
 
 
@@ -28,6 +30,8 @@ function App() {
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones' element={<BookRoom />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
+        <Route path='/admin/users' element={<Usuarios />} />
+        <Route path='/admin/rooms' element={<RoomsAdmin/>} />
       </Routes>
       <FooterHotel/>
     </>
