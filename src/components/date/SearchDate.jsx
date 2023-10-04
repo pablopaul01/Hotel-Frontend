@@ -5,14 +5,8 @@ import { DateRange } from 'react-date-range';
 import { es } from 'date-fns/locale';
 import {format} from "date-fns"
 
-const SearchDate = ({setIsFilter, isFilter}) => {
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: 'selection'
-    }
-  ]);
+const SearchDate = ({date,setDate,setIsFilter, isFilter}) => {
+
   const [open, setOpen] = useState(false)
 
   const handleClick = () => {

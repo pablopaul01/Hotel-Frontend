@@ -1,4 +1,4 @@
-import React from 'react'
+    import React, {useState} from 'react'
 import { GrUser } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
 
@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 
 
 
-const Room = ({ category }) => {
-
+const Room = ({date, category }) => {
+    const [selectedRoom, setSelectedRoom] = useState([])
     const { capacidadMax } = category;
     console.log("category en category", category)
 
@@ -16,8 +16,44 @@ const Room = ({ category }) => {
 
     const { id } = category;
 
+    const getDateInRange = (startDate, endDate) => {
+        const start = new Date (startDate)
+        const end = new Date (endDate)
+        const fecha = new Date (start.getTime());
+        let list = [];
+        while (fecha <= end){
+            list.push(new Date(fecha).getTime())
+            fecha.setDate(fecha.getDate()+1) 
+        }
+        return list
+    }
+    const allDates = getDateInRange(date[0].startDate, date[0].endDate)
 
+    const isAvaible = (roomNumber) => {
+        const isFound = roomNumber.unavailableDates.some (date => {
+            // const fecha = new Date(date).getTime()
+            // console.log("que hay en date", allDates)
+            // console.log("que hay en fecha", fecha)
+            allDates.includes(new Date(date).getTime())
+        })
+        console.log(`Habitacion ${roomNumber.number}`, isFound )
+        return !isFound
+    }
 
+    const room = {
+        id: 11,
+        number: 101,
+        unavailableDates: ["10-4-2023"]
+    }
+    isAvaible(room)
+    const handleSelect = (e) => {
+        setSelectedRoom([e.target.value])
+    }
+
+    const handleClick = () => {
+
+    }
+    console.log("selectedRoom", selectedRoom)
     return (
         <div className="card mb-3">
             <div className="row g-0">
@@ -43,12 +79,12 @@ const Room = ({ category }) => {
                                         ))}
                                     </div>
                                     <div className="col-lg-4 col-md-6 text-center">
-                                        <label className="input fs-7 text-secondary d-block">Habitaciones</label>
-                                        <select className="mx-2 mb-2">
-                                            <option selected value="0">0</option>
+                                        <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
+                                        <select className="mx-2 mb-2" onChange={handleSelect}>
+                                            <option selected value="0" ></option>
                                             {
                                                 roomNumbers.map((roomNumber, index) => (
-                                                    <option value={roomNumber.number} roomNumber={roomNumber} key={roomNumber.id}>{index + 1}</option>
+                                                    <option value={roomNumber.id} roomNumber={roomNumber} key={roomNumber.id}>{roomNumber.number}</option>
                                                 ))
                                             }
                                         </select>
@@ -63,7 +99,7 @@ const Room = ({ category }) => {
 
                         </div>
                         <div className="d-flex justify-content-center justify-content-md-start">
-                            <Link to="" class="btn btn-outline-light me-2">Reservar</Link>
+                            <Link to="" class="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
                             <Link to={`/reserva-habitaciones/${id}`} id={id} class="btn btn-secondary">Ver más...</Link>
                         </div>
                     </div>
