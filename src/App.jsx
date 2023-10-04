@@ -9,7 +9,7 @@ import RoomsPage from './pages/RoomsPage'
 import BookRoom from './pages/BookRoom'
 import Room from './pages/Room'
 import FooterHotel from './components/footer/FooterHotel'
-import ScrollToTop from './components/ScrollToTop'
+import ScrollToTop from './helpers/ScrollToTop'
 
 
 
