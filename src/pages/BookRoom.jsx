@@ -19,7 +19,7 @@ const BookRoom = () => {
                 <h4 className='text-secondary text-center categoria'>RESERVA</h4>
                 <h2 className='text-dark text-center titulo-galery'>Categoría de habitaciones</h2>
             </div>
-            <div className="container-fluid">
+            <div className="container-fluid mb-5">
                 {
                     user.length > 0 ?
                         <>
