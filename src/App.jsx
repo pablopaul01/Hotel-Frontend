@@ -9,6 +9,8 @@ import RoomsPage from './pages/RoomsPage'
 import BookRoom from './pages/BookRoom'
 import Room from './pages/Room'
 import FooterHotel from './components/footer/FooterHotel'
+import ScrollToTop from './helpers/ScrollToTop'
+
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
   return (
     <>
       <NavHotel />
+      <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />

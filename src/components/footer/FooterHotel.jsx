@@ -4,6 +4,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const FooterHotel = () => {
   return (
@@ -35,7 +37,9 @@ const FooterHotel = () => {
           <h3 className="title-footer">Reservas</h3>
           <p className="subtitle-footer mb-0">Celular:(54-381) 15546932</p>
           <p className="subtitle-footer mb-0">WhatsApp:(54-381) 156974321</p>
-          <button className="button-footer mt-2">RESERVAR AHORA</button>
+          <Link to="/reserva-habitaciones">
+            <button className="button-footer mt-2">RESERVAR AHORA</button>
+          </Link>
         </div>
       </div>
     </div>

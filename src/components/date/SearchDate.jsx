@@ -16,7 +16,7 @@ const SearchDate = ({setIsFilter, isFilter}) => {
   const [open, setOpen] = useState(false)
 
   const handleClick = () => {
-    setIsFilter(!isFilter)
+    setIsFilter(isFilter = true)
   }
 
   return (
@@ -52,8 +52,7 @@ const SearchDate = ({setIsFilter, isFilter}) => {
         </div>
       </div>
       <button className='btn btnSearch' onClick={handleClick} >COMPROBAR DISPONIBILIDAD</button>
-    </div>
-    
+    </div>    
   )
 }
 
