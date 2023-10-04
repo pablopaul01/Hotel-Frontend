@@ -16,9 +16,10 @@
   }
 
   .linknav {
-    color: #fff;
+    color: #fff ;
     font-family: "Knockout";
     font-size: 20px;
+    text-decoration: none ;
   }
 
   .navbar-container {
@@ -28,4 +29,19 @@
 .linknav:hover {
   color: #8B653B;
   cursor: pointer;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.appear {
+  animation: appear 0.5s ease-in-out;
 }

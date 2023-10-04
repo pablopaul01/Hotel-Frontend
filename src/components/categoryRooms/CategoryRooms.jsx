@@ -6,7 +6,7 @@ import CategoryItem from './CategoryItem'
 const CategoryRooms = () => {
     return (
         <>
-            <div className='mb-5 titulos-recepcion'>
+            <div className='mb-5 titulos-recepcion container-rooms'>
                 <h4 className='text-secondary text-center categoria-recepcion'>EL HOTEL</h4>
                 <h2 className='text-dark text-center titulo-recepcion'>Habitaciones</h2>
             </div>
