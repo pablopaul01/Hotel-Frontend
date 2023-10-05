@@ -4,12 +4,13 @@ import RoomCarrousel from './RoomCarrousel'
 import Button from 'react-bootstrap/Button'
 import './roomDetail.css'
 import ModalReserva from './ModalReserva'
+import { Link } from 'react-router-dom'
 
 
-const RoomDetail = ({ room }) => {
-  console.log("room en detail", room)
+const RoomDetail = ({ category }) => {
+  console.log("room en detail", category)
 
-  const { data } = room;
+  const { data } = category;
 
   return (
     <>
@@ -24,6 +25,28 @@ const RoomDetail = ({ room }) => {
           </li>
         </ul>
       </nav>
+      <div className="row">
+        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
+          <RoomCarrousel category={category} />
+        </div>
+        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
+          <AccordionRoom />
+          <div className="mt-4">
+            {/* <ModalReserva /> */}
+            <Link to="/reserva-habitaciones">
+              <Button variant="secondary" size='lg' className='mx-2'>
+                Volver
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+      <h3 className="mb-4 text-center">
+        <i>Reserva ahora por un precio de
+          <b className='text-secondary'> ${data.precio}</b>
+        </i>
+        <small className='fs-6 text-secondary'>/noche</small>
+      </h3>
       <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" className="overflow-nav scrollspy-example bg-body-tertiary p-3 rounded-2 mb-5" tabindex="0">
         <h4 id="scrollspyHeading1">Descripción del alojamiento</h4>
         <p>
@@ -46,26 +69,6 @@ const RoomDetail = ({ room }) => {
           </ul>
           El alojamiento ofrece todos los días el desayuno. Los huéspedes podrán cocinar en la comodidad de su alojamiento, en su asador.
           Las comodidades incluyen estacionamiento limitado gratis, venta de entradas, centro de negocios y zona de picnic. Los huéspedes también podrán disfrutar de jardín y tv en zonas comunes. Por un cargo, la propiedad cuenta con servicio de traslado al aeropuerto, servicio de guarda-equipaje y servicio de lavandería.</p>
-      </div>
-      <h3 className="mb-4 text-center">
-        <i>Reserva ahora por un precio de
-          <b className='text-secondary'> ${data.precio}</b>
-        </i>
-        <small className='fs-6 text-secondary'>/noche</small>
-      </h3>
-      <div className="row">
-        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
-          <RoomCarrousel room={room} />
-        </div>
-        <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
-          <AccordionRoom />
-          <div className="mt-4">
-            <ModalReserva />
-            <Button variant="secondary" size='lg' className='mx-2'>
-              Volver
-            </Button>
-          </div>
-        </div>
       </div>
     </>
   )

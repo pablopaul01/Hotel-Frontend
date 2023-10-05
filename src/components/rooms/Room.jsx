@@ -1,17 +1,51 @@
-import React from 'react'
+    import React, {useState} from 'react'
 import { GrUser } from 'react-icons/gr'
+import { Link } from 'react-router-dom';
+import { categories } from '../../helpers/data';
+import ModalReserva from './ModalReserva';
 
 
 
 
-const Room = ({ category }) => {
 
-    const { capacidadMax } = category;
+const Room = ({date, category }) => {
+    const [selectedRoomQty, setSelectedRoomQty] = useState("")
+    const [selectedRooms, setSelectedRooms] = useState([{
+        selectedRoomsNumber: "",
+        selectedRoomsId: ""
+    }])
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const { capacidadMax, roomNumbers } = category;
     console.log("category en category", category)
 
-    const { roomNumbers } = category;
-    console.log("array de habitaciones", roomNumbers)
+    const { id } = category;
 
+    const handleSelect = (e) => {
+        setSelectedRoomQty([e.target.value])
+    }
+
+    const handleClick = () => {
+        let updatedSelectedRooms = []; // Inicializamos un nuevo arreglo
+        handleShow()
+
+    for (let index = 0; index < selectedRoomQty * 1; index++) {
+        const roomNumber = category.roomNumbers[index].number;
+        const roomId = category.roomNumbers[index].id;
+
+        updatedSelectedRooms.push({
+            selectedRoomsNumber: roomNumber,
+            selectedRoomsId: roomId
+        });
+    }
+    
+    setSelectedRooms(updatedSelectedRooms);
+    }
+    console.log("selectedRoomQty",selectedRoomQty);
+    console.log("selectedRoom", selectedRooms)
 
     return (
         <div className="card mb-3">
@@ -24,64 +58,29 @@ const Room = ({ category }) => {
                         <h5 className="card-title">{category.title}</h5>
                         <p className="card-text">{category.descripcion}</p>
                         <div className="row">
-                            <div className="col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                                <p className='fs-2 mb-0 text-danger'>
+                            <div className="col-lg-5 col-md-6 text-center text-md-start ">
+                                <span className='fs-2 mb-0 text-danger'>
                                     ${category.precio}<small className='fs-5 text-secondary'>/noche</small>
-                                </p>
+                                </span>
                             </div>
-                            <div className='col-lg-7 col-md-7 col-sm-12 col-xs-12'>
+                            <div className='col-lg-7 col-md-6   '>
                                 <div className="row">
                                     <div className="col-lg-8 col-md-6 text-center">
-                                        {
-                                            capacidadMax === 4 &&
-                                            (<><GrUser /><GrUser /><GrUser /><GrUser /></>)
-                                        }
-                                        {
-                                            capacidadMax === 2 &&
-                                            (<><GrUser /><GrUser /></>)
-                                        }
-                                        {
-                                            capacidadMax === 3 &&
-                                            (<><GrUser /><GrUser /><GrUser /></>)
-                                        }
-                                        {
-                                            capacidadMax === 5 &&
-                                            (<><GrUser /><GrUser /><GrUser /><GrUser /><GrUser /></>)
-                                        }
                                         <p className='fs-7 text-secondary mx-0 mb-0'>{category.capacidadMax} personas </p>
+                                        {Array.from({ length: capacidadMax }, (_, index) => (
+                                            <GrUser key={index} />
+                                        ))}
                                     </div>
-                                    <div className="col-lg-4 col-md-6 align-items-center d-flex justify-content-center">
-                                        <label className="input fs-7 text-secondary">Habitaciones</label>
-                                        <select className="mx-2">
-                                            <option selected value="0">0</option>
+                                    <div className="col-lg-4 col-md-6 text-center">
+                                        <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
+                                        <select className="mx-2 mb-2" onChange={handleSelect}>
+                                            <option selected value="0" >0</option>
                                             {
-                                                roomNumbers.length === 1 &&
-                                                (<option value="1">{roomNumbers[0].number}</option>)
+                                                category.roomNumbers.map((numRoom, index) => (
+                                                    <option value={index+1} id={numRoom.id} key={numRoom.id} >{index+1}</option>
+                                                ))
+                                                
                                             }
-                                            {
-                                                roomNumbers.length === 2 &&
-                                                (<>
-                                                    <option value="2">{roomNumbers[0].number}</option>
-                                                    <option value="2">{roomNumbers[1].number}</option>
-                                                </>)
-                                            }
-                                            {
-                                                roomNumbers.length === 3 &&
-                                                (<>
-                                                    <option value="2">{roomNumbers[0].number}</option>
-                                                    <option value="2">{roomNumbers[1].number}</option>
-                                                    <option value="2">{roomNumbers[2].number}</option>
-                                                </>)
-                                            }
-                                            {
-                                                roomNumbers.length === 4 &&
-                                                (<>
-                                                    <option value="2">{roomNumbers[0].number}</option>
-                                                    <option value="2">{roomNumbers[1].number}</option>
-                                                    <option value="2">{roomNumbers[2].number}</option>
-                                                    <option value="2">{roomNumbers[3].number}</option>
-                                                </>)
-                                            }                                           
                                         </select>
                                     </div>
                                 </div>
@@ -89,10 +88,15 @@ const Room = ({ category }) => {
                             </div>
 
 
-                            <a href="" className='btn btn-outline-light text-light mt-2'>Reservar ahora</a>
+                            {/* <a href="" className='btn btn-outline-light text-light mt-2'>Reservar ahora</a> */}
+
 
                         </div>
-
+                        <div className="d-flex justify-content-center justify-content-md-start">
+                            <Link to="" class="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
+                            <Link to={`/reserva-habitaciones/${id}`} id={id} class="btn btn-secondary">Ver más...</Link>
+                        </div>
+                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category}/>
                     </div>
                 </div>
             </div>

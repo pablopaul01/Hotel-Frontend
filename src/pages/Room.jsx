@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import { rooms } from '../helpers/data'
+import { categories } from '../helpers/data'
 // import RoomCarrousel from '../components/rooms/RoomCarrousel'
 import RoomDetail from '../components/rooms/RoomDetail'
 import { useParams } from 'react-router'
@@ -7,11 +7,11 @@ import { useParams } from 'react-router'
 
 const Room = () => {
 
-    console.log(rooms)
+    // console.log(rooms)
 
     const [user, setUser] = useState([1]);
 
-    const [room, setRoom] = useState({
+    const [category, setCategory] = useState({
         data: [],
         loading: true
     })
@@ -20,35 +20,35 @@ const Room = () => {
 
     console.log(id);
 
-    const getRoom = () => {
-        const habitacion = rooms.filter(room => room.id === parseInt(id));
-        console.log("dentro de get", habitacion)
-        setRoom({
-            data: habitacion[0],
+    const getCategory = () => {
+        const category = categories.filter(category => category.id === parseInt(id));
+        // console.log("dentro de get", habitacion)
+        setCategory({
+            data: category[0],
             loading: false
         })
     }
 
     useEffect(() => {
-        getRoom()
+        getCategory()
     }, [])
 
 
     return (
         <>
             {
-                room.data ?
+                category.data ?
                     (
                         <>
-                            <div className='my-5 mt-5 titulos-galery'>
-                                <h4 className='text-secondary text-center categoria'>HOTEL</h4>
-                                <h2 className='text-dark text-center titulo-galery'>Reserva</h2>
+                            <div className='titulos-detail'>
+                                <h4 className='text-secondary text-center categoria'>EL HOTEL</h4>
+                                <h2 className='text-dark text-center titulo-galery'>Detalle</h2>
                             </div>
                             <div className="container">
                                 {
                                     user.length > 0 ?
                                         <>
-                                            <RoomDetail room={room} />
+                                            <RoomDetail category={category} />
                                         </>
                                         :
                                         <>

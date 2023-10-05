@@ -7,32 +7,48 @@
     font-family: 'Roboto', serif;
     color: white;
 }   */
-
-.titulo {
+/* .modal-header {
+    border-bottom: none !important;
+} */
+.title-formuser {
     display: flex;
     align-items: center;
     padding-top: -20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-bottom: 1px solid #fff;
 }
 
-.titulo-login {  
+.title-formuser {  
     font-family: 'Gilda Display', serif;
     font-weight: 300;
-    color: white;
+    color: #1c1c1c;
     font-size: 2.5rem;
 }
 
-.login {
-    background-image: linear-gradient(rgba(5, 7, 12, .75), rgba(5, 7, 12, .75)),
-        url(../../public/fondo-login.jpg);
-    background-repeat: no-repeat;
-    background-size: cover; 
-} 
 
-.div-login {
+.modal-container {
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);   
-    margin-top: 70px !important;
 }
+
+ .modal-body {
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+    color: #fff;
+}
+
+.form-container {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.header-container {
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+}
+
+
 .row-login {
     padding-bottom: 60px;
 }
@@ -44,7 +60,6 @@
 
 .btn-outline-light:hover {
     background-color: #8b653b !important;
-    color: white !important;
 }
 
 a {
@@ -65,5 +80,4 @@ a {
     -moz-box-shadow: -1px 1px 11px 1px rgba(139, 101, 59, 0.75) !important;
     
 } 
-
 
