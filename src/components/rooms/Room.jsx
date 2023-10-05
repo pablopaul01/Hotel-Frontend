@@ -44,8 +44,6 @@ const Room = ({date, category }) => {
     
     setSelectedRooms(updatedSelectedRooms);
     }
-    console.log("selectedRoomQty",selectedRoomQty);
-    console.log("selectedRoom", selectedRooms)
 
     return (
         <div className="card mb-3">
@@ -86,11 +84,6 @@ const Room = ({date, category }) => {
                                 </div>
 
                             </div>
-
-
-                            {/* <a href="" className='btn btn-outline-light text-light mt-2'>Reservar ahora</a> */}
-
-
                         </div>
                         <div className="d-flex justify-content-center justify-content-md-start">
                             <Link to="" class="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
