@@ -25,6 +25,7 @@ const Register = () => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Nombre Completo</label>
                 <input
+                    placeholder="Juan Perez"
                     type="text"
                     className="form-control"
                     name="name"
@@ -37,6 +38,7 @@ const Register = () => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Correo electrónico</label>
                 <input
+                    placeholder="ejemplo@ejemplo.com"
                     type="email"
                     className="form-control"
                     name="username"
@@ -45,6 +47,37 @@ const Register = () => {
             </div>
             <p className="text-danger my-1">
                 {errors.username?.message}
+            </p>
+            <div className="mb-2 pt-2">
+                <label className="form-label">DNI</label>
+                <input
+                    placeholder="No incluir puntos ni espacios"
+                    type="number"
+                    className="form-control"
+                    name="dni"
+                    {...register("dni")}
+                />
+            </div>
+            <p className="text-danger my-1">
+                {errors.dni?.message}
+            </p>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Número de celular</label>
+                <div className="input-group">
+                    <span class="input-group-text" id="inputGroup-sizing-default">+54</span>
+                    <input
+                        placeholder="No incluir el 0"
+                        aria-describedby="inputGroup-sizing-default"
+                        aria-label="Sizing example input"
+                        type="number"
+                        className="form-control"
+                        name="cellPhone"
+                        {...register("cellPhone")}
+                    />
+                </div>
+            </div>
+            <p className="text-danger my-1">
+                {errors.cellPhone?.message}
             </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Contraseña</label>
