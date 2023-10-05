@@ -1,57 +1,76 @@
     import React, {useState} from 'react'
 import { GrUser } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
+import { categories } from '../../helpers/data';
 
 
 
 
 
 const Room = ({date, category }) => {
-    const [selectedRoom, setSelectedRoom] = useState([])
-    const { capacidadMax } = category;
+    const [selectedRoomQty, setSelectedRoomQty] = useState("")
+    const [selectedRooms, setSelectedRooms] = useState([])
+    const { capacidadMax, roomNumbers } = category;
     console.log("category en category", category)
 
-    const { roomNumbers } = category;
-    console.log("array de habitaciones", roomNumbers)
+    // console.log("array de habitaciones", roomNumbers)
 
     const { id } = category;
 
-    const getDateInRange = (startDate, endDate) => {
-        const start = new Date (startDate)
-        const end = new Date (endDate)
-        const fecha = new Date (start.getTime());
-        let list = [];
-        while (fecha <= end){
-            list.push(new Date(fecha).getTime())
-            fecha.setDate(fecha.getDate()+1) 
-        }
-        return list
-    }
-    const allDates = getDateInRange(date[0].startDate, date[0].endDate)
+    // const getDateInRange = (startDate, endDate) => {
+    //     const start = new Date (startDate)
+    //     const end = new Date (endDate)
+    //     const fecha = new Date (start.getTime());
+    //     let list = [];
+    //     while (fecha <= end){
+    //         list.push(new Date(fecha).getTime())
+    //         fecha.setDate(fecha.getDate()+1) 
+    //     }
+    //     return list
+    // }
+    // const allDates = getDateInRange(date[0].startDate, date[0].endDate)
+    // console.log("all dates", allDates)
 
-    const isAvaible = (roomNumber) => {
-        const isFound = roomNumber.unavailableDates.some (date => {
-            // const fecha = new Date(date).getTime()
-            // console.log("que hay en date", allDates)
-            // console.log("que hay en fecha", fecha)
-            allDates.includes(new Date(date).getTime())
-        })
-        console.log(`Habitacion ${roomNumber.number}`, isFound )
-        return !isFound
-    }
+    // const isAvailable = (roomNumber) => {
+    //     const isFound = roomNumber.unavailableDates.some (date => {
+    //         const fecha = new Date(date).getTime()
+    //         console.log("que hay en date", allDates)
+    //         console.log("que hay en fecha", fecha)
+    
+    //         const result = allDates.includes(fecha)
+    //         console.log("result", result)
+    //         return result
+    //     })
+    //     console.log(`Habitacion ${roomNumber.number}`, isFound )
+    //     return !isFound
+    // }
 
-    const room = {
-        id: 11,
-        number: 101,
-        unavailableDates: ["10-4-2023"]
-    }
-    isAvaible(room)
+    // const getAvailableRooms = (categories) => {
+    //     const availableRooms = categories.reduce((acc, category) => {
+    //         const availableNumbers = category.roomNumbers.filter(room => isAvailable(room));
+    //         if (availableNumbers.length > 0) {
+    //             acc.push({
+    //                 ...category,
+    //                 roomNumbers: availableNumbers
+    //             });
+    //         }
+    //         return acc;
+    //     }, []);
+    //     return availableRooms;
+    // }
+
+    // const availableRooms = getAvailableRooms(categories);
+
+    // console.log("avaibleRooms", availableRooms)
     const handleSelect = (e) => {
-        setSelectedRoom([e.target.value])
+        setSelectedRoomQty([e.target.value])
     }
 
     const handleClick = () => {
-
+        for (let index = 0; index < selectedRoomQty; index++) {
+            setSelectedRooms(...selectedRooms,)
+            
+        }
     }
     console.log("selectedRoom", selectedRoom)
     return (
@@ -81,11 +100,12 @@ const Room = ({date, category }) => {
                                     <div className="col-lg-4 col-md-6 text-center">
                                         <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
                                         <select className="mx-2 mb-2" onChange={handleSelect}>
-                                            <option selected value="0" ></option>
+                                            <option selected value="0" >0</option>
                                             {
-                                                roomNumbers.map((roomNumber, index) => (
-                                                    <option value={roomNumber.id} roomNumber={roomNumber} key={roomNumber.id}>{roomNumber.number}</option>
+                                                category.roomNumbers.map((numRoom, index) => (
+                                                    <option value={index+1} id={numRoom.id} key={numRoom.id} >{index+1}</option>
                                                 ))
+                                                
                                             }
                                         </select>
                                     </div>
