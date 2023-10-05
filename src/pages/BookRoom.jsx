@@ -34,9 +34,13 @@ const BookRoom = () => {
                             {
                                 !isFilter ?
                                     (
-                                        <div className="alert alert-danger text-center w-100 my-5" role="alert">
+                                        <div>
+                                            <div className="alert alert-danger text-center w-100 my-5" role="alert">
                                             Seleccione una fecha
+                                            </div>
+                                            <RoomList date={date}></RoomList>
                                         </div>
+                                        
                                     )
                                     :
                                     (

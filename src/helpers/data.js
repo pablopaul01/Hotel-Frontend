@@ -31,12 +31,12 @@ export const categories = [
             {
                 id: 11,
                 number: 101,
-                unavailableDates: ["10-4-2023"]
+                unavailableDates: ["10-5-2023","10-6-2023"]
             },
             {
                 id: 12,
                 number: 102,
-                unavailableDates: []
+                unavailableDates: ["10-7-2023"]
             },
             {
                 id: 13,
