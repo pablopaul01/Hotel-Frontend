@@ -1,100 +1,45 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 
-function ModalReserva() {
-    const [show, setShow] = useState(false);
+const ModalReserva = ({show, handleClose, selectedRooms, category}) => {
+const cantidad = selectedRooms.length * category.precio
+  return (
+    <>
+      <Modal show={show} onHide={handleClose} className='modal-container'>
+        <div className='header-container'>
+          <div className="modal-header mx-5 border border-top-0 border-end-0 border-start-0 py-0">
+              <div className='my-5 '>
+                <h2 className="text-white titulo-registro ms-4">Rersevar</h2>
+              </div>
+              <div className='d-none d-md-block d-lg-block'>
+                <img src="../../public/RollingHotel-transparente.png" className="img-fluid mx-4" alt="logo-Rolling-Hotel" style={{width:"150px"}}/>
+              </div>
+          </div>
+        </div>
+        <Modal.Body className='modal-body'>
+            <h3>Categoria de habitación: {category.title}</h3>
+            <div>
+                <h3>Habitaciones asignadas:</h3>
+            </div>
+            {   
+                selectedRooms.map((room)=>(
+                    <ul key={room.selectedRoomsId}>
+                    <li>{room.selectedRoomsNumber}</li>
+                    
+                    </ul>
+                ))
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+            }
+            <h2>Precio: ${cantidad}</h2>
+          <button> confirmar reserva</button>
+        </Modal.Body>
 
-    return (
-        <>
-            <Button variant="primary" size="lg" className='btn-outline-light text-light' active onClick={handleShow}>
-                Reservar ahora
-            </Button>
+      </Modal>    
+    </>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Detalle de reserva</Modal.Title>
-                </Modal.Header>
-                <Modal.Body className='mt-3'>
-                    <form class="row g-3">
-                        <div className="col-md-6">
-                            <label for="inputEmail4" className="form-label">Nombre</label>
-                            <input type="email" className="form-control" id="inputEmail4" />
-                        </div>
-                        <div className="col-md-6">
-                            <label for="inputPassword4" className="form-label">Apellido</label>
-                            <input type="password" className="form-control" id="inputPassword4" />
-                        </div>
-                        <div className="col-12">
-                            <label for="inputNumber" className="form-label">Cel</label>
-                            <input type="text" className="form-control" id="inputNumber" placeholder="" />
-                        </div>
-                        <div className="col-12">
-                            <label for="inputAddress" className="form-label">Dirección</label>
-                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                        </div>
-                        <div className="col-md-8">
-                            <label for="inputCity" className="form-label">Ciudad</label>
-                            <input type="text" className="form-control" id="inputCity" />
-                        </div>
-                        <div className="col-md-4">
-                            <label for="inputZip" className="form-label">Cod. postal</label>
-                            <input type="text" className="form-control" id="inputZip" />
-                        </div>
-                        <div className="col-6 mb-3">
-                            <label for="inputAddress" className="form-label">Fecha de ingreso</label>
-                            <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
-                        </div>
-                        <div className="col-6 mb-3">
-                            <label for="inputAddress2" className="form-label">Fecha de salida</label>
-                            <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
-                        </div>
-                    </form>
-                    <div className="row m-2">
-                        <div className="col-12">
-                            <div className="row">
-                                <hr />
-                                <div className="col-6">
-                                    <p className='mb-0 text-start fs-6'>
-                                        Cantidad de noches seleccionadas:
-                                    </p>
-                                </div>
-                                <div className="col-6 text-end">
-                                    <p className='fs-6 text-align-end'>5 noches</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div className="col-12">
-                            <div className="row">
-                                <hr className='mt-3' />
-                                <div className="col-6">
-                                    <p className='mb-0 text-start fs-3'>
-                                        Total:
-                                    </p>
-                                </div>
-                                <div className="col-6 text-end">
-                                    <p className='fs-3 text-align-end'>$123984,33</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </>
-    );
+
+  )
 }
 
-export default ModalReserva;
+export default ModalReserva
