@@ -71,8 +71,8 @@ const Register = () => {
                         aria-label="Sizing example input"
                         type="number"
                         className="form-control"
-                        name="cellPhone"
-                        {...register("cellPhone")}
+                        name="phone"
+                        {...register("phone")}
                     />
                 </div>
             </div>
