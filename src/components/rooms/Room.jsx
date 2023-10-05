@@ -9,7 +9,10 @@ import { categories } from '../../helpers/data';
 
 const Room = ({date, category }) => {
     const [selectedRoomQty, setSelectedRoomQty] = useState("")
-    const [selectedRooms, setSelectedRooms] = useState([])
+    const [selectedRooms, setSelectedRooms] = useState([{
+        selectedRoomsNumber: "",
+        selectedRoomsId: ""
+    }])
     const { capacidadMax, roomNumbers } = category;
     console.log("category en category", category)
 
@@ -67,12 +70,23 @@ const Room = ({date, category }) => {
     }
 
     const handleClick = () => {
-        for (let index = 0; index < selectedRoomQty; index++) {
-            setSelectedRooms(...selectedRooms,)
-            
-        }
+        let updatedSelectedRooms = []; // Inicializamos un nuevo arreglo
+
+    for (let index = 0; index < selectedRoomQty * 1; index++) {
+        const roomNumber = category.roomNumbers[index].number;
+        const roomId = category.roomNumbers[index].id;
+
+        updatedSelectedRooms.push({
+            selectedRoomsNumber: roomNumber,
+            selectedRoomsId: roomId
+        });
     }
-    console.log("selectedRoom", selectedRoom)
+    
+    setSelectedRooms(updatedSelectedRooms);
+    }
+    console.log("selectedRoomQty",selectedRoomQty);
+    console.log("selectedRoom", selectedRooms)
+
     return (
         <div className="card mb-3">
             <div className="row g-0">
