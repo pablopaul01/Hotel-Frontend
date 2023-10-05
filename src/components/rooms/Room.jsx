@@ -1,22 +1,51 @@
-import React from 'react'
+    import React, {useState} from 'react'
 import { GrUser } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
+import { categories } from '../../helpers/data';
+import ModalReserva from './ModalReserva';
 
 
 
 
 
-const Room = ({ category }) => {
+const Room = ({date, category }) => {
+    const [selectedRoomQty, setSelectedRoomQty] = useState("")
+    const [selectedRooms, setSelectedRooms] = useState([{
+        selectedRoomsNumber: "",
+        selectedRoomsId: ""
+    }])
+    const [show, setShow] = useState(false);
 
-    const { capacidadMax } = category;
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const { capacidadMax, roomNumbers } = category;
     console.log("category en category", category)
-
-    const { roomNumbers } = category;
-    console.log("array de habitaciones", roomNumbers)
 
     const { id } = category;
 
+    const handleSelect = (e) => {
+        setSelectedRoomQty([e.target.value])
+    }
 
+    const handleClick = () => {
+        let updatedSelectedRooms = []; // Inicializamos un nuevo arreglo
+        handleShow()
+
+    for (let index = 0; index < selectedRoomQty * 1; index++) {
+        const roomNumber = category.roomNumbers[index].number;
+        const roomId = category.roomNumbers[index].id;
+
+        updatedSelectedRooms.push({
+            selectedRoomsNumber: roomNumber,
+            selectedRoomsId: roomId
+        });
+    }
+    
+    setSelectedRooms(updatedSelectedRooms);
+    }
+    console.log("selectedRoomQty",selectedRoomQty);
+    console.log("selectedRoom", selectedRooms)
 
     return (
         <div className="card mb-3">
@@ -43,13 +72,14 @@ const Room = ({ category }) => {
                                         ))}
                                     </div>
                                     <div className="col-lg-4 col-md-6 text-center">
-                                        <label className="input fs-7 text-secondary d-block">Habitaciones</label>
-                                        <select className="mx-2 mb-2">
-                                            <option selected value="0">0</option>
+                                        <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
+                                        <select className="mx-2 mb-2" onChange={handleSelect}>
+                                            <option selected value="0" >0</option>
                                             {
-                                                roomNumbers.map((roomNumber, index) => (
-                                                    <option value={roomNumber.number} roomNumber={roomNumber} key={roomNumber.id}>{index + 1}</option>
+                                                category.roomNumbers.map((numRoom, index) => (
+                                                    <option value={index+1} id={numRoom.id} key={numRoom.id} >{index+1}</option>
                                                 ))
+                                                
                                             }
                                         </select>
                                     </div>
@@ -63,9 +93,10 @@ const Room = ({ category }) => {
 
                         </div>
                         <div className="d-flex justify-content-center justify-content-md-start">
-                            <Link to="" class="btn btn-outline-light me-2">Reservar</Link>
+                            <Link to="" class="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
                             <Link to={`/reserva-habitaciones/${id}`} id={id} class="btn btn-secondary">Ver más...</Link>
                         </div>
+                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category}/>
                     </div>
                 </div>
             </div>

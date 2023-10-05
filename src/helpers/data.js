@@ -31,22 +31,22 @@ export const categories = [
             {
                 id: 11,
                 number: 101,
-                unavailableDates: { type: [Date] }
+                unavailableDates: ["10-5-2023","10-6-2023"]
             },
             {
                 id: 12,
                 number: 102,
-                unavailableDates: { type: [Date] }
+                unavailableDates: ["10-7-2023"]
             },
             {
                 id: 13,
                 number: 103,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             },
             {
                 id: 14,
                 number: 104,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             }],
     },
     {
@@ -80,17 +80,17 @@ export const categories = [
             {
                 id: 21,
                 number: 201,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             },
             {
                 id: 22,
                 number: 202,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             },
             {
                 id: 23,
                 number: 203,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             }],
     },
     {
@@ -124,12 +124,12 @@ export const categories = [
             {
                 id: 31,
                 number: 301,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             },
             {
                 id: 32,
                 number: 302,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             }],
     },
     {
@@ -163,7 +163,7 @@ export const categories = [
             {
                 id: 35,
                 number: 305,
-                unavailableDates: { type: [Date] }
+                unavailableDates: []
             }],
     }
 ]

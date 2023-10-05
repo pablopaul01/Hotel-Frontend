@@ -12,6 +12,13 @@ const BookRoom = () => {
         loading: true
     })
     const [isFilter, setIsFilter] = useState(false)
+    const [date, setDate] = useState([
+        {
+          startDate: new Date(),
+          endDate: new Date(),
+          key: 'selection'
+        }
+      ]);
 
     return (
         <>
@@ -23,18 +30,22 @@ const BookRoom = () => {
                 {
                     user.length > 0 ?
                         <>
-                            <SearchDate setIsFilter={setIsFilter} isFilter={isFilter} />
+                            <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} />
                             {
                                 !isFilter ?
                                     (
-                                        <div className="alert alert-danger text-center w-100 my-5" role="alert">
+                                        <div>
+                                            <div className="alert alert-danger text-center w-100 my-5" role="alert">
                                             Seleccione una fecha
+                                            </div>
+                                            <RoomList date={date}></RoomList>
                                         </div>
+                                        
                                     )
                                     :
                                     (
                                         <>
-                                            <RoomList></RoomList>
+                                            <RoomList date={date}></RoomList>
                                         </>
                                     )
                             }
