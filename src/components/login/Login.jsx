@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
 import { Link } from 'react-router-dom'
+import { axiosInstance } from '../../config/axiosInstance'
 
 
 const Login = () => {
@@ -12,8 +13,17 @@ const Login = () => {
         resolver: yupResolver(LOGIN_SCHEMA)
     })
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data);
+        const response = await axiosInstance.post("/login", data);
+
+        try {
+            console.log("respuesta de back en login",response);
+            localStorage.setItem("token", response.data.token);
+        } catch (error) {
+            console.log(error)
+        }
+
         reset();
     }
 
