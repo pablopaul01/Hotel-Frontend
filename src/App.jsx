@@ -31,7 +31,6 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
-        <Route path='/reserva-habitaciones' element={<BookRoom />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
 
         <Route element={<PrivateRoutes />}>
