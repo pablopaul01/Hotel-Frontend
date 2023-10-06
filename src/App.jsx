@@ -12,6 +12,7 @@ import FooterHotel from './components/footer/FooterHotel'
 import ScrollToTop from './helpers/ScrollToTop'
 import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
+import Contacto from './pages/Contacto'
 
 
 
@@ -32,6 +33,7 @@ function App() {
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
         <Route path='/admin/users' element={<Usuarios />} />
         <Route path='/admin/rooms' element={<RoomsAdmin/>} />
+        <Route path="/Contacto" element={<Contacto/>} />
       </Routes>
       <FooterHotel/>
     </>
