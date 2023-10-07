@@ -11,3 +11,15 @@
     color: #fff;
 }
 
+.titulo-contacto {
+    font-family: 'Gilda Display', serif !important;
+    font-size: 3.5rem !important;
+}
+.icons-contacto {
+    width: 80px !important;
+}
+
+.banner-contacto{
+    background-color: #8b653b;
+    color: #fff;
+}
