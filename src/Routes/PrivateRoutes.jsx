@@ -2,11 +2,11 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router';
 // import jwt_decode from 'jwt-decode';
 
-const useAuth = () => {
-    const token = localStorage.getItem("token");
-    const decode = jwt_decode(token);
-
-}
+// const useAuthDecode = () => {
+//     const token = localStorage.getItem("token");
+//     const decode = jwt_decode(token);
+//     console.log(decode);
+// }
 
 const PrivateRoutes = () => {
     // useAuth();

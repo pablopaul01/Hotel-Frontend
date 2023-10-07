@@ -1,16 +1,26 @@
 import React from 'react'
 import "./navBarLogin.css"
 import { BiSolidUserCircle } from "react-icons/bi"
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
+
+
 
 
 const NavbarLogin = () => {
+  
+  let navigate = useNavigate();
 
-  const isLogged = localStorage.getItem("token");
+  const isLogged = () =>{
+    const token = localStorage.getItem("token");
+    const decode = jwt_decode(token);
+    console.log(decode);
+    return token ? true : false
+  } 
 
   const logOut = () => {
     localStorage.removeItem("token");
-    <Navigate to="/login" />
+    navigate("/login");
   }
 
   return (
@@ -18,12 +28,14 @@ const NavbarLogin = () => {
       <div className="row">
         <div className="col-12 d-flex justify-content-end gap-3 pe-5">
           {
-            isLogged ?
+            isLogged() ?
               (
                 <>
-                  <span className='navLoginLink'>Franco</span>
+                  {/* <Navigate to="/" /> */}
+                  <Link to="/perfil" className='navLoginLink'>Franco</Link>
                   <Link to={"/login"} className='navLoginLink' onClick={logOut}>Cerrar Sesión</Link>
                   <BiSolidUserCircle className='iconLogin' />
+                  {/* {navigate("/")} */}
                 </>
               )
               :
