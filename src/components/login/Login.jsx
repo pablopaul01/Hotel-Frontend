@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
 import { Link, useNavigate } from 'react-router-dom'
 import { axiosInstance } from '../../config/axiosInstance'
+import Swal from 'sweetalert2'
 
 
 const Login = () => {
@@ -22,6 +23,10 @@ const Login = () => {
             console.log("respuesta de back en login",response);
             localStorage.setItem("token", response.data.token);
             navigate("/");
+            Swal.fire({
+                icon: "success",
+                title: "Bienvenido"
+            })
         } catch (error) {
             console.log(error)
         }

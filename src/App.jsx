@@ -12,7 +12,8 @@ import FooterHotel from './components/footer/FooterHotel'
 import ScrollToTop from './helpers/ScrollToTop'
 import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
-import PrivateRoutes from './Routes/PrivateRoutes'
+import PrivateRoutesUser from './Routes/PrivateRoutesUser'
+import PrivateRoutesAdmin from './Routes/PrivateRoutesAdmin'
 
 
 
@@ -33,10 +34,12 @@ function App() {
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
 
-        <Route element={<PrivateRoutes />}>
+        <Route element={<PrivateRoutesUser />}>
+          <Route path='/reserva-habitaciones' element={<BookRoom />} />
+        </Route>
+        <Route element={<PrivateRoutesAdmin />}>
           <Route path='/admin/users' element={<Usuarios />} />
           <Route path='/admin/rooms' element={<RoomsAdmin />} />
-          <Route path='/reserva-habitaciones' element={<BookRoom />} />
         </Route>
       </Routes>
       <FooterHotel />

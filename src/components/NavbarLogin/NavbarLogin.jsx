@@ -8,49 +8,55 @@ import jwt_decode from 'jwt-decode'
 
 
 const NavbarLogin = () => {
-  
+
   let navigate = useNavigate();
 
-  const isLogged = () =>{
+  const nameLogged = () => {
     const token = localStorage.getItem("token");
     const decode = jwt_decode(token);
-    console.log(decode);
-    return token ? true : false
-  } 
-
-  const logOut = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
+    return decode.name
   }
 
-  return (
-    <div className='container-fluid py-2 navLogin'>
-      <div className="row">
-        <div className="col-12 d-flex justify-content-end gap-3 pe-5">
-          {
-            isLogged() ?
-              (
-                <>
-                  {/* <Navigate to="/" /> */}
-                  <Link to="/perfil" className='navLoginLink'>Franco</Link>
-                  <Link to={"/login"} className='navLoginLink' onClick={logOut}>Cerrar Sesión</Link>
-                  <BiSolidUserCircle className='iconLogin' />
-                  {/* {navigate("/")} */}
-                </>
-              )
-              :
-              (
-                <>
-                  <Link to={"/login"} className='navLoginLink'>Login</Link>
-                  <Link to={"/registro"} className='navLoginLink'>Registro</Link>
-                  <BiSolidUserCircle className='iconLogin' />
-                </>
-              )
-          }
+  const isLogged = () => {
+    const token = localStorage.getItem("token");
+    
+
+    return token ? true : false
+  }
+
+    const logOut = () => {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+
+    return (
+      <div className='container-fluid py-2 navLogin'>
+        <div className="row">
+          <div className="col-12 d-flex justify-content-end gap-3 pe-5">
+            {
+              isLogged() ?
+                (
+                  <>
+                    {/* <Navigate to="/" /> */}
+                    <Link to="/perfil" className='navLoginLink'>{nameLogged()}</Link>
+                    <Link to={"/login"} className='navLoginLink' onClick={logOut}>Cerrar Sesión</Link>
+                    <BiSolidUserCircle className='iconLogin' />
+                    {/* {navigate("/")} */}
+                  </>
+                )
+                :
+                (
+                  <>
+                    <Link to={"/login"} className='navLoginLink'>Login</Link>
+                    <Link to={"/registro"} className='navLoginLink'>Registro</Link>
+                    <BiSolidUserCircle className='iconLogin' />
+                  </>
+                )
+            }
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
 
-export default NavbarLogin
+  export default NavbarLogin

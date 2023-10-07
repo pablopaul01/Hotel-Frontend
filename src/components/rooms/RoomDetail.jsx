@@ -34,8 +34,13 @@ const RoomDetail = ({ category }) => {
           <div className="mt-4">
             {/* <ModalReserva /> */}
             <Link to="/reserva-habitaciones">
+              <Button size='lg' className='mx-2 btn-outline-light text-light'>
+                Ir a reservar
+              </Button>
+            </Link>
+            <Link to="/categoria-habitaciones">
               <Button variant="secondary" size='lg' className='mx-2'>
-                Volver
+                Ver más habitaciones
               </Button>
             </Link>
           </div>
