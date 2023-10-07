@@ -6,7 +6,7 @@ export const REGISTRO_SCHEMA = yup.object({
     password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,"La contraseña no es válida").required("La contraseña es requerida"),
     repassword: yup.string().oneOf([yup.ref("password"), null],"Las contraseñas no coinciden").required("La confirmación de contraseña es obligatoria"),
     dni: yup.string().matches(/^\d{8}$/, "DNI no válido").required("El DNI es requerido"),
-    cellPhone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/,"El número no es válido").required("El número de celular es requerido")    
+    phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/,"El número no es válido").required("El número de celular es requerido")    
 });
 
 export const LOGIN_SCHEMA = yup.object({
