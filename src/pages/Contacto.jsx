@@ -83,11 +83,11 @@ const Contacto = () => {
           </div>
         </div>
       </div>
-      <div className="banner-contacto">
-        <h1 className="title-contact titulo-contacto text-center my-5">
+      <div className="banner-contacto p-2">
+        <h3 className="title-contact titulo-contacto text-center my-5 fs-2">
           También puedes encontrarnos...
-        </h1>
-        <div className="d-flex justify-content-center mt-1 gap-3">
+        </h3>
+        <div className="d-flex justify-content-center mb-2 gap-3">
           <FaInstagram className="icons-contacto mb-3"/>
           <FaFacebookSquare className="icons-contacto mb-3" />
           <FaYoutube className="icons-contacto mb-3" />

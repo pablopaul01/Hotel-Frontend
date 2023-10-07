@@ -17,9 +17,16 @@
 }
 .icons-contacto {
     width: 80px !important;
+    transition: all .5s;
+    cursor: pointer;
 }
 
 .banner-contacto{
     background-color: #8b653b;
     color: #fff;
+
+}
+
+.icons-contacto:hover {
+    transform: scale(1.3);
 }
