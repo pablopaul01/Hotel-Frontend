@@ -89,7 +89,7 @@ const Room = ({date, category }) => {
                             <Link to="" class="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
                             <Link to={`/reserva-habitaciones/${id}`} id={id} class="btn btn-secondary">Ver más...</Link>
                         </div>
-                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category}/>
+                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date}/>
                     </div>
                 </div>
             </div>

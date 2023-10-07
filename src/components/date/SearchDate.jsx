@@ -5,14 +5,19 @@ import { DateRange } from 'react-date-range';
 import { es } from 'date-fns/locale';
 import {format} from "date-fns"
 
-const SearchDate = ({date,setDate,setIsFilter, isFilter}) => {
+const SearchDate = ({date,setDate,setIsFilter, isFilter, guest, setGuest}) => {
 
   const [open, setOpen] = useState(false)
 
   const handleClick = () => {
     setIsFilter(isFilter = true)
+    setGuest(()=>{
+      return [...inputValue]})
   }
+  const [inputValue, setInputValue] = useState("")
 
+
+  console.log(guest);
   return (
     <div className='container px-5 d-flex justify-content-between py-4 searchBar flex-column flex-md-row gap-2 gap-lg-0 mb-3'>
       <div className="optionsWrap d-flex gap-2 gap-lg-5 flex-column flex-md-row">
@@ -37,11 +42,11 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter}) => {
         <div className="qtyPeople d-flex gap-2 justify-content-center">
           <div className="adultsContainer text-center">
             <p className='textDateRange mb-0'>Adultos</p>
-            <input type="number" defaultValue={1} className='inputSearchPeople'/>
+            <input type="number" defaultValue={1} className='inputSearchPeople' onChange={(e)=>(setInputValue(e.target.value))}/>
           </div>
           <div className="adultsContainer text-center">
             <p className='textDateRange mb-0'>Niños</p>
-            <input type="number" defaultValue={0} className='inputSearchPeople'/>
+            <input type="number" defaultValue={0} className='inputSearchPeople' onChange={(e)=>(setInputValue(e.target.value))}/>
           </div>
         </div>
       </div>

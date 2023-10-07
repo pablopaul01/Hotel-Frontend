@@ -1,8 +1,20 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
+import {BsCalendar3} from "react-icons/bs"
 
-const ModalReserva = ({show, handleClose, selectedRooms, category}) => {
+const ModalReserva = ({show, handleClose, selectedRooms, category, date}) => {
 const cantidad = selectedRooms.length * category.precio
+const {startDate, endDate} = date[0]
+console.log("date", startDate)
+
+const formatDate = (date) => {
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // ¡Atención! Los meses en JavaScript son 0-indexados
+    const year = date.getFullYear();
+  
+    return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
+  }
+  
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg"
@@ -19,6 +31,14 @@ const cantidad = selectedRooms.length * category.precio
           </div>
         </div>
         <Modal.Body className='modal-body'>
+            <div className='d-flex gap-3 align-items-0'>
+                <span>
+                     <BsCalendar3/>
+                </span> 
+                <span>
+                {formatDate(startDate)} - {formatDate(endDate)}
+                </span>
+            </div>
             <p>Categoria de habitación: {category.title}</p>
             <div className='d-flex flex-column'>
                 <p>cantidad de habitaciones: {selectedRooms.length}</p>

@@ -19,7 +19,10 @@ const BookRoom = () => {
           key: 'selection'
         }
       ]);
-
+      const [guest, setGuest] = useState({
+        adults: 1,
+        kids: 0
+      })
     return (
         <>
             <div className='titulos-rooms mb-4'>
@@ -30,7 +33,7 @@ const BookRoom = () => {
                 {
                     user.length > 0 ?
                         <>
-                            <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} />
+                            <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} guest={guest} setguest={setGuest}/>
                             {
                                 !isFilter ?
                                     (
