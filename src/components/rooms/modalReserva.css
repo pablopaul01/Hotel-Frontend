@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
+
+.reserveDatail {
+    background-color: #f5f5f5;
+    font-family: 'Gilda Display', serif;
+    color: #333;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.titleDetail {
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.totalDetail {
+    /* font-family: 'Gilda Display', serif; */
+    text-align: right;
+}
+
+.ofertDetail {
+    color: #6ac322;
+    font-size: 10px;
+    font-weight: 400;
+}
