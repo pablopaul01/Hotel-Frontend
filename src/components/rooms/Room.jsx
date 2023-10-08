@@ -8,7 +8,7 @@ import ModalReserva from './ModalReserva';
 
 
 
-const Room = ({date, category }) => {
+const Room = ({date, category, guests, allDates}) => {
     const [selectedRoomQty, setSelectedRoomQty] = useState("")
     const [selectedRooms, setSelectedRooms] = useState([{
         selectedRoomsNumber: "",
@@ -20,7 +20,6 @@ const Room = ({date, category }) => {
     const handleShow = () => setShow(true);
 
     const { capacidadMax, roomNumbers } = category;
-    console.log("category en category", category)
 
     const { id } = category;
 
@@ -72,7 +71,7 @@ const Room = ({date, category }) => {
                                     <div className="col-lg-4 col-md-6 text-center">
                                         <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
                                         <select className="mx-2 mb-2" onChange={handleSelect}>
-                                            <option selected value="0" >0</option>
+                                            <option value="0" >0</option>
                                             {
                                                 category.roomNumbers.map((numRoom, index) => (
                                                     <option value={index+1} id={numRoom.id} key={numRoom.id} >{index+1}</option>
@@ -86,10 +85,10 @@ const Room = ({date, category }) => {
                             </div>
                         </div>
                         <div className="d-flex justify-content-center justify-content-md-start">
-                            <Link to="" class="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
-                            <Link to={`/reserva-habitaciones/${id}`} id={id} class="btn btn-secondary">Ver más...</Link>
+                            <Link to="" className="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
+                            <Link to={`/reserva-habitaciones/${id}`} id={id} className="btn btn-secondary">Ver más...</Link>
                         </div>
-                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date}/>
+                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date} guests={guests} allDates={allDates} categories={categories}/>
                     </div>
                 </div>
             </div>

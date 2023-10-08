@@ -2,9 +2,7 @@ import React from 'react'
 import Room from './Room'
 import { categories } from '../../helpers/data'
 
-
-
-const RoomList = ({date}) => {
+const RoomList = ({date,guests}) => {
 
     const getDateInRange = (startDate, endDate) => {
         const start = new Date (startDate)
@@ -18,19 +16,13 @@ const RoomList = ({date}) => {
         return list
     }
     const allDates = getDateInRange(date[0].startDate, date[0].endDate)
-    console.log("all dates", allDates)
 
     const isAvailable = (roomNumber) => {
         const isFound = roomNumber.unavailableDates.some (date => {
             const fecha = new Date(date).getTime()
-            console.log("que hay en date", allDates)
-            console.log("que hay en fecha", fecha)
-    
             const result = allDates.includes(fecha)
-            console.log("result", result)
             return result
         })
-        console.log(`Habitacion ${roomNumber.number}`, isFound )
         return !isFound
     }
 
@@ -46,12 +38,12 @@ const RoomList = ({date}) => {
     }
 
     const availableRooms = getAvailableRooms(categories);
-
+console.log("guests en roomlist", guests)
     return (
         <div className='container'>
             {
                 availableRooms.map((category) => (
-                    <Room date={date} category={category} key={category.id} />
+                    <Room date={date} category={category} key={category.id} guests={guests} allDates={allDates} categories={categories}/>
                 ))
             }
         </div>

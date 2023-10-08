@@ -19,11 +19,13 @@ const BookRoom = () => {
           key: 'selection'
         }
       ]);
-      const [guest, setGuest] = useState({
-        adults: 1,
-        kids: 0
+      const [guests, setGuests] = useState({
+        adults: "1",
+        kids: "0"
       })
-    return (
+
+      console.log("guests desde bookroom",guests)
+    return (    
         <>
             <div className='titulos-rooms mb-4'>
                 <h4 className='text-secondary text-center categoria'>RESERVA</h4>
@@ -33,7 +35,7 @@ const BookRoom = () => {
                 {
                     user.length > 0 ?
                         <>
-                            <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} guest={guest} setguest={setGuest}/>
+                            <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} guests={guests} setGuest={setGuests}/>
                             {
                                 !isFilter ?
                                     (
@@ -41,14 +43,14 @@ const BookRoom = () => {
                                             <div className="alert alert-danger text-center w-100 my-5" role="alert">
                                             Seleccione una fecha
                                             </div>
-                                            <RoomList date={date}></RoomList>
+                                            <RoomList date={date} guests={guests}></RoomList>
                                         </div>
                                         
                                     )
                                     :
                                     (
                                         <>
-                                            <RoomList date={date}></RoomList>
+                                            <RoomList date={date} guests={guests}></RoomList>
                                         </>
                                     )
                             }
