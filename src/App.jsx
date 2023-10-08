@@ -13,6 +13,7 @@ import ScrollToTop from './helpers/ScrollToTop'
 import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
 import ThankYou from './pages/ThankYou'
+import Error404 from './pages/404'
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path='/admin/users' element={<Usuarios />} />
         <Route path='/admin/rooms' element={<RoomsAdmin/>} />
         <Route path='/thankyou' element={<ThankYou/>} />
+        <Route path='*' element={<Error404/>}/>
       </Routes>
       <FooterHotel/>
     </>
