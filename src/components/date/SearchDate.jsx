@@ -8,7 +8,7 @@ import {format} from "date-fns"
 const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => {
 
   const [open, setOpen] = useState(false)
-  const [showDateRange, setShowDateRange] = useState(true);
+
   const searchDateRef = useRef(null);
   const handleClick = () => {
     setIsFilter(isFilter = true)
@@ -37,15 +37,14 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, []);
+  }, [open]);
   return (
     <div className='container px-5 d-flex justify-content-between py-4 searchBar flex-column flex-md-row gap-2 gap-lg-0 mb-3' >
       <div className="optionsWrap d-flex gap-2 gap-lg-5 flex-column flex-md-row">
         <div className="searchDate text-center">
-          <p className='textDateRange mb-0'>Seleccionar fechas</p>
-          <span className='rangePlaceHolder' ref={searchDateRef} onClick={()=>{
+          <p className='textDateRange mb-0' >Seleccionar fechas</p>
+          <span ref={searchDateRef} className='rangePlaceHolder'  onClick={()=>{
             setOpen(!open)
-            setShowDateRange(true)
             }}>
               {`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`} <BiCalendar/>
           </span>
