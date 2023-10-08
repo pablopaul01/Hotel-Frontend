@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', serif;
+}
+
+.container-galery {
+    margin-top: 70px;
+}
+
+.titulo-galery {
+    font-family: 'Gilda Display', serif;
+    font-size: 3.5rem !important;
+}
+
+.titulos-galery {
+    margin-top: 100px;
+}
+
+.categoria {
+    font-size: .8rem !important;
+    position: relative;
+}
+
+.categoria::before {
+    content: '';
+    border-bottom: solid rgb(192, 192, 192) 1px;
+    position: absolute;
+    bottom: -3px;
+    right: 50%;
+    width: 35px;
+    transform: translate(50%, -50%);
+}
+
+.img-galeria {
+    transition: all .5s;
+}
+
+.img-galeria:hover {
+    transform: scale(1.05);
+}

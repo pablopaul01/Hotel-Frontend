@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300;400;500;700&display=swap');
+
+.navLogin {
+    background-color: #fff;
+    font-family: "Roboto";
+    font-size: 13px;
+    color: #878787;
+    text-decoration: none;
+}
+
+.iconLogin {
+    font-size: 23px;
+    color: #878787;
+
+}
+
+.navLoginLink {
+    cursor: pointer;
+    text-decoration: none;
+    color: #878787;
+}
+
+.navLoginLink:hover {
+    color: #1c1c1c;
+}
