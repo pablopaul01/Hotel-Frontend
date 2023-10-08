@@ -2,8 +2,9 @@ import React from "react";
 import "../css/nosotros.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import {FaGithub} from "react-icons/fa"
-import {AiOutlineMail} from "react-icons/ai"
+import { FaGithub } from "react-icons/fa";
+import { AiOutlineMail } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Nosotros = () => {
   return (
@@ -29,57 +30,100 @@ const Nosotros = () => {
         </div>
       </div>
       <h2 className="titulo-nosotros text-center my-5">Developers</h2>
-      <div className="row">
+      <div className="row mb-5">
         <div className="col-12 col-md-4">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="https://assets.stickpng.com/images/585e4bd7cb11b227491c3397.png" />
+          <Card className="card-nosotros mb-3 mb-md-0">
+            <Card.Img
+              variant="top"
+              src="https://ca.slack-edge.com/THQU1MGPN-U04CLGF6BPE-39348c7cc1d9-512"
+            />
             <Card.Body>
-              <Card.Title className="fs-3">Eliana Farías</Card.Title>
+              <Card.Title className=" text-light titulo-card-contacto text-center mb-3">
+                Eliana Farías
+              </Card.Title>
               <div className="d-grid gap-2">
-                <Button variant="outline-dark" size="lg" className="block d-flex justify-content-between">
-                  GitHub
-                  <FaGithub/>
-                </Button>
-                <Button variant="outline-dark" size="lg" className="block d-flex justify-content-between">
-                  Correo
-                  <AiOutlineMail/>
-                </Button>
+              <a
+                    href="https://github.com/elifarias"
+                    target="_blanck"
+                    className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
+                  >
+                    GitHub
+                  <FaGithub />
+                  </a>
+                  <a
+                    href="https://mail.google.com/mail/u/0/?fs=1&to=farias.elianama@gmail.com&tf=cm"
+                    target="_blanck"
+                    className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
+                  >
+                    Correo
+                    <AiOutlineMail />
+                  </a>
               </div>
             </Card.Body>
           </Card>
         </div>
         <div className="col-12 col-md-4">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="https://assets.stickpng.com/images/585e4bd7cb11b227491c3397.png" />
+          <Card className="card-nosotros mb-3 mb-md-0">
+            <Card.Img
+              variant="top"
+              src="https://ca.slack-edge.com/THQU1MGPN-U03UC41M119-c575478561f8-512"
+            />
             <Card.Body>
-              <Card.Title className="fs-3">Franco Giacobbe</Card.Title>
+              <Card.Title className=" text-light titulo-card-contacto text-center mb-3">
+                Franco Giacobbe
+              </Card.Title>
               <div className="d-grid gap-2">
-                <Button variant="outline-dark" size="lg" className="block d-flex justify-content-between">
-                  GitHub
-                  <FaGithub/>
-                </Button>
-                <Button variant="outline-dark" size="lg" className="block d-flex justify-content-between">
-                  Correo
-                  <AiOutlineMail/>
-                </Button>
+              <a
+                    href="https://github.com/frandg47"
+                    target="_blanck"
+                    className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
+                  >
+                    GitHub
+                  <FaGithub />
+                  </a>
+                  <a
+                    href="https://mail.google.com/mail/u/0/?fs=1&to=frandg47@gmail.com&tf=cm"
+                    target="_blanck"
+                    className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
+                  >
+                    Correo
+                    <AiOutlineMail />
+                  </a>
               </div>
             </Card.Body>
           </Card>
         </div>
         <div className="col-12 col-md-4">
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="https://assets.stickpng.com/images/585e4bd7cb11b227491c3397.png" />
+          <Card className="card-nosotros mb-3 mb-md-0">
+            <Card.Img
+              variant="top"
+              src="https://ca.slack-edge.com/THQU1MGPN-U04D4DYJ19C-f907ca3cddb0-512"
+            />
             <Card.Body>
-              <Card.Title className="fs-7">Juan Pablo Salomón</Card.Title>
+              <Card.Title className=" text-light titulo-card-contacto text-center mb-3">
+                Juan Pablo Salomón
+              </Card.Title>
               <div className="d-grid gap-2">
-                <Button variant="outline-dark" size="lg" className="block d-flex justify-content-between">
-                  GitHub
-                  <FaGithub/>
-                </Button>
-                <Button variant="outline-dark" size="lg" className="block d-flex justify-content-between">
-                  Correo
-                  <AiOutlineMail/>
-                </Button>
+               
+                  <a
+                    href="https://github.com/pablopaul01"
+                    target="_blanck"
+                    className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
+                  >
+                    GitHub
+                  <FaGithub />
+                  </a>
+                  <a
+                    href=""
+                    target="_blanck"
+                    className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
+                  >
+                    Correo
+                    <AiOutlineMail />
+                  </a>
+               
+
+               
               </div>
             </Card.Body>
           </Card>

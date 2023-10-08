@@ -12,3 +12,33 @@
 .img-nosotros{
     max-height: 700px;
 }
+
+.card-nosotros {
+    background-image: linear-gradient(rgba(33,33,33,0.6),rgba(33,33,33,0.6)), url("https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1414&q=80");
+    color: white;
+}
+
+.titulo-card-contacto {
+    font-family: "Gilda Display",serif;
+    font-weight: 700 !important;
+    font-size: 2rem !important;
+}
+
+.boton-card-contacto {
+    transition: all .5s !important;
+    }
+
+.boton-card-contacto:hover {
+    background-color: black !important;
+    color: white !important;
+    transform: scale(1.07);
+}
+
+.link-card{
+    text-decoration: none !important;
+    color:black !important;
+    
+}
+.link-card:hover{
+    color: white !important;
+}
