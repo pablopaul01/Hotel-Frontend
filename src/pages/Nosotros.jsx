@@ -19,6 +19,7 @@ const Nosotros = () => {
             al futuro. Este sitio se consiguió con mucho esfuerzo, dedicación e
             investigación, no quedan dudas de que cada unos de los miembros de
             este equipo va a ganarse su lugar a donde sea que vaya.
+            
           </p>
         </div>
         <div className="col text-center">
