@@ -16,11 +16,7 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    // autenticacion para admin{
-    //     headers: {
-    //         Authorization: `Bearer ${token}`
-    //     }
-    // });
+ 
 
     const onSubmit = async (data) => {
         console.log(data);

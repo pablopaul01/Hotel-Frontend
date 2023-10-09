@@ -53,7 +53,7 @@ const NavbarLogin = () => {
           </div>
         </div>
       </div>
-      <ModalPerfil show={show} handleClose={handleClose} />
+      <ModalPerfil show={show} handleClose={handleClose} setShow={setShow} />
     </>
   )
 }
