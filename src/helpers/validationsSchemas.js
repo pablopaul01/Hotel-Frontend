@@ -13,3 +13,11 @@ export const LOGIN_SCHEMA = yup.object({
     username: yup.string().matches(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,"El email no es válido").required("El email es requerido"),
     password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,"La contraseña no es válida").required("La contraseña es requerida")
 });
+
+export const UPDATE_SCHEMA = yup.object({
+    name: yup.string().matches(/^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/,"Los nombres no son válidos"),
+    password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/,"La contraseña no es válida"),
+    repassword: yup.string().oneOf([yup.ref("password"), null],"Las contraseñas no coinciden"),
+    dni: yup.string().matches(/^\d{8}$/, "DNI no válido"),
+    phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/,"El número no es válido")
+});

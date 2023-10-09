@@ -3,7 +3,9 @@ import "./register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { REGISTRO_SCHEMA } from '../../helpers/validationsSchemas'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { axiosInstance } from '../../config/axiosInstance'
+import Swal from 'sweetalert2'
 
 
 
@@ -13,12 +15,26 @@ const Register = () => {
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
 
-    const onSubmit = (data) => {
+    console.log(errors);
+
+    const navigate = useNavigate();
+
+    const onSubmit = async (data) => {
         console.log(data);
+        const response = await axiosInstance.post("/registrar", data);
+        try {
+            console.log("respuesta de back en registro", response);
+            navigate("/login");
+            Swal.fire({
+                icon: "success",
+                title: "Cuenta creada con éxito"
+            })
+        } catch (error) {
+            console.log(error)
+        }
         reset();
     }
 
-    console.log(errors);
 
     return (
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>

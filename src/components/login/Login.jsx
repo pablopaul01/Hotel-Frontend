@@ -3,7 +3,9 @@ import "./login.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { axiosInstance } from '../../config/axiosInstance'
+import Swal from 'sweetalert2'
 
 
 const Login = () => {
@@ -12,8 +14,29 @@ const Login = () => {
         resolver: yupResolver(LOGIN_SCHEMA)
     })
 
-    const onSubmit = (data) => {
+    const navigate = useNavigate();
+
+    // autenticacion para admin{
+    //     headers: {
+    //         Authorization: `Bearer ${token}`
+    //     }
+    // });
+
+    const onSubmit = async (data) => {
         console.log(data);
+        const response = await axiosInstance.post("/login", data)
+        try {
+            console.log("respuesta de back en login",response);
+            localStorage.setItem("token", response.data.token);
+            navigate("/");
+            Swal.fire({
+                icon: "success",
+                title: "Bienvenido"
+            })
+        } catch (error) {
+            console.log(error)
+        }
+
         reset();
     }
 
