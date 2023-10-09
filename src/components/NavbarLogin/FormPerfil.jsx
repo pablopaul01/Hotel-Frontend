@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
 
 
-const FormPerfil = () => {
+const FormPerfil = ({ show, setShow, handleClose }) => {
 
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
@@ -27,19 +27,21 @@ const FormPerfil = () => {
     })
 
     const onSubmit = async (data) => {
-        console.log(data);
+        console.log("respuesta de data en front", data);
         const response = await axiosInstance.put(`/usuario/${decode.sub}`, data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
+
         try {
-            console.log("respuesta de back en registro", response);
+            console.log("respuesta de back en front", response.data.token);
             Swal.fire({
                 icon: "success",
                 title: "Datos de tu perfil actualizados con éxito"
             })
-            token = localStorage.getItem("token")
+            localStorage.removeItem("token")
+            localStorage.setItem("token", response.data.token)
         } catch (error) {
             console.log(error)
         }
@@ -155,7 +157,10 @@ const FormPerfil = () => {
                     )
             }
 
-            <button className="btn btn-outline-light boton-login mt-3" type="submit">Guardar Cambios</button>
+            <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => setShow(!show)}>Guardar Cambios</button>
+            <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
+                Cancelar
+            </Button>
         </form>
     )
 }
