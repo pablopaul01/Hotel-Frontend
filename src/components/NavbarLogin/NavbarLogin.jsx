@@ -1,8 +1,9 @@
-import React from 'react'
 import "./navBarLogin.css"
 import { BiSolidUserCircle } from "react-icons/bi"
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
+import ModalPerfil from './ModalPerfil'
+import { useState } from "react"
 
 
 
@@ -11,25 +12,23 @@ const NavbarLogin = () => {
 
   let navigate = useNavigate();
 
-  const nameLogged = () => {
-    const token = localStorage.getItem("token");
-    const decode = jwt_decode(token);
-    return decode.name
-  }
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const isLogged = () => {
     const token = localStorage.getItem("token");
-    
-
     return token ? true : false
   }
 
-    const logOut = () => {
-      localStorage.removeItem("token");
-      navigate("/login");
-    }
+  const logOut = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  }
 
-    return (
+  return (
+    <>
       <div className='container-fluid py-2 navLogin'>
         <div className="row">
           <div className="col-12 d-flex justify-content-end gap-3 pe-5">
@@ -37,11 +36,9 @@ const NavbarLogin = () => {
               isLogged() ?
                 (
                   <>
-                    {/* <Navigate to="/" /> */}
-                    <Link to="/perfil" className='navLoginLink'>{nameLogged()}</Link>
+                    <Link className='navLoginLink' onClick={handleShow}>Mi perfil</Link>
                     <Link to={"/login"} className='navLoginLink' onClick={logOut}>Cerrar Sesión</Link>
                     <BiSolidUserCircle className='iconLogin' />
-                    {/* {navigate("/")} */}
                   </>
                 )
                 :
@@ -56,7 +53,9 @@ const NavbarLogin = () => {
           </div>
         </div>
       </div>
-    )
-  }
+      <ModalPerfil show={show} handleClose={handleClose} />
+    </>
+  )
+}
 
-  export default NavbarLogin
+export default NavbarLogin

@@ -16,9 +16,15 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    // autenticacion para admin{
+    //     headers: {
+    //         Authorization: `Bearer ${token}`
+    //     }
+    // });
+
     const onSubmit = async (data) => {
         console.log(data);
-        const response = await axiosInstance.post("/login", data);
+        const response = await axiosInstance.post("/login", data)
         try {
             console.log("respuesta de back en login",response);
             localStorage.setItem("token", response.data.token);

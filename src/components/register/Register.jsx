@@ -24,7 +24,6 @@ const Register = () => {
         const response = await axiosInstance.post("/registrar", data);
         try {
             console.log("respuesta de back en registro", response);
-            // localStorage.setItem("token", response.data.token);
             navigate("/login");
             Swal.fire({
                 icon: "success",
