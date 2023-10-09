@@ -20,7 +20,7 @@ import PrivateRoutesAdmin from './Routes/PrivateRoutesAdmin'
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isAuthenticated = !!localStorage.getItem('token');
 
   return (
     <>
@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={<RegisterView />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/login' element={isAuthenticated ? <Home/> : <LoginPage />} />          
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
