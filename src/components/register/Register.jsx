@@ -80,7 +80,7 @@ const Register = () => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Número de celular</label>
                 <div className="input-group">
-                    <span class="input-group-text" id="inputGroup-sizing-default">+54</span>
+                    <span className="input-group-text" id="inputGroup-sizing-default">+54</span>
                     <input
                         placeholder="No incluir el 0"
                         aria-describedby="inputGroup-sizing-default"

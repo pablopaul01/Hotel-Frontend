@@ -30,18 +30,19 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/registro' element={isAuthenticated ? <Home/> : <RegisterView />} /> 
-        <Route path='/login' element={isAuthenticated ? <Home/> : <LoginPage />} />          
+        <Route path='/registro' element={isAuthenticated ? <Home /> : <RegisterView />} />
+        <Route path='/login' element={isAuthenticated ? <Home /> : <LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
-        <Route path='*' element={<Error404/>}/>
-        <Route path="/Contacto" element={<Contacto/>} />
-        <Route path="/Nosotros" element={<Nosotros/>} />
+        <Route path='*' element={<Error404 />} />
+        <Route path="/Contacto" element={<Contacto />} />
+        <Route path="/Nosotros" element={<Nosotros />} />
 
         <Route element={<PrivateRoutesUser />}>
           <Route path='/reserva-habitaciones' element={<BookRoom />} />
         </Route>
+        
         <Route element={<PrivateRoutesAdmin />}>
           <Route path='/admin/users' element={<Usuarios />} />
           <Route path='/admin/rooms' element={<RoomsAdmin />} />
