@@ -4,9 +4,11 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { REGISTRO_SCHEMA } from '../../../helpers/validationsSchemas'
 import { axiosInstance } from '../../../config/axiosInstance'
+import Swal from 'sweetalert2'
 
 
-const FormCreate = ({ show, setShow }) => {
+
+const FormCreate = ({ show, setShow, getAllUsers, users }) => {
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(REGISTRO_SCHEMA)
@@ -24,6 +26,7 @@ const FormCreate = ({ show, setShow }) => {
                 icon: "success",
                 title: "Cuenta creada con éxito"
             })
+            getAllUsers();
         } catch (error) {
             console.log(error)
         }
@@ -75,7 +78,7 @@ const FormCreate = ({ show, setShow }) => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Número de celular</label>
                 <div className="input-group">
-                    <span class="input-group-text" id="inputGroup-sizing-default">+54</span>
+                    <span className="input-group-text" id="inputGroup-sizing-default">+54</span>
                     <input
                         placeholder="No incluir el 0"
                         aria-describedby="inputGroup-sizing-default"

@@ -38,12 +38,13 @@ function App() {
         <Route path='*' element={<Error404 />} />
         <Route path="/Contacto" element={<Contacto />} />
         <Route path="/Nosotros" element={<Nosotros />} />
-        <Route path='/admin/users' element={<Usuarios />} />
 
         <Route element={<PrivateRoutesUser />}>
           <Route path='/reserva-habitaciones' element={<BookRoom />} />
         </Route>
+        
         <Route element={<PrivateRoutesAdmin />}>
+          <Route path='/admin/users' element={<Usuarios />} />
           <Route path='/admin/rooms' element={<RoomsAdmin />} />
         </Route>
       </Routes>

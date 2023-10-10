@@ -3,33 +3,36 @@ import DataTable from 'react-data-table-component';
 import './usuarios.css'
 import './formcreate.css'
 import { BiEdit } from 'react-icons/bi'
-import { TiDeleteOutline } from 'react-icons/ti'
 import { MdBlock } from 'react-icons/md'
 import { axiosInstance } from '../../../config/axiosInstance'
 import Swal from 'sweetalert2';
+import { RiDeleteBin6Line } from 'react-icons/ri'
+import ModalEditUser from './ModalEditUser';
 
 
 
-const UserTable = () => {
+const UserTable = ({ getAllUsers, users }) => {
 
-    const [users, setUsers] = useState([]);
+    const [show, setShow] = useState(false);
 
-    const getAllUsers = async () => {
-        const token = localStorage.getItem("token");
-        const response = await axiosInstance.get("/usuarios", {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        console.log(response);
-        console.log(response.data);
-        console.log(response.data.users);
-        setUsers(response.data.users);
+    const [idUser, setIdUser] = useState("")
+
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleClick = (row) => {
+        console.log("row en handle ", row)
+        handleShow();
+        setIdUser(row);
     }
 
-    useEffect(() => {
-        getAllUsers();
-    }, [])
+    console.log("id en user table", idUser);
+
+
+
+
+    
 
 
     const deleteUser = async (row) => {
@@ -68,9 +71,9 @@ const UserTable = () => {
 
     const disabledUser = async (row) => {
         const token = localStorage.getItem("token");
-
+        console.log("token en disabled", token)
         try {
-            const { data } = await axiosInstance.put(`desactivar/usuario/${row}`, {
+            const { data } = await axiosInstance.put(`/desactivar/usuario/${row}`, null, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -114,6 +117,7 @@ const UserTable = () => {
             selector: row => {
                 return <p className='mb-0 text-table'>{row.phone}</p>
             },
+            sortable: true,
             center: true,
             maxWidth: "180px"
 
@@ -153,9 +157,9 @@ const UserTable = () => {
             selector: row => {
                 return (
                     <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
-                        <button className="btn btn-warning btn-sm mr-2" title="Editar" id="t-1"><BiEdit className='icon-crud' /></button>
-                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteUser(row._id) }}><TiDeleteOutline className='icon-crud' /></button>
-                        <button className="btn btn-danger btn-sm" title="Suspender/Activar" id="t-1" onClick={() => { disabledUser(row._id) }}><MdBlock className='icon-crud' /></button>
+                        <button className="btn btn-warning btn-sm mr-2" title="Editar" id="t-1" onClick={() => { handleClick(row._id) }}><BiEdit className='icon-crud' /></button>
+                        <button className="btn btn-dark btn-sm" title="Suspender/Activar" id="t-1" onClick={() => { disabledUser(row._id) }}><MdBlock className='icon-crud' /></button>
+                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteUser(row._id) }}><RiDeleteBin6Line className='icon-crud' /></button>
                     </div>
                 )
             },
@@ -170,7 +174,7 @@ const UserTable = () => {
         selectAllRowsItemText: 'Todos',
     };
 
-
+    console.log("users en usertable", users);
     return (
         <div className='d-flex flex-column align-items-end'>
             <DataTable
@@ -179,6 +183,7 @@ const UserTable = () => {
                 pagination
                 paginationComponentOptions={paginationComponentOptions}
             />
+            <ModalEditUser show={show} handleClose={handleClose} setShow={setShow} idUser={idUser} getAllUsers={getAllUsers} />
         </div>
     )
 }

@@ -1,34 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { UPDATE_SCHEMA } from '../../helpers/validationsSchemas'
+import { UPDATE_SCHEMA } from '../../../helpers/validationsSchemas'
 import jwtDecode from 'jwt-decode';
 import { FiEdit } from 'react-icons/fi'
-import { axiosInstance } from '../../config/axiosInstance'
+import { axiosInstance } from '../../../config/axiosInstance'
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
 
 
-const FormPerfil = ({ show, setShow, handleClose }) => {
+const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
 
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
 
-    console.log(decode)
+    console.log("id en modal form", idUser)
 
     const [editInputName, setEditInputName] = useState(true)
     const [editInputDni, setEditInputDni] = useState(true)
     const [editInputPhone, setEditInputPhone] = useState(true)
 
-    const [showInputPassword, setShowInputPassword] = useState(false)
+    const [userData, SetUserData] = useState({})
+
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(UPDATE_SCHEMA)
     })
 
+    const getUserById = async () => {
+        const token = localStorage.getItem("token");
+        const response = await axiosInstance.get(`/usuario/${idUser}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+
+        SetUserData(response.data.user);
+    }
+
+    useEffect(() => {
+        getUserById();
+    }, [])
+
+
     const onSubmit = async (data) => {
         console.log("respuesta de data en front", data);
-        const response = await axiosInstance.put(`/usuario/${decode.sub}`, data, {
+        const response = await axiosInstance.put(`/usuario/${idUser}`, data, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -38,10 +55,9 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
             console.log("respuesta de back en front", response.data.token);
             Swal.fire({
                 icon: "success",
-                title: "Datos de tu perfil actualizados con éxito"
+                title: "Datos del usuario actualizados con éxito"
             })
-            localStorage.removeItem("token")
-            localStorage.setItem("token", response.data.token)
+            getAllUsers();
         } catch (error) {
             console.log(error)
         }
@@ -49,12 +65,12 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
 
 
     return (
-        <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
+        < form className="text-white" onSubmit={handleSubmit(onSubmit)} >
             <div className="mb-2 pt-2">
                 <label className="form-label">Correo electrónico</label>
                 <div className="input-group mb-3">
                     <input
-                        value={decode.username}
+                        value={userData.username}
                         disabled
                         type="email"
                         className="form-control"
@@ -68,7 +84,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                     <input
                         disabled={editInputName}
 
-                        placeholder={decode.name}
+                        placeholder={userData.name}
                         type="text"
                         className="form-control"
                         name="name"
@@ -86,7 +102,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                     <input
                         disabled={editInputDni}
 
-                        placeholder={decode.dni}
+                        placeholder={userData.dni}
                         type="number"
                         className="form-control"
                         name="dni"
@@ -104,7 +120,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                     <span className="input-group-text">+54</span>
                     <input
                         disabled={editInputPhone}
-                        placeholder={decode.phone}
+                        placeholder={userData.phone}
                         type="number"
                         className="form-control"
                         name="phone"
@@ -116,53 +132,21 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
             <p className="text-danger my-1">
                 {errors.cellPhone?.message}
             </p>
+            <div className="mb-2 pt-2">
+                <label className="form-label">Rol de Usuario</label>
+                <select name="role" className="form-select" {...register("role")}>
+                    <option selected value="user">user</option>
+                    <option value="admin">admin</option>
+                </select>
+            </div>
 
-            {
-                showInputPassword ?
-                    (
-                        <>
-                            <div className="mb-2 pt-2">
-                                <label className="form-label">Contraseña nueva</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="password"
-                                    {...register("password")}
-                                />
-                            </div>
-                            <p className="text-danger my-1">
-                                {errors.password?.message}
-                            </p>
-                            <div className="mb-2 pt-2">
-                                <label className="form-label">Repetir Contraseña Nueva</label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name="repassword"
-                                    {...register("repassword")}
-                                />
-                            </div>
-                            <p className="text-danger my-1">
-                                {errors.repassword?.message}
-                            </p>
-                            <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
-                                un dígito, al menos una minúscula y al menos una
-                                mayúscula.</small>
-                            <a className='btn btn-sm btn-outline-warning mt-3 d-flex justify-content-center' onClick={() => setShowInputPassword(!showInputPassword)}>Conservar clave</a>
-                        </>
-                    )
-                    :
-                    (
-                        <a className='btn btn-sm btn-outline-danger mt-3 d-flex justify-content-center' onClick={() => setShowInputPassword(!showInputPassword)}>Cambiar clave</a>
-                    )
-            }
 
             <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => setShow(!show)}>Guardar Cambios</button>
             <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
                 Cancelar
             </Button>
-        </form>
+        </form >
     )
 }
 
-export default FormPerfil
+export default FormEditUser
