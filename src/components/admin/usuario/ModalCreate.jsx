@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import FormCreate from './FormCreate';
 
-const ModalCreate = ({show, handleClose}) => {
+const ModalCreate = ({show, handleClose, setShow}) => {
 
   return (
     <>
@@ -19,7 +19,7 @@ const ModalCreate = ({show, handleClose}) => {
           </div>
         </div>
         <Modal.Body className='modal-body'>
-          <FormCreate />
+          <FormCreate show={show} setShow={setShow} />
         </Modal.Body>
 
       </Modal>    
