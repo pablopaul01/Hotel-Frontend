@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 
 
-const ModalPerfil = ({ show, handleClose }) => {
+const ModalPerfil = ({ show, handleClose, setShow }) => {
 
     return (
         <Modal show={show} onHide={handleClose} className='modal-container'>
@@ -20,10 +20,7 @@ const ModalPerfil = ({ show, handleClose }) => {
                 </div>
             </div>
             <Modal.Body className='p-5'>
-                <FormPerfil />
-                <Button variant="light" className='mt-3' onClick={handleClose}>
-                    Cancelar
-                </Button>              
+                <FormPerfil show={show} setShow={setShow} handleClose={handleClose} />                         
             </Modal.Body>
         </Modal>
     )
