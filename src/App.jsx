@@ -14,7 +14,9 @@ import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
 import PrivateRoutesUser from './Routes/PrivateRoutesUser'
 import PrivateRoutesAdmin from './Routes/PrivateRoutesAdmin'
-
+import Error404 from './pages/404'
+import Contacto from './pages/Contacto'
+import Nosotros from './pages/Nosotros'
 
 
 
@@ -33,6 +35,9 @@ function App() {
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
+        <Route path='*' element={<Error404/>}/>
+        <Route path="/Contacto" element={<Contacto/>} />
+        <Route path="/Nosotros" element={<Nosotros/>} />
 
         <Route element={<PrivateRoutesUser />}>
           <Route path='/reserva-habitaciones' element={<BookRoom />} />

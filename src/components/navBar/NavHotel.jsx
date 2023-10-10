@@ -58,8 +58,8 @@ const NavHotel = () => {
                   </li>
                 </ul>
               </li>
-              <span className='linknav justify-content-md-center align-items-center d-flex'>Quienes Somos</span>
-              <span className='linknav justify-content-md-center align-items-center d-flex'>Contacto</span>
+              <Link to="/Nosotros" className='linknav justify-content-md-center align-items-center d-flex'>Quienes Somos</Link>
+              <Link to="/Contacto" className='linknav justify-content-md-center align-items-center d-flex'>Contacto</Link>
               <Link to="/reserva-habitaciones">
                 <button className="button-footer mt-2">RESERVAR AHORA</button>
               </Link>
