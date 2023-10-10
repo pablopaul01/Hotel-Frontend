@@ -30,7 +30,7 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/registro' element={<RegisterView />} />
+        <Route path='/registro' element={isAuthenticated ? <Home/> : <RegisterView />} /> 
         <Route path='/login' element={isAuthenticated ? <Home/> : <LoginPage />} />          
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
