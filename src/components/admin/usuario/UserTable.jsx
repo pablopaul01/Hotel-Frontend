@@ -6,8 +6,8 @@ import { BiEdit } from 'react-icons/bi'
 import { TiDeleteOutline } from 'react-icons/ti'
 import { MdBlock } from 'react-icons/md'
 import { axiosInstance } from '../../../config/axiosInstance'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
+import Swal from 'sweetalert2';
+
 
 
 const UserTable = () => {
@@ -28,14 +28,61 @@ const UserTable = () => {
     }
 
     useEffect(() => {
-      getAllUsers();
-    }, [users])
-    
-    const toolTipsButtons = ({ id, children, title }) => (
-        <OverlayTrigger overlay={<Tooltip id={id}>{title}</Tooltip>}>
-          <a href="#">{children}</a>
-        </OverlayTrigger>
-      );
+        getAllUsers();
+    }, [])
+
+
+    const deleteUser = async (row) => {
+        const token = localStorage.getItem("token");
+
+        try {
+            Swal.fire({
+                title: 'Esta seguro de eliminar el usuario?',
+                text: "No podrás revertir los cambios!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await axiosInstance.delete(`/usuario/${row}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    });
+                    Swal.fire(
+                        'Eliminado!',
+                        'El usuario fue eliminado',
+                        'success'
+                    )
+                    getAllUsers();
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        } finally {
+            getAllUsers();
+        }
+    }
+
+    const disabledUser = async (row) => {
+        const token = localStorage.getItem("token");
+
+        try {
+            await axiosInstance.put(`/usuario/${row}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+        } catch (error) {
+            console.log(error);
+        } finally {
+            getAllUsers();
+        }
+    }
+
 
     const columns = [
         {
@@ -102,7 +149,7 @@ const UserTable = () => {
                 return (
                     <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
                         <button className="btn btn-warning btn-sm mr-2" title="Editar" id="t-1"><BiEdit className='icon-crud' /></button>
-                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1"><TiDeleteOutline className='icon-crud' /></button>
+                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteUser(row._id) }}><TiDeleteOutline className='icon-crud' /></button>
                         <button className="btn btn-danger btn-sm" title="Suspender" id="t-1"><MdBlock className='icon-crud' /></button>
                     </div>
                 )
@@ -117,6 +164,8 @@ const UserTable = () => {
         selectAllRowsItem: true,
         selectAllRowsItemText: 'Todos',
     };
+
+
     return (
         <div className='d-flex flex-column align-items-end'>
             <DataTable
