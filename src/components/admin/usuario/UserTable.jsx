@@ -70,12 +70,17 @@ const UserTable = () => {
         const token = localStorage.getItem("token");
 
         try {
-            await axiosInstance.put(`/usuario/${row}`, {
+            const { data } = await axiosInstance.put(`desactivar/usuario/${row}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-
+            console.log("respuesta", data)
+            Swal.fire(
+                'Bien hecho!',
+                `El usuario fue ${data.user.state ? ("activado") : ("desactivado")}!`,
+                'success'
+            )
         } catch (error) {
             console.log(error);
         } finally {
@@ -136,7 +141,7 @@ const UserTable = () => {
         {
             name: "Estado de Cuenta",
             selector: row => {
-                return <p className='mb-0 text-table'>{row.state}</p>
+                return <p className='mb-0 text-table'>{row.state ? ("activa") : ("desactivada")}</p>
             },
             sortable: true,
             center: true,
@@ -150,7 +155,7 @@ const UserTable = () => {
                     <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
                         <button className="btn btn-warning btn-sm mr-2" title="Editar" id="t-1"><BiEdit className='icon-crud' /></button>
                         <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteUser(row._id) }}><TiDeleteOutline className='icon-crud' /></button>
-                        <button className="btn btn-danger btn-sm" title="Suspender" id="t-1"><MdBlock className='icon-crud' /></button>
+                        <button className="btn btn-danger btn-sm" title="Suspender/Activar" id="t-1" onClick={() => { disabledUser(row._id) }}><MdBlock className='icon-crud' /></button>
                     </div>
                 )
             },
