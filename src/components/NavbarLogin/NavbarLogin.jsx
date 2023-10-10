@@ -1,7 +1,6 @@
 import "./navBarLogin.css"
 import { BiSolidUserCircle } from "react-icons/bi"
 import { Link, Navigate, useNavigate } from 'react-router-dom'
-import jwt_decode from 'jwt-decode'
 import ModalPerfil from './ModalPerfil'
 import { useState } from "react"
 

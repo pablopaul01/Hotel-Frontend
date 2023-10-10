@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { UPDATE_SCHEMA } from '../../../helpers/validationsSchemas'
-import jwtDecode from 'jwt-decode';
 import { FiEdit } from 'react-icons/fi'
 import { axiosInstance } from '../../../config/axiosInstance'
 import Button from 'react-bootstrap/Button';
@@ -11,38 +10,36 @@ import Swal from 'sweetalert2';
 
 const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
 
-    let token = localStorage.getItem("token");
-    let decode = jwtDecode(token);
-
-    console.log("id en modal form", idUser)
-
+    //states para habilitar edicion de inputs
     const [editInputName, setEditInputName] = useState(true)
     const [editInputDni, setEditInputDni] = useState(true)
     const [editInputPhone, setEditInputPhone] = useState(true)
-
+    //state con contenido del usuario a editar
     const [userData, SetUserData] = useState({})
-
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(UPDATE_SCHEMA)
     })
-
+    //obtengo información del usuario
     const getUserById = async () => {
         const token = localStorage.getItem("token");
-        const response = await axiosInstance.get(`/usuario/${idUser}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-
-        SetUserData(response.data.user);
+        try {
+            const response = await axiosInstance.get(`/usuario/${idUser}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            SetUserData(response.data.user);
+        } catch (error) {
+            console.log(error);
+        }
     }
-
+    //ejecuto la funcion cuando carga la página
     useEffect(() => {
         getUserById();
     }, [])
 
-
+    //funcion que recibe la data del formulario
     const onSubmit = async (data) => {
         console.log("respuesta de data en front", data);
         const response = await axiosInstance.put(`/usuario/${idUser}`, data, {
@@ -50,7 +47,6 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                 Authorization: `Bearer ${token}`
             }
         });
-
         try {
             console.log("respuesta de back en front", response.data.token);
             Swal.fire({
@@ -135,12 +131,25 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Rol de Usuario</label>
                 <select name="role" className="form-select" {...register("role")}>
-                    <option selected value="user">user</option>
-                    <option value="admin">admin</option>
+                    {
+                        userData.role === "admin" ?
+                            (
+                                <>
+                                    <option selected value="admin">admin</option>
+                                    <option value="user">user</option>
+                                </>
+                            )
+                            :
+                            (
+                                <>
+                                    <option selected value="user">user</option>
+                                    <option value="admin">admin</option>
+                                </>
+                            )
+                    }
+
                 </select>
-            </div>
-
-
+            </div >
             <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => setShow(!show)}>Guardar Cambios</button>
             <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
                 Cancelar

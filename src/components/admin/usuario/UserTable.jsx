@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import './usuarios.css'
 import './formcreate.css'
@@ -13,28 +13,21 @@ import ModalEditUser from './ModalEditUser';
 
 const UserTable = ({ getAllUsers, users }) => {
 
+    //state del modal
     const [show, setShow] = useState(false);
-
+    //state que guarda el id de cada usuario 
     const [idUser, setIdUser] = useState("")
 
-
+    //funciones para abrir y cerrar modal
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    //funcion para guardar el id del usuario que se desea editar
     const handleClick = (row) => {
-        console.log("row en handle ", row)
         handleShow();
         setIdUser(row);
-    }
+    }    
 
-    console.log("id en user table", idUser);
-
-
-
-
-    
-
-
+    //funcion para eliminar un usuario
     const deleteUser = async (row) => {
         const token = localStorage.getItem("token");
 
@@ -68,7 +61,7 @@ const UserTable = ({ getAllUsers, users }) => {
             getAllUsers();
         }
     }
-
+    //funcion para cambiarle el estado de usuario a un usuario
     const disabledUser = async (row) => {
         const token = localStorage.getItem("token");
         console.log("token en disabled", token)
@@ -91,7 +84,7 @@ const UserTable = ({ getAllUsers, users }) => {
         }
     }
 
-
+    //empiezan datos de la tabla
     const columns = [
         {
             name: "Nombre",

@@ -14,8 +14,6 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
 
-    console.log(errors);
-
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -33,7 +31,7 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
         reset();
     }
 
-    console.log(errors);
+
     return (
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-2">

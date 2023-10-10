@@ -1,11 +1,9 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 import FormEditUser from './FormEditUser';
-import Button from 'react-bootstrap/Button';
 
 
-
-const ModalEditUser = ({ show, handleClose, setShow, idUser, getAllUsers}) => {
+const ModalEditUser = ({ show, handleClose, setShow, idUser, getAllUsers }) => {
 
     return (
         <Modal show={show} onHide={handleClose} className='modal-container'>
@@ -20,7 +18,7 @@ const ModalEditUser = ({ show, handleClose, setShow, idUser, getAllUsers}) => {
                 </div>
             </div>
             <Modal.Body className='p-5'>
-                <FormEditUser show={show} setShow={setShow} handleClose={handleClose} idUser={idUser} getAllUsers={getAllUsers} />                         
+                <FormEditUser show={show} setShow={setShow} handleClose={handleClose} idUser={idUser} getAllUsers={getAllUsers} />
             </Modal.Body>
         </Modal>
     )
