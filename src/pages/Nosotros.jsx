@@ -115,7 +115,7 @@ const Nosotros = () => {
                   <FaGithub />
                   </a>
                   <a
-                    href=""
+                    href="https://mail.google.com/mail/u/0/?fs=1&to=juanpablosalomon@gmail.com&tf=cm"
                     target="_blanck"
                     className="btn btn-light btn-lg boton-card-contacto block d-flex justify-content-between"
                   >
