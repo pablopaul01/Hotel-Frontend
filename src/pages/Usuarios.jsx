@@ -35,7 +35,7 @@ const Usuarios = () => {
   }, [])
 
   return (
-    <div className='container container-crud'>
+    <div className='container container-crud mb-5'>
       <div className="row">
         <div className="col-12 d-flex justify-content-between mx-0">
           <h2 className='titulo-galery'>Administración de usuarios</h2>

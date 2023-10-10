@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -10,8 +10,11 @@ import jwt_decode from 'jwt-decode'
 
 
 const NavHotel = () => {
+
   const [navbarFixed, setNavbarFixed] = useState(false);
   const [shouldAppear, setShouldAppear] = useState(false);
+
+
   const navbarRef = useRef();
 
   const handleScroll = () => {
@@ -25,7 +28,6 @@ const NavHotel = () => {
   };
 
   const token = localStorage.getItem("token");
-  const decode = jwt_decode(token);
 
   window.onscroll = handleScroll;
   return (
@@ -64,9 +66,15 @@ const NavHotel = () => {
               <Link to="/Nosotros" className='linknav justify-content-md-center align-items-center d-flex'>Quienes Somos</Link>
               <Link to="/Contacto" className='linknav justify-content-md-center align-items-center d-flex'>Contacto</Link>
               {
-                token ?
+                token === null ?
                   (
-                    decode.role === "admin" ?
+                    <Link to="/reserva-habitaciones">
+                      <button className="button-footer mt-2">RESERVAR AHORA</button>
+                    </Link>
+                  )
+                  :
+                  (
+                    jwt_decode(token).role === "admin" ?
                       (
                         <li className="nav-item dropdown justify-content-md-center align-items-center d-flex">
                           <a className="dropdown-toggle linknav button-footer mt-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -89,12 +97,6 @@ const NavHotel = () => {
                           <button className="button-footer mt-2">RESERVAR AHORA</button>
                         </Link>
                       )
-                  )
-                  :
-                  (
-                    <Link to="/reserva-habitaciones">
-                      <button className="button-footer mt-2">RESERVAR AHORA</button>
-                    </Link>
                   )
               }
             </Nav>
