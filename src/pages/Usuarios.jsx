@@ -40,12 +40,12 @@ const Usuarios = () => {
 
   return (
     <div className='container container-crud mb-5'>
-      
-        <div className="d-flex justify-content-between ">
-          <h2 className='display-5'>Administración de usuarios</h2>
-          <button className='btn btn-outline-light' onClick={handleShow}>Crear usuario</button>
-        </div>
-      
+
+      <div className="d-flex justify-content-between ">
+        <h2 className='display-5'>Administración de usuarios</h2>
+        <button className='btn btn-outline-light' onClick={handleShow}>Crear usuario</button>
+      </div>
+
       <hr />
       <div className="row">
         <div className="col mt-5"><UserTable getAllUsers={getAllUsers} users={users} /></div>
