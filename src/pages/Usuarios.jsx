@@ -26,7 +26,11 @@ const Usuarios = () => {
       });
       setUsers(response.data.users);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
     }
   }
 

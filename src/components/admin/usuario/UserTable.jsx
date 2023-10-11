@@ -25,7 +25,7 @@ const UserTable = ({ getAllUsers, users }) => {
     const handleClick = (row) => {
         handleShow();
         setIdUser(row);
-    }    
+    }
 
     //funcion para eliminar un usuario
     const deleteUser = async (row) => {
@@ -56,7 +56,11 @@ const UserTable = ({ getAllUsers, users }) => {
                 }
             })
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         } finally {
             getAllUsers();
         }
@@ -64,21 +68,24 @@ const UserTable = ({ getAllUsers, users }) => {
     //funcion para cambiarle el estado de usuario a un usuario
     const disabledUser = async (row) => {
         const token = localStorage.getItem("token");
-        console.log("token en disabled", token)
         try {
             const { data } = await axiosInstance.put(`/desactivar/usuario/${row}`, null, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log("respuesta", data)
+           
             Swal.fire(
                 'Bien hecho!',
                 `El usuario fue ${data.user.state ? ("activado") : ("desactivado")}!`,
                 'success'
             )
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         } finally {
             getAllUsers();
         }
@@ -167,7 +174,7 @@ const UserTable = ({ getAllUsers, users }) => {
         selectAllRowsItemText: 'Todos',
     };
 
-    console.log("users en usertable", users);
+   
     return (
         <div className='d-flex flex-column align-items-end'>
             <DataTable

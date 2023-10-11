@@ -31,7 +31,11 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
             });
             SetUserData(response.data.user);
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
     }
     //ejecuto la funcion cuando carga la página
@@ -41,21 +45,25 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
 
     //funcion que recibe la data del formulario
     const onSubmit = async (data) => {
-        console.log("respuesta de data en front", data);
-        const response = await axiosInstance.put(`/usuario/${idUser}`, data, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
+
         try {
-            console.log("respuesta de back en front", response.data.token);
+            const response = await axiosInstance.put(`/usuario/${idUser}`, data, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
             Swal.fire({
                 icon: "success",
                 title: "Datos del usuario actualizados con éxito"
             })
             getAllUsers();
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
     }
 

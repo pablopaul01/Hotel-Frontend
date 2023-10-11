@@ -1,4 +1,4 @@
-import { axiosInstance } from "../config/axiosInstance"
+
 
 export const users = [
     {
@@ -33,10 +33,3 @@ export const users = [
     },
 ]
 
-// export const getAllUsers = async () => {
-//     const response = await axiosInstance.get("/usuarios");
-//     console.log(response);
-//     console.log(response.data);
-//     console.log(response.data.users);
-//     return response.data.users
-// }
