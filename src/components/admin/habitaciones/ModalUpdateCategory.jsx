@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import FormUpdateCategory from './FormUpdateCategory';
 
-const ModalUpdateCategory = ({showUpdate, handleCloseUpdate, getCategories, setShowUpdate}) => {
+const ModalUpdateCategory = ({show, handleClose, categorie, setCategorie}) => {
   return (
     <>
-      <Modal showUpdate={showUpdate} onHide={handleCloseUpdate} className='modal-container'>
+      <Modal show={show} onHide={handleClose} className='modal-container'>
         <div className='header-container'>
           <div className="modal-header mx-5 border border-top-0 border-end-0 border-start-0 py-0">
               <div className='my-5 '>
@@ -17,7 +17,7 @@ const ModalUpdateCategory = ({showUpdate, handleCloseUpdate, getCategories, setS
           </div>
         </div>
         <Modal.Body className='modal-body'>
-          <FormUpdateCategory getCategories={getCategories} showUpdate={showUpdate} handleCloseUpdate={handleCloseUpdate}/>
+          <FormUpdateCategory categorie={categorie} setCategorie={setCategorie} show={show} handleClose={handleClose}/>
         </Modal.Body>
 
       </Modal>    

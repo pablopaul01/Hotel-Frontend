@@ -84,16 +84,16 @@ const FormCreateCategory = ({getCategories, showC, handleCloseC}) => {
       formData.append("precio",formDatos.precio)
       formData.append("descripcion",formDatos.descripcion)
       formData.append("roomNumbers",JSON.stringify(formDatos.roomNumbers))
-      // for (let index = 0; index < imgFile.length; index++) {
-      //   formData.append("imagenes",imgFile[index])
-      // }
+      for (let index = 0; index < imgFile.length; index++) {
+        formData.append("imagenes",imgFile[index])
+      }
 
       const resp = await axiosInstance.post("/crear/categoria",formData,{
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      // console.log(resp.data)
+      console.log(resp.data)
       handleCloseC()
      } catch (error) {
         console.log(error)
@@ -102,7 +102,7 @@ const FormCreateCategory = ({getCategories, showC, handleCloseC}) => {
 
   return (
     <div>
- <form className="form-container" onSubmit={handleSubmit}  enctype="multipart/form-data">
+ <form className="form-container" onSubmit={handleSubmit}  encType="multipart/form-data">
  <div className="mb-2 pt-2">
                 <label className="form-label">Nombre de Categoría</label>
                 <input

@@ -11,8 +11,26 @@ import ModalUpdateCategory from './ModalUpdateCategory';
 
 
 const CategorieTable = ({categories,setCategories,getCategories}) => {
-    const [showUpdate, setShowUpdate] = useState(false);
 
+    const [show, setShow] = useState(false);
+    const [categorie, setCategorie] = useState([]);
+
+ 
+    const getCategorieById = async (row) => {
+    const token = localStorage.getItem("token");
+    const response = await axiosInstance.get(`/categoria/${row}`,null, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    setCategorie(response.data.categorie);
+  }
+
+  const handleClick = (row) => {
+    getCategorieById(row);
+    handleShow()
+  }
     const deleteCategorie = async (row) => {
         const token = localStorage.getItem("token");
 
@@ -76,7 +94,7 @@ const CategorieTable = ({categories,setCategories,getCategories}) => {
             selector: row => {
                 return (
                     <div style={{display:"flex", gap:"20px", justifyContent:"center"}}>
-                        <button className="btn btn-warning btn-sm mr-2" onClick={()=>{handleShowUpdate}}><BiEdit className='icon-crud'/></button>
+                        <button className="btn btn-warning btn-sm mr-2" onClick={()=>handleClick(row._id)}><BiEdit className='icon-crud'/></button>
                         <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteCategorie(row._id) }}><RiDeleteBin6Line className='icon-crud' /></button>
                     </div>
                 )
@@ -91,9 +109,10 @@ const CategorieTable = ({categories,setCategories,getCategories}) => {
         selectAllRowsItem: true,
         selectAllRowsItemText: 'Todos',
     };
-    const handleCloseUpdate = () => setShowUpdate(false);
-    const handleShowUpdate= () => setShowUpdate(true);
-    console.log(showUpdate)
+    
+    const handleClose = () => setShow(false);
+    const handleShow= () => setShow(true);
+
   return (
 <div className='d-flex flex-column align-items-end'>
 <DataTable 
@@ -102,7 +121,7 @@ const CategorieTable = ({categories,setCategories,getCategories}) => {
     pagination
     paginationComponentOptions={paginationComponentOptions}
 />
-<ModalUpdateCategory showUpdate={showUpdate} handleCloseUpdate={handleCloseUpdate} getCategories={getCategories} setShowUpdate={setShowUpdate}/>
+<ModalUpdateCategory show={show} handleClose={handleClose} categorie={categorie} setCategorie={setCategorie}/>
 </div>
   )
 }
