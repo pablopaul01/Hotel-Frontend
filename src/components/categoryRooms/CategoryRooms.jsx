@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import "./categoryRooms.css"
 import CategoryItem from './CategoryItem'
 import { axiosInstance } from '../../config/axiosInstance'
+import Swal from 'sweetalert2'
+
 
 const CategoryRooms = () => {
 
@@ -12,9 +14,13 @@ const CategoryRooms = () => {
         try {
             const response = await axiosInstance.get("/categorias")
             setCategories(response.data.categories)
-            
+
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
     }
 
@@ -22,7 +28,7 @@ const CategoryRooms = () => {
         getCategories()
     }, [])
 
-    console.log("categorias ", categories)
+   
     return (
         <>
             <div className='mb-5 titulos-recepcion container-rooms'>

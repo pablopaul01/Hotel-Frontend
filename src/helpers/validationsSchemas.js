@@ -40,7 +40,7 @@ export const CREATECATEGORY_SCHEMA = yup.object().shape({
   });
 
   export const UPDATECATEGORY_SCHEMA = yup.object().shape({
-    title: yup.string(),
+    title: yup.string().matches(/^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/,"Los nombres no son válidos"),
     capacidadMax: yup.number().positive('Debe ser un número positivo').integer('Debe ser un número entero'),
     descripcion: yup.string(),
     precio: yup.number().positive('Debe ser un número positivo'),

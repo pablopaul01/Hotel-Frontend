@@ -16,7 +16,7 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
   }
 
   const handlechange = (e)=>{
-    console.log(e.target.name)
+   
     setGuests({...guests,[e.target.name]: e.target.value})
   }
 

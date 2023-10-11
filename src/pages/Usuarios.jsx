@@ -3,6 +3,7 @@ import '../components/admin/usuario/usuarios.css'
 import UserTable from '../components/admin/usuario/UserTable'
 import ModalCreate from '../components/admin/usuario/ModalCreate'
 import { axiosInstance } from '../config/axiosInstance'
+import Swal from 'sweetalert2'
 
 
 const Usuarios = () => {
