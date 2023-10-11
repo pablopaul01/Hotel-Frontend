@@ -1,8 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import "../../register/register.css"
-import { useForm, Controller } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { CREATECATEGORY_SCHEMA } from '../../../helpers/validationsSchemas'
 import { axiosInstance } from '../../../config/axiosInstance'
 
 const FormCreateCategory = ({getCategories, showC, handleCloseC}) => {
@@ -51,24 +48,6 @@ const FormCreateCategory = ({getCategories, showC, handleCloseC}) => {
         });
       }
   }
-    // const createCategorie = async (data) => {
-    //     const token = localStorage.getItem("token");
-
-    //     try {
-    //         const response = await axiosInstance.put(`/categoria/rooms/${idCategorie}`,data, {
-    //             headers: {
-    //               Authorization: `Bearer ${token}`
-    //             }
-    //           });
-    //           reset();
-    //           getCategories()
-    //           setShow(false);
-    //     } catch (error) {
-    //         console.log(error)
-    //     } finally {
-    //         getCategories()
-    //     }
-    //   }/categoria/:id
 
     const handleImges = (e) => {
       setImgFile([...e.target.files])
@@ -102,7 +81,7 @@ const FormCreateCategory = ({getCategories, showC, handleCloseC}) => {
 
   return (
     <div>
- <form className="form-container" onSubmit={handleSubmit}  encType="multipart/form-data">
+ <form className="form-container" onSubmit={handleSubmit}>
  <div className="mb-2 pt-2">
                 <label className="form-label">Nombre de Categoría</label>
                 <input

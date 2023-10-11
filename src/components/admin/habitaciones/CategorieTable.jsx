@@ -13,7 +13,7 @@ import ModalUpdateCategory from './ModalUpdateCategory';
 const CategorieTable = ({categories,setCategories,getCategories}) => {
 
     const [show, setShow] = useState(false);
-    const [categorie, setCategorie] = useState([]);
+    const [categorie, setCategorie] = useState({});
 
  
     const getCategorieById = async (row) => {
@@ -23,14 +23,16 @@ const CategorieTable = ({categories,setCategories,getCategories}) => {
         Authorization: `Bearer ${token}`
       }
     });
-
+    // console.log(response.data.categorie)
     setCategorie(response.data.categorie);
   }
 
   const handleClick = (row) => {
+    
     getCategorieById(row);
     handleShow()
   }
+//   console.log("categorie en table", categorie)
     const deleteCategorie = async (row) => {
         const token = localStorage.getItem("token");
 
@@ -121,7 +123,7 @@ const CategorieTable = ({categories,setCategories,getCategories}) => {
     pagination
     paginationComponentOptions={paginationComponentOptions}
 />
-<ModalUpdateCategory show={show} handleClose={handleClose} categorie={categorie} setCategorie={setCategorie}/>
+<ModalUpdateCategory show={show} handleClose={handleClose} categorie={categorie} setCategorie={setCategorie} getCategories={getCategories}/>
 </div>
   )
 }

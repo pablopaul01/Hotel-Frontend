@@ -38,3 +38,15 @@ export const CREATECATEGORY_SCHEMA = yup.object().shape({
       })
     ),
   });
+
+  export const UPDATECATEGORY_SCHEMA = yup.object().shape({
+    title: yup.string(),
+    capacidadMax: yup.number().positive('Debe ser un número positivo').integer('Debe ser un número entero'),
+    descripcion: yup.string(),
+    precio: yup.number().positive('Debe ser un número positivo'),
+    roomNumbers: yup.array().of(
+      yup.object().shape({
+        number: yup.number().positive('Debe ser un número positivo').integer('Debe ser un número entero'),
+      })
+    ),
+  });

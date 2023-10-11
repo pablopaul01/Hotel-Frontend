@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
 import FormUpdateCategory from './FormUpdateCategory';
 
-const ModalUpdateCategory = ({show, handleClose, categorie, setCategorie}) => {
+const ModalUpdateCategory = ({show, handleClose, categorie, setCategorie, getCategories}) => {
+  console.log("categorie en modal", categorie)
   return (
     <>
       <Modal show={show} onHide={handleClose} className='modal-container'>
@@ -17,7 +18,7 @@ const ModalUpdateCategory = ({show, handleClose, categorie, setCategorie}) => {
           </div>
         </div>
         <Modal.Body className='modal-body'>
-          <FormUpdateCategory categorie={categorie} setCategorie={setCategorie} show={show} handleClose={handleClose}/>
+          <FormUpdateCategory categorie={categorie} setCategorie={setCategorie} show={show} handleClose={handleClose} getCategories={getCategories}/>
         </Modal.Body>
 
       </Modal>    
