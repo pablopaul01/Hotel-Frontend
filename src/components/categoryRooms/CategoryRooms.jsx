@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./categoryRooms.css"
-import { categories } from '../../helpers/data.js'
 import CategoryItem from './CategoryItem'
+import { axiosInstance } from '../../config/axiosInstance'
 
 const CategoryRooms = () => {
+
+    const [categories, setCategories] = useState([])
+
+    const getCategories = async () => {
+
+        try {
+            const response = await axiosInstance.get("/categorias")
+            setCategories(response.data.categories)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getCategories()
+    }, [])
+
+    console.log("categorias ", categories)
     return (
         <>
             <div className='mb-5 titulos-recepcion container-rooms'>
@@ -18,7 +37,7 @@ const CategoryRooms = () => {
                     <div className="row">
                         {
                             categories.map((category) => (
-                                <CategoryItem category={category} key={category.id} />
+                                <CategoryItem category={category} key={category._id} />
                             ))
                         }
                     </div>

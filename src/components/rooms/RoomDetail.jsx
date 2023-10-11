@@ -1,20 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import AccordionRoom from './AccordionRoom'
 import RoomCarrousel from './RoomCarrousel'
 import Button from 'react-bootstrap/Button'
 import './roomDetail.css'
 import { Link } from 'react-router-dom'
+import { useParams } from 'react-router'
+import { axiosInstance } from '../../config/axiosInstance'
 
+const RoomDetail = () => {
 
-const RoomDetail = ({ category }) => {
- 
+  const { id } = useParams();
 
-  const { data } = category;
+  const [category, setcategory] = useState({
+    data: {},
+    loading: true
+  })
+
+  const getCategory = async () => {
+
+    try {
+      const response = await axiosInstance.get(`/categoria/${id}`)
+      setcategory({
+        data: response.data.categorie,
+        loading: false
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getCategory()
+  }, [])
+
 
   return (
     <>
       <nav id="navbar-example2" className="navbar bg-body-tertiary px-3 mb-3">
-        <p className="navbar-brand titulo-galery fs-2" >{data.title}</p>
+        <p className="navbar-brand titulo-galery fs-2" >{category.data.title}</p>
         <ul className="nav nav-pills">
           <li className="nav-item">
             <a className="nav-link btn-outline-light text-light" href="#scrollspyHeading1">Descripción</a>
@@ -29,40 +53,35 @@ const RoomDetail = ({ category }) => {
           <RoomCarrousel category={category} />
         </div>
         <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-5">
-          <AccordionRoom />
+          <AccordionRoom category={category} />
           <div className="mt-4">
-            {/* <ModalReserva /> */}
             <Link to="/reserva-habitaciones">
               <Button size='lg' className='mx-2 btn-outline-light text-light'>
                 Ir a reservar
               </Button>
             </Link>
             <Link to="/categoria-habitaciones">
-              <Button variant="secondary" size='lg' className='mx-2'>
+              <Button variant="dark" size='lg' className='mx-2'>
                 Ver más habitaciones
               </Button>
             </Link>
           </div>
         </div>
       </div>
-      <h3 className="mb-4 text-center">
-        <i>Reserva ahora por un precio de
-          <b className='text-secondary'> ${data.precio}</b>
-        </i>
+      <h3 className="mb-4 text-center alert alert-success " role="alert">
+        Reserva ahora por un precio de
+        <i><b className='text-danger'> ${category.data.precio}</b></i>
         <small className='fs-6 text-secondary'>/noche</small>
       </h3>
       <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" className="overflow-nav scrollspy-example bg-body-tertiary p-3 rounded-2 mb-5" tabindex="0">
         <h4 id="scrollspyHeading1">Descripción del alojamiento</h4>
         <p>
-          El Grace Cafayate ofrece piscina al aire libre y piscina cubierta y está situado en Cafayate, rodeado por viñedos preciosos y con vistas panorámicas a los Andes. Además, proporciona WiFi gratuita y se encuentra a 2 km del centro de la localidad.
-
-          Las habitaciones disponen de TV de pantalla plana con canales vía satélite, aire acondicionado, terraza, baño privado con ducha, albornoz y secador de pelo y minibar. Algunas de ellas tienen vistas a las montañas.
-
-          El Grace Cafayate cuenta con spa, restaurante gourmet a la carta, abierto en determinados días y a horas concretas, mostrador de información turística, consigna de equipaje y servicio de planchado. En las inmediaciones se pueden practicar diversas actividades, como equitación.
-
-          Este hotel de lujo también alberga una enoteca, un bar junto a la piscina y un jardín. El establecimiento se encuentra a 2,7 km de los viñedos de Cafayate y a 14 km de los viñedos de San Carlos.
-
-          Asimismo, el alojamiento está a 2 horas y media en coche del aeropuerto internacional Martín Miguel de Güemes.</p>
+          Nuestro alojamiento es mucho más que un simple lugar para descansar; es un refugio acogedor donde la comodidad y la hospitalidad se fusionan para brindarle una experiencia inolvidable. Ya sea que esté viajando por negocios o disfrutando de unas vacaciones, nuestro alojamiento está diseñado para satisfacer todas sus necesidades.
+          <hr />
+          Nuestras habitaciones y suites han sido decoradas con un toque de elegancia y comodidad. Cada detalle ha sido cuidadosamente considerado, desde la ropa de cama de alta calidad hasta el mobiliario sofisticado, creando un ambiente acogedor y relajante.
+          <hr />
+          Nuestro personal cordial y atento está dedicado a hacer que su estancia sea lo más placentera posible. Estamos disponibles las 24 horas del día para atender todas sus necesidades, desde proporcionar recomendaciones locales hasta brindar asistencia con cualquier solicitud especial.
+        </p>
         <h4 id="scrollspyHeading2">Necesitas saber:</h4>
         <p>
           <ul>
@@ -71,6 +90,7 @@ const RoomDetail = ({ category }) => {
             <li>Caja fuerte en la recepción</li>
             <li>Zona de fumadores</li>
           </ul>
+          <hr />
           El alojamiento ofrece todos los días el desayuno. Los huéspedes podrán cocinar en la comodidad de su alojamiento, en su asador.
           Las comodidades incluyen estacionamiento limitado gratis, venta de entradas, centro de negocios y zona de picnic. Los huéspedes también podrán disfrutar de jardín y tv en zonas comunes. Por un cargo, la propiedad cuenta con servicio de traslado al aeropuerto, servicio de guarda-equipaje y servicio de lavandería.</p>
       </div>

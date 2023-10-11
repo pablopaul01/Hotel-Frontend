@@ -14,7 +14,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
 
-  
+
 
     const [editInputName, setEditInputName] = useState(true)
     const [editInputDni, setEditInputDni] = useState(true)
@@ -70,14 +70,18 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                 <div className="input-group mb-3">
                     <input
                         disabled={editInputName}
-
                         placeholder={decode.name}
                         type="text"
                         className="form-control"
                         name="name"
                         {...register("name")}
                     />
-                    <button className="btn btn-outline-light" type="button" onClick={() => setEditInputName(!editInputName)}><FiEdit /></button>
+                    <button
+                        className={editInputName ? ("btn btn-outline-light") : ("btn btn-danger")}
+                        type="button"
+                        onClick={() => setEditInputName(!editInputName)}>
+                        <FiEdit />
+                    </button>
                 </div>
             </div>
             <p className="text-danger my-1">
@@ -95,7 +99,12 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                         name="dni"
                         {...register("dni")}
                     />
-                    <button className="btn btn-outline-light" type="button" onClick={() => setEditInputDni(!editInputDni)}><FiEdit /></button>
+                    <button
+                        className={editInputDni ? ("btn btn-outline-light") : ("btn btn-danger")}
+                        type="button"
+                        onClick={() => setEditInputDni(!editInputDni)}>
+                        <FiEdit />
+                    </button>
                 </div>
             </div>
             <p className="text-danger my-1">
@@ -111,9 +120,15 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                         type="number"
                         className="form-control"
                         name="phone"
+                        // autofocus={!editInputPhone}
                         {...register("phone")}
                     />
-                    <button className="btn btn-outline-light" type="button" onClick={() => setEditInputPhone(!editInputPhone)}><FiEdit /></button>
+                    <button
+                        className={editInputPhone ? ("btn btn-outline-light") : ("btn btn-danger")}
+                        type="button"
+                        onClick={() => setEditInputPhone(!editInputPhone)}>
+                        <FiEdit />
+                    </button>
                 </div>
             </div>
             <p className="text-danger my-1">

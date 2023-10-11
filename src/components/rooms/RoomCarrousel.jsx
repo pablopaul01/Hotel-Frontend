@@ -3,28 +3,29 @@ import "./rooms.css"
 
 const RoomCarrousel = ({ category }) => {
 
-    const { data } = category;
+
 
     return (
         <>
             {
-                data.length !== 0 ?
+                category.loading ?
+                    (
+                        <h1>Habitación no encontrada</h1>
+                    )
+                    :
                     (
                         <Carousel slide={false}>
                             {
-                                data.imagen.map((img) => (
-                                    <Carousel.Item key={img.id}>
+                                category.data.imagenes?.map((imagen) => (
+                                    <Carousel.Item key={imagen._id}>
                                         <div>
-                                            <img src={img.img} className="d-block w-100" alt={img.id} />
+                                            <img src={imagen.url} className="d-block w-100" alt={imagen._id} />
                                         </div>
                                     </Carousel.Item>
                                 ))
                             }
                         </Carousel>
-                    )
-                    :
-                    (
-                        <h1>Habitación no encontrada</h1>
+
                     )
             }
 
