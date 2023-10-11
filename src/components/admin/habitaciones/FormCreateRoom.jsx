@@ -1,14 +1,32 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "../../register/register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { REGISTRO_SCHEMA } from '../../../helpers/validationsSchemas'
-import {categories} from '../../../helpers/data'
+import { CREATEROOM_SCHEMA } from '../../../helpers/validationsSchemas'
+import { axiosInstance } from '../../../config/axiosInstance'
 
 const FormCreate = () => {
+    const [categories, setCategories] = useState([]);
+    const [idCategorie, setIdCategorie] = useState("")
+ 
+    const getCategories = async () => {
+    const token = localStorage.getItem("token");
+    const response = await axiosInstance.get("/categorias", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
 
+    setCategories(response.data.categories);
+  }
+
+  useEffect(() => {
+    getCategories();
+
+  }, [])
+    
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
-        resolver: yupResolver(REGISTRO_SCHEMA)
+        resolver: yupResolver(CREATEROOM_SCHEMA)
     })
 
     const onSubmit = (data) => {
@@ -17,6 +35,8 @@ const FormCreate = () => {
     }
 
     console.log(errors);
+    console.log("id seleccionado", idCategorie)
+
   return (
     <div>
  <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
@@ -25,62 +45,28 @@ const FormCreate = () => {
                 <input
                     type="text"
                     className="form-control"
-                    name="name"
-                    {...register("name")}
+                    name="number"
+                    {...register("number")}
                 />
             </div>
             <p className="text-danger my-1">
-                {errors.name?.message}
+                {errors.number?.message}
             </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Tipo de habitación</label>
-                <select name="tipo" className="form-control">
+                <select name="tipo" className="form-control" onChange={(e)=>{
+                    setIdCategorie(e.target.value)
+                }}>
                     <option >----- Seleccione el tipo de habitación ----- </option>
                     {
                         categories.map((category,index) => (
-                            <option value={category.id} key={category.id}>{category.title}</option>
+                            <option value={category._id} key={category._id}>{category.title}</option>
                         ))
                     }
                 </select>
             </div>
-            <p className="text-danger my-1">
-                {errors.username?.message}
-            </p>
-            <div className="mb-2 pt-2">
-                <label className="form-label">Precio</label>
-                <input
-                    type="number"
-                    className="form-control"
-                    name="precio"
-                    {...register("password")}
-                />
-            </div>
-            <div className="mb-2 pt-2">
-                <label className="form-label">Imagenes de la habitación</label>
-                <input
-                    type="file"
-                    className="form-control"
-                    name="imagen"
-                    multiple
-                />
-            </div>
-            <p className="text-danger my-1">
-                {errors.password?.message}
-            </p>
-            <div className="mb-2 pt-2">
-                <label className="form-label">Descripción</label>
-                <textarea
-                    className="form-control"
-                    name="descripcion"
-                    rows="4"
-                    {...register("repassword")}
-                />
-            </div>
-            <p className="text-danger my-1">
-                {errors.repassword?.message}
-            </p>
             <div className="d-grid mt-5 mb-4">
-                <button className="btn btn-outline-light boton-login" type="submit">Crear usuario</button>
+                <button className="btn btn-outline-light boton-login" type="submit">Crear habitación</button>
             </div>
         </form>
     </div>

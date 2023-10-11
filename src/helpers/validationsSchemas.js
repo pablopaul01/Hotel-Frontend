@@ -22,3 +22,7 @@ export const UPDATE_SCHEMA = yup.object({
     dni: yup.string().matches(/^\d{8}$/, "DNI no válido"),
     phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/,"El número no es válido")
 });
+
+export const CREATEROOM_SCHEMA = yup.object({
+    number: yup.number("El campo debe ser un número").required("El nro de habitación es requerido"),
+});
