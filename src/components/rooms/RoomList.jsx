@@ -38,7 +38,7 @@ const RoomList = ({date,guests}) => {
     }
 
     const availableRooms = getAvailableRooms(categories);
-console.log("guests en roomlist", guests)
+
     return (
         <div className='container'>
             {

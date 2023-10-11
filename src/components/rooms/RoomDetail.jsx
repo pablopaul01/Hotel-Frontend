@@ -3,12 +3,11 @@ import AccordionRoom from './AccordionRoom'
 import RoomCarrousel from './RoomCarrousel'
 import Button from 'react-bootstrap/Button'
 import './roomDetail.css'
-import ModalReserva from './ModalReserva'
 import { Link } from 'react-router-dom'
 
 
 const RoomDetail = ({ category }) => {
-  console.log("room en detail", category)
+ 
 
   const { data } = category;
 

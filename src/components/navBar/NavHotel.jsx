@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -6,12 +6,15 @@ import "./NavBar.css"
 import { FaBars } from 'react-icons/fa'
 import NavbarLogin from '../NavbarLogin/NavbarLogin'
 import { Link } from 'react-router-dom'
-
+import jwt_decode from 'jwt-decode'
 
 
 const NavHotel = () => {
+
   const [navbarFixed, setNavbarFixed] = useState(false);
   const [shouldAppear, setShouldAppear] = useState(false);
+
+
   const navbarRef = useRef();
 
   const handleScroll = () => {
@@ -23,6 +26,8 @@ const NavHotel = () => {
       setShouldAppear(false);
     }
   };
+
+  const token = localStorage.getItem("token");
 
   window.onscroll = handleScroll;
   return (
@@ -60,9 +65,40 @@ const NavHotel = () => {
               </li>
               <Link to="/Nosotros" className='linknav justify-content-md-center align-items-center d-flex'>Quienes Somos</Link>
               <Link to="/Contacto" className='linknav justify-content-md-center align-items-center d-flex'>Contacto</Link>
-              <Link to="/reserva-habitaciones">
-                <button className="button-footer mt-2">RESERVAR AHORA</button>
-              </Link>
+              {
+                token === null ?
+                  (
+                    <Link to="/reserva-habitaciones">
+                      <button className="button-footer mt-2">RESERVAR AHORA</button>
+                    </Link>
+                  )
+                  :
+                  (
+                    jwt_decode(token).role === "admin" ?
+                      (
+                        <li className="nav-item dropdown justify-content-md-center align-items-center d-flex">
+                          <a className="dropdown-toggle linknav button-footer mt-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ADMINISTRAR
+                          </a>
+                          <ul className="dropdown-menu">
+                            <li>
+                              <Link to="/admin/users" className="dropdown-item linknav">Usuarios
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="/admin/rooms" className="dropdown-item linknav">Habitaciones</Link>
+                            </li>
+                          </ul>
+                        </li>
+                      )
+                      :
+                      (
+                        <Link to="/reserva-habitaciones">
+                          <button className="button-footer mt-2">RESERVAR AHORA</button>
+                        </Link>
+                      )
+                  )
+              }
             </Nav>
           </Navbar.Collapse>
         </Container>

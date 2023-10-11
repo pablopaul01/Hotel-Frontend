@@ -6,23 +6,32 @@ import { axiosInstance } from '../config/axiosInstance'
 
 
 const Usuarios = () => {
+  //state del modal
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  //state con arrays de los usuarios
   const [users, setUsers] = useState([]);
 
+  //funciones para abrir y cerrar modal
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  //funcion asincrona que busca los usuarios en la base de datos mediante axios
   const getAllUsers = async () => {
     const token = localStorage.getItem("token");
-    const response = await axiosInstance.get("/usuarios", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    console.log(response);
-    console.log(response.data);
-    console.log(response.data.users);
-    setUsers(response.data.users);
+    try {
+      const response = await axiosInstance.get("/usuarios", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setUsers(response.data.users);
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
+    }
   }
 
   useEffect(() => {
@@ -30,14 +39,14 @@ const Usuarios = () => {
   }, [])
 
   return (
-    <div className='container-fluid container-crud'>
+    <div className='container container-crud mb-5'>
       <div className="row">
-        <div className="col-12">
-          <p className='title-admin'>Administración de usuarios</p>
-          <hr />
-          <button className='btn btn-brown' onClick={handleShow}>Crear usuario</button>
+        <div className="col-12 d-flex justify-content-between mx-0">
+          <h2 className='titulo-galery'>Administración de usuarios</h2>
+          <button className='btn btn-outline-light' onClick={handleShow}>Crear usuario</button>
         </div>
       </div>
+      <hr />
       <div className="row">
         <div className="col mt-5"><UserTable getAllUsers={getAllUsers} users={users} /></div>
       </div>
