@@ -48,7 +48,7 @@ const Room = ({date, category, guests, allDates}) => {
         <div className="card mb-3">
             <div className="row g-0">
                 <div className="col-md-12 col-lg-4 col-xl-4">
-                    <img src={category.imagen[1].img} className="img-fluid rounded-start" alt={category.title} />
+                    <img src={category.imagenes[1].url} className="img-fluid rounded-start" alt={category.title} />
                 </div>
                 <div className="col-md-12 col-lg-8 col-xl-8">
                     <div className="card-body h-100 justify-content-between d-flex flex-column">
@@ -62,14 +62,14 @@ const Room = ({date, category, guests, allDates}) => {
                             </div>
                             <div className='col-lg-7 col-md-6   '>
                                 <div className="row">
-                                    <div className="col-lg-8 col-md-6 text-center">
+                                    <div className="col-lg-6 col-md-6 text-center">
                                         <p className='fs-7 text-secondary mx-0 mb-0'>{category.capacidadMax} personas </p>
                                         {Array.from({ length: capacidadMax }, (_, index) => (
                                             <GrUser key={index} />
                                         ))}
                                     </div>
-                                    <div className="col-lg-4 col-md-6 text-center">
-                                        <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
+                                    <div className="col-lg-6 col-md-6 text-center">
+                                        <label className="input fs-7 text-secondary d-block">Habitaciones Disp.</label>
                                         <select className="mx-2 mb-2" onChange={handleSelect}>
                                             <option value="0" >0</option>
                                             {

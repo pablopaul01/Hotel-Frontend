@@ -16,6 +16,10 @@ const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests
     return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
   }
 
+  const updateUnavailableDates = async (roomNumber) => {
+
+  }
+
   const handleClick = () => {
 
     // category.roomNumbers= [...unavailableDates,allDates]
