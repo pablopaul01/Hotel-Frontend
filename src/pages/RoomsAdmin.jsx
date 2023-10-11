@@ -39,17 +39,17 @@ const RoomsAdmin = () => {
   return (
     <div className='container container-crud mb-5'>
       <div className="row">
-        <div className="col-12">
+        <div className="col-12 d-flex justify-content-between">
           <h2 className='display-5'>Administración de habitaciones</h2>
           <div className='d-flex gap-3'>
-            <button className='btn btn-brown' onClick={handleShowC}>Crear Categoría</button>
-            <button className='btn btn-brown' onClick={handleShow}>Crear habitación</button>
+            <button className='btn btn-outline-light' onClick={handleShowC}>Crear Categoría</button>
+            <button className='btn btn-outline-light' onClick={handleShow}>Crear habitación</button>
           </div>
         </div>
-        <hr />
       </div>
+      <hr />
       <div className="row">
-        <h3 className='mt-5 text-center'>Categorías de habitaciones</h3>
+        <h3 className='mt-5 text-center mb-4'>Categorías de habitaciones</h3>
         <div className="col "><CategorieTable categories={categories} setCategories={setCategories} getCategories={getCategories} /></div>
       </div>
       <div className="row d-flex justify-content-center mb-5">

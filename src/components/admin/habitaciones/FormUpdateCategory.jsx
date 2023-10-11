@@ -2,48 +2,47 @@ import React, { useState, useEffect } from "react";
 import "../../register/register.css";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import {UPDATECATEGORY_SCHEMA } from "../../../helpers/validationsSchemas";
+import { UPDATECATEGORY_SCHEMA } from "../../../helpers/validationsSchemas";
 import { axiosInstance } from "../../../config/axiosInstance";
 import { Button } from "react-bootstrap";
 import { FiEdit } from 'react-icons/fi'
 import Swal from 'sweetalert2';
 
 
-const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose,getCategories }) => {
+const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCategories }) => {
   const [editInputTitle, setEditInputTitle] = useState(true)
   const [editInputPrice, setEditInputPrice] = useState(true)
   const [editInputDesc, setEditInputDesc] = useState(true)
   const [editInputGuest, setEditInputGuest] = useState(true)
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(UPDATECATEGORY_SCHEMA)
-})
+  })
 
   const onSubmit = async (data) => {
-console.log(data);
-const token = localStorage.getItem("token");
+
+    const token = localStorage.getItem("token");
     try {
-        const response = await axiosInstance.put(`/categoria/${categorie._id}`, data, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
-        handleClose();
-        getCategories()
-        Swal.fire({
-            icon: "success",
-            title: "Datos de la categoría actualizados con éxito"
-        })
+      const response = await axiosInstance.put(`/categoria/${categorie._id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      handleClose();
+      getCategories()
+      Swal.fire({
+        icon: "success",
+        title: "Datos de la categoría actualizados con éxito"
+      })
 
     } catch (error) {
-        // Swal.fire({
-        //     icon: "error",
-        //     title: `Ocurrió un problema! Error${error.response.data.status}`,
-        //     text: `${error.response.data.mensaje}`
-        // })
-        console.log(error)
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
     }
-}
-console.log("categorie en form", categorie)
+  }
+
   return (
     <div>
       <form
@@ -62,69 +61,89 @@ console.log("categorie en form", categorie)
               placeholder={categorie.title}
               {...register("title")}
             />
-            <button className="btn btn-outline-light" type="button" onClick={() => setEditInputTitle(!editInputTitle)}><FiEdit /></button>
+            <button
+              className={editInputTitle ? ("btn btn-outline-light") : ("btn btn-danger")}
+              type="button"
+              onClick={() => setEditInputTitle(!editInputTitle)}>
+              <FiEdit />
+            </button>
           </div>
         </div>
         <p className="text-danger my-1">
-                {errors.title?.message}
-            </p>
+          {errors.title?.message}
+        </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Precio</label>
-            <div className="input-group">
+          <div className="input-group">
             <input
-            type="number"
-            className="form-control"
-            name="precio"
-            disabled={editInputPrice}
-            placeholder={categorie.precio}
-            {...register("precio")}
-          />
-          <button className="btn btn-outline-light" type="button" onClick={() => setEditInputPrice(!editInputPrice)}><FiEdit /></button>
-            </div>
+              type="number"
+              className="form-control"
+              name="precio"
+              disabled={editInputPrice}
+              placeholder={categorie.precio}
+              {...register("precio")}
+            />
+            <button
+              className={editInputPrice ? ("btn btn-outline-light") : ("btn btn-danger")}
+              type="button"
+              onClick={() => setEditInputPrice(!editInputPrice)}>
+              <FiEdit />
+            </button>
+          </div>
         </div>
         <p className="text-danger my-1">
-                {errors.precio?.message}
-            </p>
+          {errors.precio?.message}
+        </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Capacidad máxima de personas</label>
           <div className="input-group">
-          <input
-            type="number"
-            className="form-control"
-            name="capacidadMax"
-            disabled={editInputGuest}
-            placeholder={categorie.capacidadMax}
-            {...register("capacidadMax")}
-          />
-          <button className="btn btn-outline-light" type="button" onClick={() => setEditInputGuest(!editInputGuest)}><FiEdit /></button>
+            <input
+              type="number"
+              className="form-control"
+              name="capacidadMax"
+              disabled={editInputGuest}
+              placeholder={categorie.capacidadMax}
+              {...register("capacidadMax")}
+            />
+            <button
+              className={editInputGuest ? ("btn btn-outline-light") : ("btn btn-danger")}
+              type="button"
+              onClick={() => setEditInputGuest(!editInputGuest)}>
+              <FiEdit />
+            </button>
           </div>
         </div>
         <p className="text-danger my-1">
-                {errors.capacidadMax?.message}
-            </p>
+          {errors.capacidadMax?.message}
+        </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Descripción</label>
           <div className="input-group">
-          <textarea
-            className="form-control"
-            name="descripcion"
-            disabled={editInputDesc}
-            placeholder={categorie.descripcion}
-            {...register("descripcion")}
-          />
-          <button className="btn btn-outline-light" type="button" onClick={() => setEditInputDesc(!editInputDesc)}><FiEdit /></button>
+            <textarea
+              className="form-control"
+              name="descripcion"
+              disabled={editInputDesc}
+              placeholder={categorie.descripcion}
+              {...register("descripcion")}
+            />
+            <button
+              className={editInputDesc ? ("btn btn-outline-light") : ("btn btn-danger")}
+              type="button"
+              onClick={() => setEditInputDesc(!editInputDesc)}>
+              <FiEdit />
+            </button>
           </div>
         </div>
         <p className="text-danger my-1">
-                {errors.descripcion?.message}
-            </p>
+          {errors.descripcion?.message}
+        </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Números de habitaciones</label>
           <div>
             <span>
-              { categorie?.roomNumbers?.map(room => 
+              {categorie?.roomNumbers?.map(room =>
                 <span key={room._id}>{room.number}, </span>
-                )}
+              )}
             </span>
           </div>
         </div>

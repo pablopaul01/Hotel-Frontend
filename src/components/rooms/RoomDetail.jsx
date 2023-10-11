@@ -6,6 +6,8 @@ import './roomDetail.css'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router'
 import { axiosInstance } from '../../config/axiosInstance'
+import Swal from 'sweetalert2'
+
 
 const RoomDetail = () => {
 
@@ -26,7 +28,11 @@ const RoomDetail = () => {
       })
 
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
     }
   }
 

@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import FormUpdateCategory from './FormUpdateCategory';
 
 const ModalUpdateCategory = ({show, handleClose, categorie, setCategorie, getCategories}) => {
-  console.log("categorie en modal", categorie)
+  
   return (
     <>
       <Modal show={show} onHide={handleClose} className='modal-container'>

@@ -24,7 +24,7 @@ const BookRoom = () => {
         kids: "0"
       })
 
-      console.log("guests desde bookroom",guests)
+   
     return (    
         <>
             <div className='titulos-rooms mb-4'>
