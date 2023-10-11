@@ -27,7 +27,7 @@ const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests
       const updatedUnavailableDates = [...unavailableDates, ...allDates];
       updateUnavailableDates(roomNumber, updatedUnavailableDates);
     });
-    console.log(selectedRooms)
+
   }
 
   return (

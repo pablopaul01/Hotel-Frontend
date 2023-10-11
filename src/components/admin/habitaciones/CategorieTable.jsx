@@ -3,11 +3,10 @@ import DataTable from 'react-data-table-component';
 import '../usuario/usuarios.css'
 import './formcreate.css'
 import { BiEdit } from 'react-icons/bi'
-import { TiDeleteOutline } from 'react-icons/ti'
-import { MdBlock } from 'react-icons/md'
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import { axiosInstance } from '../../../config/axiosInstance';
 import ModalUpdateCategory from './ModalUpdateCategory';
+import Swal from 'sweetalert2';
 
 
 const CategorieTable = ({ categories, setCategories, getCategories }) => {
@@ -23,7 +22,7 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
                 Authorization: `Bearer ${token}`
             }
         });
-        // console.log(response.data.categorie)
+    
         setCategorie(response.data.categorie);
     }
 
@@ -32,19 +31,40 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
         getCategorieById(row);
         handleShow()
     }
-    //   console.log("categorie en table", categorie)
+ 
     const deleteCategorie = async (row) => {
         const token = localStorage.getItem("token");
 
         try {
-            const response = await axiosInstance.delete(`/categoria/${row}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            Swal.fire({
+                title: 'Esta seguro de eliminar la categoría?',
+                text: "No podrás revertir los cambios!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar!'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await axiosInstance.delete(`/categoria/${row}`, {
+                        headers: {
+                            Authorization: `Bearer ${token}`
+                        }
+                    }); Swal.fire(
+                        'Eliminado!',
+                        'La categoría fue eliminada',
+                        'success'
+                    )
+                    getCategories()
                 }
-            });
-            getCategories()
-        } catch (error) {
-            console.log(error)
+            })
+        }
+        catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         } finally {
             getCategories()
         }

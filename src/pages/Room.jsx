@@ -3,6 +3,8 @@ import { categories } from '../helpers/data'
 import RoomDetail from '../components/rooms/RoomDetail'
 import { useParams } from 'react-router'
 import { axiosInstance } from '../config/axiosInstance'
+import Swal from 'sweetalert2'
+
 
 const Room = () => {
 
@@ -19,7 +21,11 @@ const Room = () => {
             setCategories(response.data.categories)
 
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
     }
 
