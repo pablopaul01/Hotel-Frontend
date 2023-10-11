@@ -24,7 +24,25 @@ const RoomsTable = ({categories, setCategories}) => {
         });
         setCategorieById(response.data.categorie);
       }
-      console.log("category by id", categorieById)
+
+      const deleteRoom = async (row) => {
+        const token = localStorage.getItem("token");
+
+        try {
+            const response = await axiosInstance.delete(`/categoria/${categorieSelected}/room/${row}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              });
+              getCategoriesById(categorieSelected)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            // getCategories()
+        }
+      }
+
+
     const columns = [
         {
             name: "Nro Habitación",
@@ -49,8 +67,7 @@ const RoomsTable = ({categories, setCategories}) => {
             selector: row => {
                 return (
                     <div style={{display:"flex", gap:"20px", justifyContent:"center"}}>
-                        <button className="btn btn-warning btn-sm mr-2"><BiEdit className='icon-crud'/></button>
-                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteUser(row._id) }}><RiDeleteBin6Line className='icon-crud' /></button>
+                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteRoom(row._id) }}><RiDeleteBin6Line className='icon-crud' /></button>
                     </div>
                 )
             },

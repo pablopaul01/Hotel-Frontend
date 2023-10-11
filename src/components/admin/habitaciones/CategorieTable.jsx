@@ -1,5 +1,4 @@
-import React from 'react'
-// import {categories} from '../../../helpers/data'
+import React,{useState} from 'react'
 import DataTable from 'react-data-table-component';
 import '../usuario/usuarios.css'
 import './formcreate.css'
@@ -7,8 +6,30 @@ import {BiEdit} from 'react-icons/bi'
 import { TiDeleteOutline } from 'react-icons/ti'
 import {MdBlock} from 'react-icons/md'
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import { axiosInstance } from '../../../config/axiosInstance';
+import ModalUpdateCategory from './ModalUpdateCategory';
 
-const CategorieTable = ({categories,setCategories}) => {
+
+const CategorieTable = ({categories,setCategories,getCategories}) => {
+    const [showUpdate, setShowUpdate] = useState(false);
+
+    const deleteCategorie = async (row) => {
+        const token = localStorage.getItem("token");
+
+        try {
+            const response = await axiosInstance.delete(`/categoria/${row}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              });
+              getCategories()
+        } catch (error) {
+            console.log(error)
+        } finally {
+            getCategories()
+        }
+      }
+      
     const columns = [
         {
             name: "Tipo",
@@ -55,8 +76,8 @@ const CategorieTable = ({categories,setCategories}) => {
             selector: row => {
                 return (
                     <div style={{display:"flex", gap:"20px", justifyContent:"center"}}>
-                        <button className="btn btn-warning btn-sm mr-2"><BiEdit className='icon-crud'/></button>
-                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteUser(row._id) }}><RiDeleteBin6Line className='icon-crud' /></button>
+                        <button className="btn btn-warning btn-sm mr-2" onClick={()=>{handleShowUpdate}}><BiEdit className='icon-crud'/></button>
+                        <button className="btn btn-danger btn-sm" title="Eliminar" id="t-1" onClick={() => { deleteCategorie(row._id) }}><RiDeleteBin6Line className='icon-crud' /></button>
                     </div>
                 )
             },
@@ -70,6 +91,9 @@ const CategorieTable = ({categories,setCategories}) => {
         selectAllRowsItem: true,
         selectAllRowsItemText: 'Todos',
     };
+    const handleCloseUpdate = () => setShowUpdate(false);
+    const handleShowUpdate= () => setShowUpdate(true);
+    console.log(showUpdate)
   return (
 <div className='d-flex flex-column align-items-end'>
 <DataTable 
@@ -78,6 +102,7 @@ const CategorieTable = ({categories,setCategories}) => {
     pagination
     paginationComponentOptions={paginationComponentOptions}
 />
+<ModalUpdateCategory showUpdate={showUpdate} handleCloseUpdate={handleCloseUpdate} getCategories={getCategories} setShowUpdate={setShowUpdate}/>
 </div>
   )
 }

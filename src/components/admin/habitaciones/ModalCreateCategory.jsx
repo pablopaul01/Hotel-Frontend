@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal';
-import FormCreateRoom from './FormCreateRoom';
+import FormCreateCategory from './FormCreateCategory';
 
-const ModalCreate = ({show, handleClose, getCategories, setShow}) => {
-
+const ModalCreateCategory = ({showC, handleCloseC, getCategories, setShowC}) => {
   return (
     <>
-      <Modal show={show} onHide={handleClose} className='modal-container'>
+      <Modal show={showC} onHide={handleCloseC} className='modal-container'>
         <div className='header-container'>
           <div className="modal-header mx-5 border border-top-0 border-end-0 border-start-0 py-0">
               <div className='my-5 '>
-                <h2 className="text-white titulo-registro ms-4">Crear habitación</h2>
+                <h2 className="text-white titulo-registro ms-4">Crear categoría</h2>
               </div>
               <div className='d-none d-md-block d-lg-block'>
                 <img src="../../public/RollingHotel-transparente.png" className="img-fluid mx-4" alt="logo-Rolling-Hotel" style={{width:"150px"}}/>
@@ -18,7 +17,7 @@ const ModalCreate = ({show, handleClose, getCategories, setShow}) => {
           </div>
         </div>
         <Modal.Body className='modal-body'>
-          <FormCreateRoom getCategories={getCategories} show={show} setShow={setShow}/>
+          <FormCreateCategory getCategories={getCategories} showC={showC} handleCloseC={handleCloseC}/>
         </Modal.Body>
 
       </Modal>    
@@ -29,4 +28,4 @@ const ModalCreate = ({show, handleClose, getCategories, setShow}) => {
   )
 }
 
-export default ModalCreate
+export default ModalCreateCategory

@@ -5,11 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { CREATEROOM_SCHEMA } from '../../../helpers/validationsSchemas'
 import { axiosInstance } from '../../../config/axiosInstance'
 
-const FormCreate = () => {
+const FormCreate = ({getCategories, show, setShow}) => {
     const [categories, setCategories] = useState([]);
     const [idCategorie, setIdCategorie] = useState("")
  
-    const getCategories = async () => {
+    const getCategoriesDb = async () => {
     const token = localStorage.getItem("token");
     const response = await axiosInstance.get("/categorias", {
       headers: {
@@ -21,7 +21,7 @@ const FormCreate = () => {
   }
 
   useEffect(() => {
-    getCategories();
+    getCategoriesDb();
 
   }, [])
     
@@ -29,7 +29,28 @@ const FormCreate = () => {
         resolver: yupResolver(CREATEROOM_SCHEMA)
     })
 
+    const addRooms = async (data) => {
+        const token = localStorage.getItem("token");
+
+        try {
+            const response = await axiosInstance.put(`/categoria/rooms/${idCategorie}`,data, {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              });
+              reset();
+              getCategories()
+              setShow(false);
+        } catch (error) {
+            console.log(error)
+        } finally {
+            getCategories()
+        }
+      }
+
+
     const onSubmit = (data) => {
+        addRooms(data)
         console.log(data);
         reset();
     }

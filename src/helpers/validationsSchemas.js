@@ -24,5 +24,17 @@ export const UPDATE_SCHEMA = yup.object({
 });
 
 export const CREATEROOM_SCHEMA = yup.object({
-    number: yup.number("El campo debe ser un número").required("El nro de habitación es requerido"),
+    number: yup.string().matches(/^(?:[1-9]\d{0,2}|999)$/,"El valor debe ser un número válido").required("El nro de habitación es requerido"),
 });
+
+export const CREATECATEGORY_SCHEMA = yup.object().shape({
+    title: yup.string().required('El título es requerido'),
+    capacidadMax: yup.number().required('La capacidad máxima es requerida').positive('Debe ser un número positivo').integer('Debe ser un número entero'),
+    descripcion: yup.string().required('La descripción es requerida'),
+    precio: yup.number().required('El precio es requerido').positive('Debe ser un número positivo'),
+    roomNumbers: yup.array().of(
+      yup.object().shape({
+        number: yup.number().positive('Debe ser un número positivo').integer('Debe ser un número entero'),
+      })
+    ),
+  });
