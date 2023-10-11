@@ -11,17 +11,21 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose }) => {
   const [categories, setCategories] = useState([]);
   const [idCategorie, setIdCategorie] = useState("");
   const [imgFile, setImgFile] = useState([]);
-  const [editInputTitle, setEditInputTitle] = useState(false)
-  const [editInputPrice, setEditInputPrice] = useState(false)
+  const [editInputTitle, setEditInputTitle] = useState(true)
+  const [editInputPrice, setEditInputPrice] = useState(true)
   const [editInputDesc, setEditInputDesc] = useState(true)
-  const [editInputGuest, setEditInputGuest] = useState(false)
-  const [formDatos, setFormDatos] = useState({
-    title: "",
-    capacidadMax: "",
-    descripcion: "",
-    precio: "",
-    roomNumbers: [],
-  });
+  const [editInputGuest, setEditInputGuest] = useState(true)
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(CREATECATEGORY_SCHEMA)
+})
+
+  // const [formDatos, setFormDatos] = useState({
+  //   title: "",
+  //   capacidadMax: "",
+  //   descripcion: "",
+  //   precio: "",
+  //   roomNumbers: [],
+  // });
 
   //   const getCategoriesDb = async () => {
   //   const token = localStorage.getItem("token");
@@ -39,58 +43,83 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose }) => {
 
   // }, [])
 
-  const handleChangeDatos = (e) => {
-    if (e.target.name.startsWith("roomNumbers")) {
-      const index = parseInt(e.target.name.match(/\[(\d+)\]/)[1]);
-      const newRoomNumbers = [...formDatos.roomNumbers];
-      newRoomNumbers[index] = { number: parseInt(e.target.value) };
-      setFormDatos({
-        ...formDatos,
-        roomNumbers: newRoomNumbers,
-      });
-    } else {
-      setFormDatos({
-        ...formDatos,
-        [e.target.name]: e.target.value,
-      });
-    }
-  };
+  // const handleChangeDatos = (e) => {
+  //   if (e.target.name.startsWith("roomNumbers")) {
+  //     const index = parseInt(e.target.name.match(/\[(\d+)\]/)[1]);
+  //     const newRoomNumbers = [...formDatos.roomNumbers];
+  //     newRoomNumbers[index] = { number: parseInt(e.target.value) };
+  //     setFormDatos({
+  //       ...formDatos,
+  //       roomNumbers: newRoomNumbers,
+  //     });
+  //   } else {
+  //     setFormDatos({
+  //       ...formDatos,
+  //       [e.target.name]: e.target.value,
+  //     });
+  //   }
+  // };
 
-  const handleImges = (e) => {
-    setImgFile([...e.target.files]);
-  };
+  // const handleImges = (e) => {
+  //   setImgFile([...e.target.files]);
+  // };
 
-  const handleSubmit = async (e) => {
-    const token = localStorage.getItem("token");
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("title", formDatos.title);
-      formData.append("capacidadMax", formDatos.capacidadMax);
-      formData.append("precio", formDatos.precio);
-      formData.append("descripcion", formDatos.descripcion);
-      formData.append("roomNumbers", JSON.stringify(formDatos.roomNumbers));
-      for (let index = 0; index < imgFile.length; index++) {
-        formData.append("imagenes", imgFile[index]);
-      }
+  // const handleSubmit = async (e) => {
+  //   const token = localStorage.getItem("token");
+  //   e.preventDefault();
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("title", formDatos.title);
+  //     formData.append("capacidadMax", formDatos.capacidadMax);
+  //     formData.append("precio", formDatos.precio);
+  //     formData.append("descripcion", formDatos.descripcion);
+  //     formData.append("roomNumbers", JSON.stringify(formDatos.roomNumbers));
+  //     for (let index = 0; index < imgFile.length; index++) {
+  //       formData.append("imagenes", imgFile[index]);
+  //     }
 
-      const resp = await axiosInstance.post("/crear/categoria", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      // console.log(resp.data)
-      handleClose();
-    } catch (error) {
-      console.log(error);
-    }
-  };
- console.log(editInputDesc)
+  //     const resp = await axiosInstance.post("/crear/categoria", formData, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     // console.log(resp.data)
+  //     handleClose();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const onSubmit = async (data) => {
+console.log(data);
+    // try {
+    //     const response = await axiosInstance.put(`/categoria/${categorie._id}`, data, {
+    //         headers: {
+    //             Authorization: `Bearer ${token}`
+    //         }
+    //     });
+
+    //     Swal.fire({
+    //         icon: "success",
+    //         title: "Datos de la categoría actualizados con éxito"
+    //     })
+    //     getAllUsers();
+    // } catch (error) {
+    //     Swal.fire({
+    //         icon: "error",
+    //         title: `Ocurrió un problema! Error${error.response.data.status}`,
+    //         text: `${error.response.data.mensaje}`
+    //     })
+    // }
+}
+
+//  console.log(formDatos)
+ console.log(categorie.roomNumbers)
   return (
     <div>
       <form
         className="form-container"
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmit(onSubmit)}
         enctype="multipart/form-data"
       >
         <div className="mb-2 pt-2">
@@ -101,15 +130,15 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose }) => {
               className="form-control"
               name="title"
               disabled={editInputTitle}
-              onChange={handleChangeDatos}
-              value={categorie.title}
+              placeholder={categorie.title}
+              {...register("title")}
             />
             <button className="btn btn-outline-light" type="button" onClick={() => setEditInputTitle(!editInputTitle)}><FiEdit /></button>
           </div>
         </div>
-        {/* <p className="text-danger my-1">
+        <p className="text-danger my-1">
                 {errors.title?.message}
-            </p> */}
+            </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Precio</label>
             <div className="input-group">
@@ -118,15 +147,15 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose }) => {
             className="form-control"
             name="precio"
             disabled={editInputPrice}
-            onChange={handleChangeDatos}
-            value={categorie.precio}
+            placeholder={categorie.precio}
+            {...register("precio")}
           />
           <button className="btn btn-outline-light" type="button" onClick={() => setEditInputPrice(!editInputPrice)}><FiEdit /></button>
             </div>
         </div>
-        {/* <p className="text-danger my-1">
+        <p className="text-danger my-1">
                 {errors.precio?.message}
-            </p> */}
+            </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Capacidad máxima de personas</label>
           <div className="input-group">
@@ -135,15 +164,15 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose }) => {
             className="form-control"
             name="capacidadMax"
             disabled={editInputGuest}
-            onChange={handleChangeDatos}
-            value={categorie.capacidadMax}
+            placeholder={categorie.capacidadMax}
+            {...register("capacidadMax")}
           />
           <button className="btn btn-outline-light" type="button" onClick={() => setEditInputGuest(!editInputGuest)}><FiEdit /></button>
           </div>
         </div>
-        {/* <p className="text-danger my-1">
+        <p className="text-danger my-1">
                 {errors.capacidadMax?.message}
-            </p> */}
+            </p>
         <div className="mb-2 pt-2">
           <label className="form-label">Descripción</label>
           <div className="input-group">
@@ -151,15 +180,15 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose }) => {
             className="form-control"
             name="descripcion"
             disabled={editInputDesc}
-            onChange={handleChangeDatos}
-            value={categorie.descripcion}
+            placeholder={categorie.descripcion}
+            {...register("descripcion")}
           />
           <button className="btn btn-outline-light" type="button" onClick={() => setEditInputDesc(!editInputDesc)}><FiEdit /></button>
           </div>
         </div>
-        {/* <p className="text-danger my-1">
+        <p className="text-danger my-1">
                 {errors.descripcion?.message}
-            </p> */}
+            </p>
 
         {/* <div className="mb-2 pt-2">
                 <label className="form-label">Imágenes</label>
