@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import '../components/admin/usuario/usuarios.css'
 import CategorieTable from '../components/admin/habitaciones/CategorieTable'
 import RoomsTable from '../components/admin/habitaciones/RoomsTable'
@@ -15,8 +15,8 @@ const RoomsAdmin = () => {
   const [categorieById, setCategorieById] = useState({})
   const [categories, setCategories] = useState([]);
 
- 
-    const getCategories = async () => {
+
+  const getCategories = async () => {
     const token = localStorage.getItem("token");
     const response = await axiosInstance.get("/categorias", {
       headers: {
@@ -31,32 +31,32 @@ const RoomsAdmin = () => {
     getCategories();
   }, [])
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-    const handleCloseC = () => setShowC(false);
-    const handleShowC = () => setShowC(true);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleCloseC = () => setShowC(false);
+  const handleShowC = () => setShowC(true);
 
   return (
-    <div className='container-fluid container-crud'>
+    <div className='container container-crud mb-5'>
       <div className="row">
         <div className="col-12">
-          <p className='title-admin'>Administración de habitaciones</p>
-          <hr />
+          <h2 className='display-5'>Administración de habitaciones</h2>
           <div className='d-flex gap-3'>
-            <button className='btn btn-brown'  onClick={handleShowC}>Crear Categoría</button>
-            <button className='btn btn-brown'  onClick={handleShow}>Crear habitación</button>
+            <button className='btn btn-brown' onClick={handleShowC}>Crear Categoría</button>
+            <button className='btn btn-brown' onClick={handleShow}>Crear habitación</button>
           </div>
         </div>
+        <hr />
       </div>
       <div className="row">
         <h3 className='mt-5 text-center'>Categorías de habitaciones</h3>
-        <div className="col "><CategorieTable categories={categories} setCategories={setCategories} getCategories={getCategories}/></div>
+        <div className="col "><CategorieTable categories={categories} setCategories={setCategories} getCategories={getCategories} /></div>
       </div>
       <div className="row d-flex justify-content-center mb-5">
-        <div className="col-6"><RoomsTable categories={categories} setCategories={setCategories}/></div>
+        <div className="col-6"><RoomsTable categories={categories} setCategories={setCategories} /></div>
       </div>
-      <ModalCreateRoom show={show} handleClose={handleClose} getCategories={getCategories} setShow={setShow}/>
-      <ModalCreateCategory showC={showC} handleCloseC={handleCloseC} getCategories={getCategories} setShowC={setShowC}/>
+      <ModalCreateRoom show={show} handleClose={handleClose} getCategories={getCategories} setShow={setShow} />
+      <ModalCreateCategory showC={showC} handleCloseC={handleCloseC} getCategories={getCategories} setShowC={setShowC} />
     </div>
   )
 }

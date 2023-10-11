@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./login.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -6,9 +6,13 @@ import { LOGIN_SCHEMA } from '../../helpers/validationsSchemas'
 import { Link, useNavigate } from 'react-router-dom'
 import { axiosInstance } from '../../config/axiosInstance'
 import Swal from 'sweetalert2'
+import { FaEye } from 'react-icons/fa'
+import { FaEyeSlash } from 'react-icons/fa'
 
 
 const Login = () => {
+
+    const [showPassword, setShowPassword] = useState(false)
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(LOGIN_SCHEMA)
@@ -19,7 +23,7 @@ const Login = () => {
 
 
     const onSubmit = async (data) => {
-      
+
         try {
             const response = await axiosInstance.post("/login", data)
             localStorage.setItem("token", response.data.token);
@@ -54,14 +58,22 @@ const Login = () => {
             <p className="text-danger my-1 text-center">
                 {errors.username?.message}
             </p>
-            <div className="mb-2">
-                <label className="form-label">Contraseña</label>
+            <label className="form-label">Contraseña</label>
+            <div className="mb-2 input-group">
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="form-control"
                     name="password"
                     {...register("password")}
                 />
+                <span
+                    className={ showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ cursor: "pointer" }} >
+                    {
+                        showPassword ? (<FaEye />) : (<FaEyeSlash />)
+                    }
+                </span>
             </div>
             <p className="text-danger my-1 text-center">
                 {errors.password?.message}

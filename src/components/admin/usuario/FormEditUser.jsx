@@ -94,7 +94,12 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                         name="name"
                         {...register("name")}
                     />
-                    <button className="btn btn-outline-light" type="button" onClick={() => setEditInputName(!editInputName)}><FiEdit /></button>
+                    <button
+                        className={editInputName ? ("btn btn-outline-light") : ("btn btn-danger")}
+                        type="button"
+                        onClick={() => setEditInputName(!editInputName)}>
+                        <FiEdit />
+                    </button>
                 </div>
             </div>
             <p className="text-danger my-1">
@@ -112,7 +117,12 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                         name="dni"
                         {...register("dni")}
                     />
-                    <button className="btn btn-outline-light" type="button" onClick={() => setEditInputDni(!editInputDni)}><FiEdit /></button>
+                    <button
+                        className={editInputDni ? ("btn btn-outline-light") : ("btn btn-danger")}
+                        type="button"
+                        onClick={() => setEditInputDni(!editInputDni)}>
+                        <FiEdit />
+                    </button>
                 </div>
             </div>
             <p className="text-danger my-1">
@@ -130,7 +140,12 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                         name="phone"
                         {...register("phone")}
                     />
-                    <button className="btn btn-outline-light" type="button" onClick={() => setEditInputPhone(!editInputPhone)}><FiEdit /></button>
+                    <button
+                        className={editInputPhone ? ("btn btn-outline-light") : ("btn btn-danger")}
+                        type="button"
+                        onClick={() => setEditInputPhone(!editInputPhone)}>
+                        <FiEdit />
+                    </button>
                 </div>
             </div>
             <p className="text-danger my-1">
@@ -155,7 +170,6 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                                 </>
                             )
                     }
-
                 </select>
             </div >
             <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => setShow(!show)}>Guardar Cambios</button>

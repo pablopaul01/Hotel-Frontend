@@ -18,8 +18,7 @@
 
 .btn.btn-brown {
     background-color: #c19b76;
-    color: #fff;
-    
+    color: #fff;    
 }
 
 .btn.btn-brown:hover {
@@ -28,8 +27,8 @@
 }
 
 .title-admin {
-    font-family: "Roboto";
-    font-weight: bold;
+    font-family: 'Gilda Display', serif;
+    /* font-size: 3.5rem !important; */
 }
 
 .icon-crud {

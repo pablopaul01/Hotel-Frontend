@@ -1,18 +1,20 @@
 import Accordion from 'react-bootstrap/Accordion';
 
-function AccordionRoom() {
+function AccordionRoom({ category }) {
     return (
-        <Accordion defaultActiveKey="0">
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>Servicios Incluidos</Accordion.Header>
+        <Accordion defaultActiveKey="0" >
+            <Accordion.Item eventKey="0" >
+                <Accordion.Header>Características de la habitación</Accordion.Header>
                 <Accordion.Body>
-                    Las comodidades incluyen estacionamiento limitado gratis, venta de entradas, centro de negocios y zona de picnic. Los huéspedes también podrán disfrutar de jardín y tv en zonas comunes. Por un cargo, la propiedad cuenta con servicio de traslado al aeropuerto, servicio de guarda-equipaje y servicio de lavandería.
+                    {category.data.descripcion}
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="1">
                 <Accordion.Header>Servicios Opcionales</Accordion.Header>
                 <Accordion.Body>
-                    El bar cafetería Barlovento del Cambria sirve aperitivos. Todos los días se sirve un desayuno buffet que incluye fruta fresca, zumos naturales y pasteles.
+                    Jacuzzi Privado: Sumérjase en la indulgencia con un jacuzzi privado en su suite. Relájese en la intimidad de su propio espacio y disfrute de un baño de burbujas en un entorno lujoso.
+                    <hr />
+                    Mayordomo Personal: Para una atención aún más exclusiva, nuestro servicio de mayordomo personal está a su disposición las 24 horas del día. Desde desempacar sus maletas hasta organizar cenas románticas en la habitación, su mayordomo se encargará de todas sus necesidades con un toque de distinción.
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>
