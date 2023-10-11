@@ -14,26 +14,29 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
 
-    console.log(errors);
-
 
     const onSubmit = async (data) => {
-        console.log(data);
-        const response = await axiosInstance.post("/registrar", data);
+
         try {
-            console.log("respuesta de back en registro", response);
+            const response = await axiosInstance.post("/registrar", data);
+
             Swal.fire({
                 icon: "success",
                 title: "Cuenta creada con éxito"
             })
             getAllUsers();
+            reset();
+            setShow(false);
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
-        reset();
     }
 
-    console.log(errors);
+
     return (
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-2">
@@ -128,7 +131,7 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
                 un dígito, al menos una minúscula y al menos una
                 mayúscula.</small>
             <div className="d-grid mt-2">
-                <button className="btn btn-outline-light boton-login" type="submit" onClick={() => setShow(!show)} > Crear Usuario</button>
+                <button className="btn btn-outline-light boton-login" type="submit" >Crear Usuario</button>
             </div>
         </form >
     )

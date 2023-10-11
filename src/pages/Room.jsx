@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { categories } from '../helpers/data'
-// import RoomCarrousel from '../components/rooms/RoomCarrousel'
 import RoomDetail from '../components/rooms/RoomDetail'
 import { useParams } from 'react-router'
 
 
 const Room = () => {
 
-    // console.log(rooms)
+   
 
     const [user, setUser] = useState([1]);
 
@@ -18,11 +17,11 @@ const Room = () => {
 
     const { id } = useParams();
 
-    console.log(id);
+    
 
     const getCategory = () => {
         const category = categories.filter(category => category.id === parseInt(id));
-        // console.log("dentro de get", habitacion)
+       
         setCategory({
             data: category[0],
             loading: false

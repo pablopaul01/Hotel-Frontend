@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import FormCreate from './FormCreate';
 
 const ModalCreate = ({ show, handleClose, setShow, getAllUsers, users }) => {
@@ -21,12 +20,8 @@ const ModalCreate = ({ show, handleClose, setShow, getAllUsers, users }) => {
         <Modal.Body className='modal-body'>
           <FormCreate show={show} setShow={setShow} getAllUsers={getAllUsers} users={users} />
         </Modal.Body>
-
       </Modal>
     </>
-
-
-
   )
 }
 

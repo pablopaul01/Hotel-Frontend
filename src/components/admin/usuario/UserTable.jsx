@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import './usuarios.css'
 import './formcreate.css'
@@ -13,28 +13,21 @@ import ModalEditUser from './ModalEditUser';
 
 const UserTable = ({ getAllUsers, users }) => {
 
+    //state del modal
     const [show, setShow] = useState(false);
-
+    //state que guarda el id de cada usuario 
     const [idUser, setIdUser] = useState("")
 
-
+    //funciones para abrir y cerrar modal
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    //funcion para guardar el id del usuario que se desea editar
     const handleClick = (row) => {
-        console.log("row en handle ", row)
         handleShow();
         setIdUser(row);
     }
 
-    console.log("id en user table", idUser);
-
-
-
-
-    
-
-
+    //funcion para eliminar un usuario
     const deleteUser = async (row) => {
         const token = localStorage.getItem("token");
 
@@ -63,35 +56,42 @@ const UserTable = ({ getAllUsers, users }) => {
                 }
             })
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         } finally {
             getAllUsers();
         }
     }
-
+    //funcion para cambiarle el estado de usuario a un usuario
     const disabledUser = async (row) => {
         const token = localStorage.getItem("token");
-        console.log("token en disabled", token)
         try {
             const { data } = await axiosInstance.put(`/desactivar/usuario/${row}`, null, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            console.log("respuesta", data)
+           
             Swal.fire(
                 'Bien hecho!',
                 `El usuario fue ${data.user.state ? ("activado") : ("desactivado")}!`,
                 'success'
             )
         } catch (error) {
-            console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         } finally {
             getAllUsers();
         }
     }
 
-
+    //empiezan datos de la tabla
     const columns = [
         {
             name: "Nombre",
@@ -174,7 +174,7 @@ const UserTable = ({ getAllUsers, users }) => {
         selectAllRowsItemText: 'Todos',
     };
 
-    console.log("users en usertable", users);
+   
     return (
         <div className='d-flex flex-column align-items-end'>
             <DataTable

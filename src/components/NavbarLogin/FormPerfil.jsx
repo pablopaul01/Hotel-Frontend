@@ -14,7 +14,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
 
-    console.log(decode)
+  
 
     const [editInputName, setEditInputName] = useState(true)
     const [editInputDni, setEditInputDni] = useState(true)
@@ -27,15 +27,14 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
     })
 
     const onSubmit = async (data) => {
-        console.log("respuesta de data en front", data);
-        const response = await axiosInstance.put(`/usuario/${decode.sub}`, data, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        });
 
         try {
-            console.log("respuesta de back en front", response.data.token);
+            const response = await axiosInstance.put(`/usuario/${decode.sub}`, data, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
             Swal.fire({
                 icon: "success",
                 title: "Datos de tu perfil actualizados con éxito"
@@ -43,7 +42,11 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
             localStorage.removeItem("token")
             localStorage.setItem("token", response.data.token)
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
     }
 

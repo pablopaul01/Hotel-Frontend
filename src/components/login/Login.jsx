@@ -16,13 +16,12 @@ const Login = () => {
 
     const navigate = useNavigate();
 
- 
+
 
     const onSubmit = async (data) => {
-        console.log(data);
-        const response = await axiosInstance.post("/login", data)
+      
         try {
-            console.log("respuesta de back en login",response);
+            const response = await axiosInstance.post("/login", data)
             localStorage.setItem("token", response.data.token);
             navigate("/");
             Swal.fire({
@@ -30,9 +29,12 @@ const Login = () => {
                 title: "Bienvenido"
             })
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
-
         reset();
     }
 

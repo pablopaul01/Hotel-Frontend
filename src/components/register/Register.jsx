@@ -15,22 +15,26 @@ const Register = () => {
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
 
-    console.log(errors);
+
 
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        console.log(data);
-        const response = await axiosInstance.post("/registrar", data);
+        
         try {
-            console.log("respuesta de back en registro", response);
+            const response = await axiosInstance.post("/registrar", data);
+
             navigate("/login");
             Swal.fire({
                 icon: "success",
                 title: "Cuenta creada con éxito"
             })
         } catch (error) {
-            console.log(error)
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
         }
         reset();
     }
