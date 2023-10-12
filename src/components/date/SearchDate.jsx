@@ -19,7 +19,7 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
    
     setGuests({...guests,[e.target.name]: e.target.value})
   }
-
+console.log(guests)
   const handleSelect = (ranges) => {
     setShowDateRange(false);
   };

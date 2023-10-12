@@ -72,3 +72,6 @@ a {
     
 } 
 
+.datatables_wrapper .rdt_tablecell{
+    font-family: sans-serif !important;
+  }

@@ -53,7 +53,7 @@ const RoomsAdmin = () => {
         <div className="col "><CategorieTable categories={categories} setCategories={setCategories} getCategories={getCategories} /></div>
       </div>
       <div className="row d-flex justify-content-center mb-5">
-        <div className="col-12 col-lg-6"><RoomsTable categories={categories} setCategories={setCategories} /></div>
+        <div className="col-12 col-lg-8"><RoomsTable categories={categories} setCategories={setCategories} /></div>
       </div>
       <ModalCreateRoom show={show} handleClose={handleClose} getCategories={getCategories} setShow={setShow} />
       <ModalCreateCategory showC={showC} handleCloseC={handleCloseC} getCategories={getCategories} setShowC={setShowC} />

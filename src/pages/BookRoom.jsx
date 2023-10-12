@@ -29,7 +29,7 @@ const BookRoom = () => {
             </div>
             <div className="container-fluid mb-5">
 
-                <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} guests={guests} setGuest={setGuests} />
+                <SearchDate date={date} setDate={setDate} setIsFilter={setIsFilter} isFilter={isFilter} guests={guests} setGuests={setGuests} />
                 {
                     !isFilter ?
                         (
