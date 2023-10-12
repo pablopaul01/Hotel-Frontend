@@ -21,7 +21,6 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
   }
 
   const handleSelect = (ranges) => {
-    // setDate([ranges.selection]);
     setShowDateRange(false);
   };
 
