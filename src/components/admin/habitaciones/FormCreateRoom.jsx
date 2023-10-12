@@ -5,11 +5,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { CREATEROOM_SCHEMA } from '../../../helpers/validationsSchemas'
 import { axiosInstance } from '../../../config/axiosInstance'
 import Swal from 'sweetalert2'
-
+import Spinner from 'react-bootstrap/Spinner';
 
 const FormCreate = ({ getCategories, show, setShow }) => {
   const [categories, setCategories] = useState([]);
   const [idCategorie, setIdCategorie] = useState("")
+  const [loading, setLoading] = useState(false);
 
   const getCategoriesDb = async () => {
     const token = localStorage.getItem("token");
@@ -35,6 +36,7 @@ const FormCreate = ({ getCategories, show, setShow }) => {
     const token = localStorage.getItem("token");
 
     try {
+      setLoading(true);
       const response = await axiosInstance.put(`/categoria/rooms/${idCategorie}`, data, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -50,6 +52,7 @@ const FormCreate = ({ getCategories, show, setShow }) => {
         text: `${error.response.data.mensaje}`
       })
     } finally {
+      setLoading(false);
       getCategories()
     }
   }
@@ -57,7 +60,7 @@ const FormCreate = ({ getCategories, show, setShow }) => {
 
   const onSubmit = (data) => {
     addRooms(data)
-  
+
     reset();
   }
 
@@ -92,7 +95,19 @@ const FormCreate = ({ getCategories, show, setShow }) => {
           </select>
         </div>
         <div className="d-grid mt-5 mb-4">
-          <button className="btn btn-outline-light boton-login" type="submit">Crear habitación</button>
+          {
+            loading ?
+              (
+                <div className="d-grid mt-3 justify-content-center">
+                  <Spinner />
+                </div>
+              )
+              :
+              (
+                <button className="btn btn-outline-light boton-login" type="submit">Crear habitación</button>
+              )
+          }
+
         </div>
       </form>
     </div>
