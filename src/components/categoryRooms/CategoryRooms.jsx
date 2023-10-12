@@ -37,7 +37,7 @@ const CategoryRooms = () => {
             </div>
             <div className='row m-3'>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 img-pasillo d-none d-md-inline">
-                    <img src="../../public/banner-rooms.jpg" alt="" className='img-fluid rounded' />
+                    <img src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1697101850/banner-rooms_jziidf.jpg" alt="" className='img-fluid rounded' />
                 </div>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div className="row">

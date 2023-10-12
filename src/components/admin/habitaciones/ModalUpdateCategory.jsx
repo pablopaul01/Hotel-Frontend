@@ -13,7 +13,7 @@ const ModalUpdateCategory = ({show, handleClose, categorie, setCategorie, getCat
                 <h2 className="text-white titulo-registro ms-4">Crear categoría</h2>
               </div>
               <div className='d-none d-md-block d-lg-block'>
-                <img src="../../public/RollingHotel-transparente.png" className="img-fluid mx-4" alt="logo-Rolling-Hotel" style={{width:"150px"}}/>
+                <img src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1697100801/RollingHotel-transparente_qah5k2.png" className="img-fluid mx-4" alt="logo-Rolling-Hotel" style={{width:"150px"}}/>
               </div>
           </div>
         </div>

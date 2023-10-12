@@ -35,7 +35,7 @@ const NavHotel = () => {
       <NavbarLogin />
       <Navbar expand="lg" className={shouldAppear ? 'appear navbar-container p-2' : 'navbar-container p-2'} fixed={navbarFixed ? 'top' : ''}>
         <Container fluid className='d-flex justify-content-center align-items-center '>
-          <Navbar.Brand href="#" className='p-0'><img src="../../public/logo-navbar.png" alt="logo Rolling" style={{ width: "200px" }} /></Navbar.Brand>
+          <Navbar.Brand href="#" className='p-0'><img src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1697100789/logo-navbar_oay6an.png" alt="logo Rolling" style={{ width: "200px" }} /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <span>
 

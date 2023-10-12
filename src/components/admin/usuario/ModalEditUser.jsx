@@ -13,7 +13,7 @@ const ModalEditUser = ({ show, handleClose, setShow, idUser, getAllUsers }) => {
                         <h4 className="text-white titulo-registro ms-4">Editar Usuario</h4>
                     </div>
                     <div className='d-none d-md-block d-lg-block'>
-                        <img src="../../public/RollingHotel-transparente.png" className="img-fluid" alt="logo-Rolling-Hotel" style={{ width: "150px" }} />
+                        <img src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1697100801/RollingHotel-transparente_qah5k2.png" className="img-fluid" alt="logo-Rolling-Hotel" style={{ width: "150px" }} />
                     </div>
                 </div>
             </div>
