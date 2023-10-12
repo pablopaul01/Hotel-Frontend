@@ -70,7 +70,7 @@ const RoomsTable = ({ categories, setCategories }) => {
     {
       name: "Tipo",
       selector: row => {
-        return <p className='mb-0 text-table'>{categorieById.title}</p>
+        return <p className='mb-0'>{categorieById.title}</p>
       },
       sortable: true,
       center: true,

@@ -81,17 +81,13 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
         },
         {
             name: 'Cantidad de Habitaciones',
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.roomNumbers.length}</p>
-            },
+            selector: row => row.roomNumbers.length,
             center: true,
             sortable: true,
         },
         {
             name: "Precio",
-            selector: row => {
-                return <p className='mb-0 text-table'>$ {row.precio}</p>
-            },
+            selector: row => row.capacidadMax,
             center: true,
             maxWidth: "140px",
             sortable: true,
@@ -99,9 +95,7 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
         },
         {
             name: "Capacidad",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.capacidadMax} personas</p>
-            },
+            selector: row => row.capacidadMax,
             center: true,
             maxWidth: "180px",
             sortable: true,
@@ -109,9 +103,7 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
         },
         {
             name: "Descripción",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.descripcion}</p>
-            },
+            selector: row => row.descripcion,
             sortable: true,
             center: true,
             maxWidth: "400px"

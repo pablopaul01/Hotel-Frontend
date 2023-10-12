@@ -45,7 +45,7 @@ const Room = ({ date, category, guests, allDates, isFilter }) => {
         <div className="card mb-3">
             <div className="row g-0">
                 <div className="col-md-12 col-lg-5 col-xl-5">
-                    <img src={category.imagenes[1].url} className="img-fluid rounded-start" alt={category.title} />
+                    <img src={category?.imagenes[0]?.url} className="img-fluid rounded-start" alt={category.title} />
                 </div>
                 <div className="col-md-12 col-lg-7 col-xl-7">
                     <div className="card-body h-100 d-flex flex-column gap-0 justify-content-center py-1">
