@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { UPDATE_SCHEMA } from '../../../helpers/validationsSchemas'
+import { UPDATE_SCHEMA_ADMIN } from '../../../helpers/validationsSchemas'
 import { FiEdit } from 'react-icons/fi'
 import { axiosInstance } from '../../../config/axiosInstance'
 import Button from 'react-bootstrap/Button';
@@ -21,7 +21,7 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
     const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
-        resolver: yupResolver(UPDATE_SCHEMA)
+        resolver: yupResolver(UPDATE_SCHEMA_ADMIN)
     })
     //obtengo información del usuario
     const getUserById = async () => {

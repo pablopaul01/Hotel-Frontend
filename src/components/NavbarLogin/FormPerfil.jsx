@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { UPDATE_SCHEMA } from '../../helpers/validationsSchemas'
+import { UPDATE_SCHEMA_PERFIL } from '../../helpers/validationsSchemas'
 import jwtDecode from 'jwt-decode';
 import { FiEdit } from 'react-icons/fi'
 import { axiosInstance } from '../../config/axiosInstance'
@@ -23,7 +23,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
     const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
-        resolver: yupResolver(UPDATE_SCHEMA)
+        resolver: yupResolver(UPDATE_SCHEMA_PERFIL)
     })
 
     const onSubmit = async (data) => {
@@ -136,7 +136,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                 </div>
             </div>
             <p className="text-danger my-1">
-                {errors.cellPhone?.message}
+                {errors.phone?.message}
             </p>
 
             {
