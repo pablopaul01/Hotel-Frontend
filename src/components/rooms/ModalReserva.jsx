@@ -16,8 +16,17 @@ const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests
     return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
   }
 
-  const updateUnavailableDates = async (roomNumber) => {
+  const fechasReserva = allDates.map(timestamp => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString(); 
+  });
 
+
+
+  const updateUnavailableDates = async (roomID) => {
+    
+    console.log("roomID", roomID)
+    console.log("fechas", fechasReserva)
   }
 
   const handleClick = () => {
@@ -27,13 +36,14 @@ const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests
     selectedRooms.forEach(room => {
       const roomNumber = room.selectedRoomsNumber;
       const roomID = room.selectedRoomsId;
-      const unavailableDates = category.roomNumbers.find(room => room.id === roomID).unavailableDates;
-      const updatedUnavailableDates = [...unavailableDates, ...allDates];
-      updateUnavailableDates(roomNumber, updatedUnavailableDates);
+      console.log(roomID)
+      // const unavailableDates = category.roomNumbers.find(room => room.id === roomID).unavailableDates;
+      // const updatedUnavailableDates = [...unavailableDates, ...allDates];
+      updateUnavailableDates(roomID);
     });
 
   }
-
+  console.log("selected rooms", selectedRooms)
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg"
