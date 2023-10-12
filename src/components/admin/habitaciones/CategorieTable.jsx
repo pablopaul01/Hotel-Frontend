@@ -78,7 +78,7 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
             },
             sortable: true,
             center: true,
-            maxWidth: "180px"
+            maxWidth: "380px"
 
         },
         {
@@ -94,7 +94,7 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
                 return <p className='mb-0 text-table'>$ {row.precio}</p>
             },
             center: true,
-            maxWidth: "180px"
+            maxWidth: "140px"
 
         },
         {
@@ -127,7 +127,6 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
                 )
             },
             center: true,
-            minWidth: "350px"
         }
     ]
     const paginationComponentOptions = {
