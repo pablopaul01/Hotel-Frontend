@@ -7,7 +7,7 @@ import { FiEdit } from 'react-icons/fi'
 import { axiosInstance } from '../../config/axiosInstance'
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
-
+import Spinner from 'react-bootstrap/Spinner';
 
 const FormPerfil = ({ show, setShow, handleClose }) => {
 
@@ -20,14 +20,17 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
 
     const [showInputPassword, setShowInputPassword] = useState(false)
 
+    const [loading, setLoading] = useState(false);
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(UPDATE_SCHEMA)
     })
 
     const onSubmit = async (data) => {
-      
+
 
         try {
+            setLoading(true);
             const response = await axiosInstance.put(`/usuario/${decode.sub}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -46,11 +49,14 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                 title: `Ocurrió un problema! Error${error.response.data.status}`,
                 text: `${error.response.data.mensaje}`
             })
+        } finally {
+            setLoading(false); // Oculta el spinner, ya sea éxito o error          
         }
     }
 
 
     return (
+
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-2">
                 <label className="form-label">Correo electrónico</label>
@@ -172,11 +178,23 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                         <a className='btn btn-sm btn-outline-danger mt-3 d-flex justify-content-center' onClick={() => setShowInputPassword(!showInputPassword)}>Cambiar clave</a>
                     )
             }
-
-            <button className="btn btn-outline-light boton-login mt-3" type="submit" >Guardar Cambios</button>
-            <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
-                Cancelar
-            </Button>
+            {
+                loading ?
+                    (
+                        <div className='mt-4 text-center'>
+                            <Spinner />
+                        </div>
+                    )
+                    :
+                    (
+                        <>
+                            <button className="btn btn-outline-light boton-login mt-3" type="submit" >Guardar Cambios</button>
+                            <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
+                                Cancelar
+                            </Button>
+                        </>
+                    )
+            }
         </form>
     )
 }

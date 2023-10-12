@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import "../../register/register.css"
 import { axiosInstance } from '../../../config/axiosInstance'
 import Swal from 'sweetalert2'
-
+import Spinner from 'react-bootstrap/Spinner';
 
 const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
   const [categories, setCategories] = useState([]);
@@ -15,7 +15,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
     precio: "",
     roomNumbers: []
   })
-
+  const [loading, setLoading] = useState(false);
 
   const getCategoriesDb = async () => {
     const token = localStorage.getItem("token");
@@ -59,6 +59,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
     try {
+      setLoading(true);
       const formData = new FormData();
       formData.append("title", formDatos.title)
       formData.append("capacidadMax", formDatos.capacidadMax)
@@ -149,16 +150,27 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
                   name={`roomNumbers[${index}].number`}
                   onChange={handleChangeDatos}
                 />
-                
+
               </div>
             ))}
           </div>
         </div>
-        <div className="d-grid mt-5 mb-4">
-          <button className="btn btn-outline-light boton-login" type="submit" >Crear habitación</button>
-        </div>
-      </form>
-    </div>
+        {
+          loading ?
+            (
+              <div className="d-grid mt-3 justify-content-center mt-4 mb-3">
+                <Spinner />
+              </div>
+            )
+            :
+            (
+              <div className="d-grid mt-5 mb-4">
+                <button className="btn btn-outline-light boton-login" type="submit" >Crear categoría</button>
+              </div>
+            )
+        }
+      </form >
+    </div >
   )
 }
 

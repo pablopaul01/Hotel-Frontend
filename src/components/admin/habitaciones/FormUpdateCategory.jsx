@@ -7,6 +7,7 @@ import { axiosInstance } from "../../../config/axiosInstance";
 import { Button } from "react-bootstrap";
 import { FiEdit } from 'react-icons/fi'
 import Swal from 'sweetalert2';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCategories }) => {
@@ -14,6 +15,7 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
   const [editInputPrice, setEditInputPrice] = useState(true)
   const [editInputDesc, setEditInputDesc] = useState(true)
   const [editInputGuest, setEditInputGuest] = useState(true)
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(UPDATECATEGORY_SCHEMA)
   })
@@ -22,6 +24,7 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
 
     const token = localStorage.getItem("token");
     try {
+      setLoading(true);
       const response = await axiosInstance.put(`/categoria/${categorie._id}`, data, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -40,6 +43,8 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
         title: `Ocurrió un problema! Error${error.response.data.status}`,
         text: `${error.response.data.mensaje}`
       })
+    } finally {
+      setLoading(false); // Oculta el spinner, ya sea éxito o error
     }
   }
 
@@ -148,15 +153,28 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
             </span>
           </div>
         </div>
-        <button
-          className="btn btn-outline-light boton-login mt-3"
-          type="submit"
-        >
-          Guardar cambios
-        </button>
-        <Button variant="light" className="mt-3 mx-2" onClick={handleClose}>
-          Cancelar
-        </Button>
+        {
+          loading ?
+            (
+              <div className="d-grid mt-3 justify-content-center mt-4 mb-3">
+                <Spinner />
+              </div>
+            )
+            :
+            (
+              <>
+                <button
+                  className="btn btn-outline-light boton-login mt-3"
+                  type="submit"
+                >
+                  Guardar cambios
+                </button>
+                <Button variant="light" className="mt-3 mx-2" onClick={handleClose}>
+                  Cancelar
+                </Button>
+              </>
+            )
+        }
       </form>
     </div>
   );

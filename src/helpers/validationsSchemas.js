@@ -20,7 +20,8 @@ export const UPDATE_SCHEMA = yup.object({
   password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, "La contraseña no es válida"),
   repassword: yup.string().oneOf([yup.ref("password"), null], "Las contraseñas no coinciden"),
   dni: yup.string().matches(/^\d{8}$/, "DNI no válido"),
-  phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/, "El número no es válido")
+  phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/, "El número no es válido"),
+  role: yup.string().required("Seleccione un rol")
 });
 
 export const CREATEROOM_SCHEMA = yup.object({

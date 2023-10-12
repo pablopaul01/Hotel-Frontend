@@ -8,11 +8,13 @@ import { axiosInstance } from '../../config/axiosInstance'
 import Swal from 'sweetalert2'
 import { FaEye } from 'react-icons/fa'
 import { FaEyeSlash } from 'react-icons/fa'
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(LOGIN_SCHEMA)
@@ -25,6 +27,7 @@ const Login = () => {
     const onSubmit = async (data) => {
 
         try {
+            setLoading(true);
             const response = await axiosInstance.post("/login", data)
             localStorage.setItem("token", response.data.token);
             navigate("/");
@@ -38,13 +41,16 @@ const Login = () => {
                 title: `Ocurrió un problema! Error${error.response.data.status}`,
                 text: `${error.response.data.mensaje}`
             })
+        } finally {
+            setLoading(false); // Oculta el spinner, ya sea éxito o error
+            reset();
         }
-        reset();
     }
 
 
 
     return (
+
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-4">
                 <label className="form-label">Correo electrónico</label>
@@ -67,7 +73,7 @@ const Login = () => {
                     {...register("password")}
                 />
                 <span
-                    className={ showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
+                    className={showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
                     onClick={() => setShowPassword(!showPassword)}
                     style={{ cursor: "pointer" }} >
                     {
@@ -78,10 +84,21 @@ const Login = () => {
             <p className="text-danger my-1 text-center">
                 {errors.password?.message}
             </p>
+            {
+                loading ?
+                    (
+                        <div className="d-grid mt-3 justify-content-center mt-4">
+                            <Spinner />
+                        </div>
+                    )
+                    :
+                    (
+                        <div className="d-grid mt-3">
+                            <button className="btn btn-outline-light boton-login mt-2">Iniciar Sesión</button>
+                        </div>
+                    )
+            }
 
-            <div className="d-grid mt-3">
-                <button className="btn btn-outline-light boton-login mt-2">Iniciar Sesión</button>
-            </div>
             <div className="mt-3 text-center" id="btn-registro">
                 <span>¿No tienes una cuenta registrada?
                     <Link to="/registro" className="btn link">Regístrate</Link></span>
@@ -90,6 +107,7 @@ const Login = () => {
                 <Link to="/error" className="btn link mb-4">¿Olvidaste tu contraseña?</Link>
             </div>
         </form>
+
     )
 }
 
