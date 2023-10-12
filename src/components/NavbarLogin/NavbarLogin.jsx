@@ -9,7 +9,6 @@ import { useState } from "react"
 
 const NavbarLogin = () => {
 
-  let navigate = useNavigate();
 
   const [show, setShow] = useState(false);
 
@@ -23,7 +22,6 @@ const NavbarLogin = () => {
 
   const logOut = () => {
     localStorage.removeItem("token");
-    navigate("/login");
   }
 
   return (

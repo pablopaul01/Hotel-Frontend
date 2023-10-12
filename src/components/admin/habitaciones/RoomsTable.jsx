@@ -61,9 +61,7 @@ const RoomsTable = ({ categories, setCategories }) => {
   const columns = [
     {
       name: "Nro Habitación",
-      selector: row => {
-        return <p className='mb-0 text-table'>{row.number}</p>
-      },
+      selector: row => row.number,
       sortable: true,
       center: true,
       maxWidth: "180px"
@@ -72,7 +70,7 @@ const RoomsTable = ({ categories, setCategories }) => {
     {
       name: "Tipo",
       selector: row => {
-        return <p className='mb-0 text-table'>{categorieById.title}</p>
+        return <p className='mb-0'>{categorieById.title}</p>
       },
       sortable: true,
       center: true,

@@ -1,4 +1,4 @@
-    import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { GrUser } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
 import { categories } from '../../helpers/data';
@@ -6,7 +6,7 @@ import ModalReserva from './ModalReserva';
 import "./room.css"
 
 
-const Room = ({date, category, guests, allDates}) => {
+const Room = ({ date, category, guests, allDates, isFilter }) => {
     const [selectedRoomQty, setSelectedRoomQty] = useState("")
     const [selectedRooms, setSelectedRooms] = useState([{
         selectedRoomsNumber: "",
@@ -19,7 +19,7 @@ const Room = ({date, category, guests, allDates}) => {
 
     const { capacidadMax, roomNumbers } = category;
 
-    const { id } = category;
+
 
     const handleSelect = (e) => {
         setSelectedRoomQty([e.target.value])
@@ -29,23 +29,23 @@ const Room = ({date, category, guests, allDates}) => {
         let updatedSelectedRooms = []; // Inicializamos un nuevo arreglo
         handleShow()
 
-    for (let index = 0; index < selectedRoomQty * 1; index++) {
-        const roomNumber = category.roomNumbers[index].number;
-        const roomId = category.roomNumbers[index]._id;
+        for (let index = 0; index < selectedRoomQty * 1; index++) {
+            const roomNumber = category.roomNumbers[index].number;
+            const roomId = category.roomNumbers[index]._id;
 
-        updatedSelectedRooms.push({
-            selectedRoomsNumber: roomNumber,
-            selectedRoomsId: roomId
-        });
-    }
-    
-    setSelectedRooms(updatedSelectedRooms);
+            updatedSelectedRooms.push({
+                selectedRoomsNumber: roomNumber,
+                selectedRoomsId: roomId
+            });
+        }
+
+        setSelectedRooms(updatedSelectedRooms);
     }
     return (
         <div className="card mb-3">
             <div className="row g-0">
                 <div className="col-md-12 col-lg-5 col-xl-5">
-                    <img src={category.imagenes[1].url} className="img-fluid rounded-start" alt={category.title} />
+                    <img src={category?.imagenes[0]?.url} className="img-fluid rounded-start" alt={category.title} />
                 </div>
                 <div className="col-md-12 col-lg-7 col-xl-7">
                     <div className="card-body h-100 d-flex flex-column gap-0 justify-content-center py-1">
@@ -71,9 +71,9 @@ const Room = ({date, category, guests, allDates}) => {
                                             <option value="0" >0</option>
                                             {
                                                 category.roomNumbers.map((numRoom, index) => (
-                                                    <option value={index+1} id={numRoom.id} key={numRoom._id} >{index+1}</option>
+                                                    <option value={index + 1} id={numRoom.id} key={numRoom._id} >{index + 1}</option>
                                                 ))
-                                                
+
                                             }
                                         </select>
                                     </div>
@@ -82,10 +82,10 @@ const Room = ({date, category, guests, allDates}) => {
                             </div>
                         </div>
                         <div className="d-flex justify-content-center justify-content-md-start">
-                            <Link to="" className="btn btn-outline-light me-2" onClick={handleClick}>Reservar</Link>
-                            <Link to={`/reserva-habitaciones/${id}`} id={id} className="btn btn-secondary">Ver más...</Link>
+                            <button disabled={!isFilter} className="btn btn-outline-light me-2" onClick={handleClick}>Reservar</button>
+                            <Link to={`/reserva-habitaciones/${category._id}`} id={category._id} className="btn btn-dark">Ver más...</Link>
                         </div>
-                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date} guests={guests} allDates={allDates} categories={categories}/>
+                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date} guests={guests} allDates={allDates} categories={categories} />
                     </div>
                 </div>
             </div>
