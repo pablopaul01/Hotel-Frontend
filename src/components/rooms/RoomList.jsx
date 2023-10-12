@@ -63,6 +63,7 @@ const RoomList = ({ date, guests }) => {
       const availableRoomNumbers = category.roomNumbers.filter((room) =>
         isAvailable(room)
       );
+      
       return {
         ...category,
         roomNumbers: availableRoomNumbers,
