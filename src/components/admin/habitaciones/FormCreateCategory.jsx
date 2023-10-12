@@ -97,9 +97,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
             onChange={handleChangeDatos}
           />
         </div>
-        {/* <p className="text-danger my-1">
-                {errors.title?.message}
-            </p> */}
+
         <div className="mb-2 pt-2">
           <label className="form-label">Precio</label>
           <input
@@ -109,9 +107,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
             onChange={handleChangeDatos}
           />
         </div>
-        {/* <p className="text-danger my-1">
-                {errors.precio?.message}
-            </p> */}
+
         <div className="mb-2 pt-2">
           <label className="form-label">Capacidad máxima de personas</label>
           <input
@@ -121,20 +117,16 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
             onChange={handleChangeDatos}
           />
         </div>
-        {/* <p className="text-danger my-1">
-                {errors.capacidadMax?.message}
-            </p> */}
+
         <div className="mb-2 pt-2">
           <label className="form-label">Descripción</label>
           <textarea
-            className="form-control"
+            className="form-control textarea"
             name="descripcion"
             onChange={handleChangeDatos}
+            style={{ height: "100px" }}
           />
         </div>
-        {/* <p className="text-danger my-1">
-                {errors.descripcion?.message}
-            </p> */}
 
         <div className="mb-2 pt-2">
           <label className="form-label">Imágenes</label>
@@ -157,9 +149,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
                   name={`roomNumbers[${index}].number`}
                   onChange={handleChangeDatos}
                 />
-                <p className="text-danger my-1">
-                  {/* {errors?.roomNumbers?.[index]?.number?.message} */}
-                </p>
+                
               </div>
             ))}
           </div>

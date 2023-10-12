@@ -3,7 +3,11 @@
 .btn.btn-brown {
     background-color: #c19b76;
     color: #fff;
-    
+
+}
+
+.textarea {
+    resize: none;
 }
 
 .btn.btn-brown:hover {
@@ -15,16 +19,17 @@
     font-family: 'Gilda Display', serif !important;
     font-size: 3.5rem !important;
 }
+
 .icons-contacto {
-    width: 80px !important;
+
     transition: all .5s;
-    cursor: pointer;
+    color: #fff;
 }
 
-.banner-contacto{
-    background: rgb(8,28,34);
+.banner-contacto {
+    background: rgb(8, 28, 34);
     color: #fff;
-
+    font-size: 25px;
 }
 
 .icons-contacto:hover {
