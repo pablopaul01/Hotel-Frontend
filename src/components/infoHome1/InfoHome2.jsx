@@ -35,7 +35,7 @@ const InfoHome2 = () => {
                     <div className="d-flex gap-lg-5 mb-5 flex-column flex-lg-row">
                         <p className='infoText'>En nuestro Hotel te sentirás como en tu propia casa además de las 87 habitaciones con decoraciones diferentes contamos con áreas comunes de descanso y áreas de trabajo.
                         </p>
-                        <p className='infoText'>Sala de reuniones y un centro de negocios para desarrollar tu actividad laboral desde donde disfrutarás de su magnífica ubicación en pleno centro de Aruba..
+                        <p className='infoText'>Sala de reuniones y un centro de negocios para desarrollar tu actividad laboral desde donde disfrutarás de su magnífica ubicación en pleno centro de Tucumán..
                         </p>
                     </div>
                     <Link to="/galeria-imagenes" className='text-decoration-none'>
