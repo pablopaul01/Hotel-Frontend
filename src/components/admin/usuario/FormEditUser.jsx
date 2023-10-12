@@ -45,14 +45,14 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
 
     //funcion que recibe la data del formulario
     const onSubmit = async (data) => {
-
+        const token = localStorage.getItem("token");
         try {
             const response = await axiosInstance.put(`/usuario/${idUser}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-
+            handleClose();
             Swal.fire({
                 icon: "success",
                 title: "Datos del usuario actualizados con éxito"
@@ -172,7 +172,7 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                     }
                 </select>
             </div >
-            <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => setShow(!show)}>Guardar Cambios</button>
+            <button className="btn btn-outline-light boton-login mt-3" type="submit" >Guardar Cambios</button>
             <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
                 Cancelar
             </Button>
