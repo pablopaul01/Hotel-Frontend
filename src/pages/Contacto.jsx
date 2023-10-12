@@ -70,7 +70,7 @@ const Contacto = () => {
               </p>
             </Row>
             <Row>
-              <Form.Select aria-label="Asunto">
+              <Form.Select required aria-label="Asunto">
                 <option>Elija una opción</option>
                 <option value="1">Reseva</option>
                 <option value="2">Servicios</option>

@@ -14,7 +14,7 @@
 }
 
 .card-nosotros {
-    background-image: linear-gradient(rgba(33,33,33,0.6),rgba(33,33,33,0.6)), url("https://images.unsplash.com/photo-1563291074-2bf8677ac0e5?ixlib=rb-4.0.3&ixid=M3wxMjA3[…]dlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1414&q=80");
+    background-color: rgb(8, 28, 34) !important;
     color: white;
 }
 
