@@ -3,6 +3,8 @@ import Modal from 'react-bootstrap/Modal';
 import { BsCalendar3 } from "react-icons/bs"
 import "./modalReserva.css"
 import Swal from 'sweetalert2';
+import { axiosInstance } from '../../config/axiosInstance';
+
 
 const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests, allDates, categories }) => {
   const cantidad = selectedRooms.length * category.precio
@@ -16,20 +18,60 @@ const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests
     return `${day.toString().padStart(2, '0')}/${month.toString().padStart(2, '0')}/${year}`;
   }
 
-  const handleClick = () => {
+  const fechasReserva = allDates.map(timestamp => {
+    const date = new Date(timestamp);
+    return date.toLocaleDateString(); 
+  });
 
-    // category.roomNumbers= [...unavailableDates,allDates]
-    // const index = categories.findIndex(category => category.roomNumbers.some(room => room.id ===  ));
+
+  const fechasEnFormatoISO = fechasReserva.map(fecha => {
+    const [day, month, year] = fecha.split('/');
+    return `${year}-${month}-${day}T03:00:00.000Z`;
+  });
+  
+
+
+  const reserveRoom = async (fecha,roomID) => {
+    const date = fecha; // fecha en formato ISO
+
+
+const data = {
+  date,
+  roomID
+};
+    const token = localStorage.getItem("token");
+    try {
+      const resp = await axiosInstance.put(`/categoria/${category._id}/room/${roomID}`,data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+        }
+      )
+      console.log(resp.data)
+      handleClose()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const updateUnavailableDates = async (roomID) => {
+
+        reserveRoom(fechasEnFormatoISO[0], roomID)
+  }
+
+  const handleClick = () => {
     selectedRooms.forEach(room => {
       const roomNumber = room.selectedRoomsNumber;
       const roomID = room.selectedRoomsId;
-      const unavailableDates = category.roomNumbers.find(room => room.id === roomID).unavailableDates;
-      const updatedUnavailableDates = [...unavailableDates, ...allDates];
-      updateUnavailableDates(roomNumber, updatedUnavailableDates);
+      fechasEnFormatoISO.forEach(fecha => {
+        reserveRoom(fecha, roomID)
+      });
+   
     });
 
-  }
 
+  }
   return (
     <>
       <Modal show={show} onHide={handleClose} size="lg"
