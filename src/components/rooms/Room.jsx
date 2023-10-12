@@ -44,7 +44,6 @@ const Room = ({date, category, guests, allDates}) => {
     
     setSelectedRooms(updatedSelectedRooms);
     }
-    console.log("qty", selectedRoomQty)
     return (
         <div className="card mb-3">
             <div className="row g-0">
@@ -75,7 +74,7 @@ const Room = ({date, category, guests, allDates}) => {
                                             <option value="0" >0</option>
                                             {
                                                 category.roomNumbers.map((numRoom, index) => (
-                                                    <option value={index+1} id={numRoom.id} key={numRoom.id} >{index+1}</option>
+                                                    <option value={index+1} id={numRoom.id} key={numRoom._id} >{index+1}</option>
                                                 ))
                                                 
                                             }
