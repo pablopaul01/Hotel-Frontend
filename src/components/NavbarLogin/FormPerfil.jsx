@@ -15,7 +15,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
     let decode = jwtDecode(token);
 
 
-
+    const [existError, setExistError] = useState(false)
     const [editInputName, setEditInputName] = useState(true)
     const [editInputDni, setEditInputDni] = useState(true)
     const [editInputPhone, setEditInputPhone] = useState(true)
@@ -27,6 +27,12 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
     })
 
     const onSubmit = async (data) => {
+        if (errors) {
+            setExistError(true);
+        } else {
+            setExistError(false);
+        }
+
 
         try {
             const response = await axiosInstance.put(`/usuario/${decode.sub}`, data, {
@@ -34,7 +40,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                     Authorization: `Bearer ${token}`
                 }
             });
-
+            handleClose();
             Swal.fire({
                 icon: "success",
                 title: "Datos de tu perfil actualizados con éxito"
@@ -120,7 +126,6 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                         type="number"
                         className="form-control"
                         name="phone"
-                        // autofocus={!editInputPhone}
                         {...register("phone")}
                     />
                     <button
@@ -175,7 +180,7 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
                     )
             }
 
-            <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => setShow(!show)}>Guardar Cambios</button>
+            <button className="btn btn-outline-light boton-login mt-3" type="submit" onClick={() => existError ? (setShow(false)) : (setShow(true))}>Guardar Cambios</button>
             <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
                 Cancelar
             </Button>
