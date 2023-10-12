@@ -1,15 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
 
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', serif;
-    color: white;
-}   */
-/* .modal-header {
-    border-bottom: none !important;
-} */
+
 .title-formuser {
     display: flex;
     align-items: center;

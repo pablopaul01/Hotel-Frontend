@@ -120,10 +120,11 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
           <label className="form-label">Descripción</label>
           <div className="input-group">
             <textarea
-              className="form-control"
+              className="form-control textarea"
               name="descripcion"
               disabled={editInputDesc}
               placeholder={categorie.descripcion}
+              style={{ height: "100px" }}
               {...register("descripcion")}
             />
             <button

@@ -1,4 +1,5 @@
 import Accordion from 'react-bootstrap/Accordion';
+import "./rooms.css"
 
 function AccordionRoom({ category }) {
     return (

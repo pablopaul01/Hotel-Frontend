@@ -36,7 +36,7 @@ const CategoryRooms = () => {
                 <h2 className='text-dark text-center titulo-recepcion'>Habitaciones</h2>
             </div>
             <div className='row m-3'>
-                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 img-pasillo">
+                <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3 img-pasillo d-none d-md-inline">
                     <img src="../../public/banner-rooms.jpg" alt="" className='img-fluid rounded' />
                 </div>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
