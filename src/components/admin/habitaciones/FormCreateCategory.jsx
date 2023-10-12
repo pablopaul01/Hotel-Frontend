@@ -127,9 +127,10 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
         <div className="mb-2 pt-2">
           <label className="form-label">Descripción</label>
           <textarea
-            className="form-control"
+            className="form-control textarea"
             name="descripcion"
             onChange={handleChangeDatos}
+            style={{ height: "100px" }}
           />
         </div>
         {/* <p className="text-danger my-1">

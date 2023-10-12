@@ -11,7 +11,7 @@ const CategoryItem = ({ category }) => {
 
         <div className="col-lg-3 col-md-6 col-xs-12 col-sm-12">
             <Link to={`/reserva-habitaciones/${category._id}`}>
-                <div className="card text-light card-img-room">
+                <div className="card text-light card-img-room mb-3">
                     <img src={category.imagenes[0]?.url} className="card-img img-fluid " alt={category.title} />
                     <div className="card-img-overlay">
                         <h5 className="card-title card-room">{category.title}</h5>

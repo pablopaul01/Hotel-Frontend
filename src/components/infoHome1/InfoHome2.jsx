@@ -28,7 +28,7 @@ const InfoHome2 = () => {
                 </div>
                 <div className="col-12 col-lg-5 px-5 pb-4 d-flex flex-column justify-content-center align-items-center me-auto ms-auto">
                     <div className='text-left pt-4 mb-5 description'>
-                        <p className='infoSubtitle mb-0'>ÁREAS COMUNES</p>
+                        <p className='infoSubtitle mb-0 text-center text-md-start'>ÁREAS COMUNES</p>
                         <h2 className='infoTitle'>Descubre nuestros <span className='secondText'>Espacios</span></h2>
                     </div>
 

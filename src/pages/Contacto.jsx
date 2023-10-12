@@ -3,14 +3,32 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import "../css/Contacto.css";
-import Mapa from "../components/Maps/Mapa";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { FORM_SCHEMA } from '../helpers/validationsSchemas'
+import { yupResolver } from '@hookform/resolvers/yup'
+import Swal from "sweetalert2";
+
 
 const Contacto = () => {
+
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(FORM_SCHEMA)
+  })
+
+  const onSubmit = () => {
+
+    Swal.fire({
+      icon: "success",
+      title: "El formulario se mando correctamente!",
+      text: "Pronto le estaremos contestando"
+    })
+    reset();
+  }
+
   return (
     <div>
       <div className="title-container ">
@@ -20,17 +38,36 @@ const Contacto = () => {
       </div>
       <div className="container d-flex justify-content-center mt-2 mt-lg-5">
         <div className="row justify-content-center col-lg-8 ">
-          <Form className="d-flex flex-column gap-3 p-lg-0 p-4 px-lg-5 w-lg-75">
+          <Form onSubmit={handleSubmit(onSubmit)} className="d-flex flex-column gap-3 p-lg-0 p-4 px-lg-5 w-lg-75">
             <Row className="d-flex justify-content-between">
               <Col className="p-0 me-2">
-                <Form.Control placeholder="Nombre" />
+                <Form.Control
+                  placeholder="Nombre"
+                  name="name"
+                  {...register("name")} />
+                <p className="text-danger my-1">
+                  {errors.name?.message}
+                </p>
               </Col>
               <Col className="p-0">
-                <Form.Control placeholder="Apellido" />
+                <Form.Control
+                  placeholder="Apellido"
+                  name="surname"
+                  {...register("surname")} />
+                <p className="text-danger my-1">
+                  {errors.surname?.message}
+                </p>
               </Col>
             </Row>
             <Row>
-              <Form.Control type="email" placeholder="E-mail" />
+              <Form.Control
+                type="email"
+                placeholder="E-mail"
+                name="username"
+                {...register("username")} />
+              <p className="text-danger my-1">
+                {errors.username?.message}
+              </p>
             </Row>
             <Row>
               <Form.Select aria-label="Asunto">
@@ -47,10 +84,16 @@ const Contacto = () => {
                 as="textarea"
                 placeholder="Escriba su mensaje"
                 style={{ height: "100px" }}
+                className="textarea"
+                name="description"
+                {...register("description")}
               />
+              <p className="text-danger my-1">
+                {errors.description?.message}
+              </p>
             </Row>
             <Row>
-              <button className="btn btn-brown">Enviar</button>
+              <button type="submit" className="btn btn-brown">Enviar</button>
             </Row>
           </Form>
         </div>
@@ -78,7 +121,7 @@ const Contacto = () => {
               </ul>
             </div>
             <div className="col">
-              <Mapa />
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.118032695636!2d-65.20965262546022!3d-26.83619789000945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225c0e8d0271b7%3A0x7946062ac490db30!2sGral.%20Paz%20576%2C%20T4000%20San%20Miguel%20de%20Tucum%C3%A1n%2C%20Tucum%C3%A1n!5e0!3m2!1ses-419!2sar!4v1697069770424!5m2!1ses-419!2sar" className="img-fluid w-100" style={{ height: 350 }} ></iframe>
             </div>
           </div>
         </div>
@@ -88,10 +131,10 @@ const Contacto = () => {
           También puedes encontrarnos...
         </h3>
         <div className="d-flex justify-content-center mb-2 gap-3">
-          <FaInstagram className="icons-contacto mb-3"/>
-          <FaFacebookSquare className="icons-contacto mb-3" />
-          <FaYoutube className="icons-contacto mb-3" />
-          <FaTiktok className="icons-contacto mb-3" />
+          <a href="/404" className="icons-contacto me-3"><FaInstagram className="mb-3" /></a>
+          <a href="/404" className="icons-contacto mx-3"><FaFacebookSquare className="mb-3" /></a>
+          <a href="/404" className="icons-contacto mx-3"><FaYoutube className="mb-3" /></a>
+          <a href="/404" className="icons-contacto ms-3"><FaTiktok className="mb-3" /></a>
         </div>
       </div>
     </div>
