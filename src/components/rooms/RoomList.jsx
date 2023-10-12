@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Room from "./Room";
 import { axiosInstance } from "../../config/axiosInstance";
 
-const RoomList = ({ date, guests }) => {
+const RoomList = ({ date, guests, isFilter }) => {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -63,7 +63,7 @@ const RoomList = ({ date, guests }) => {
       const availableRoomNumbers = category.roomNumbers.filter((room) =>
         isAvailable(room)
       );
-      
+
       return {
         ...category,
         roomNumbers: availableRoomNumbers,
@@ -74,16 +74,19 @@ const RoomList = ({ date, guests }) => {
   const availableRooms = getAvailableRooms(categories);
   return (
     <div className="container">
-      {availableRooms.map((category) => (
-        <Room
-          date={date}
-          category={category}
-          key={category._id}
-          guests={guests}
-          allDates={allDates}
-          categories={categories}
-        />
-      ))}
+      {
+        availableRooms.map((category) => (
+          <Room
+            date={date}
+            category={category}
+            key={category._id}
+            guests={guests}
+            allDates={allDates}
+            categories={categories}
+            isFilter={isFilter}
+          />
+        ))
+      }
     </div>
   );
 };

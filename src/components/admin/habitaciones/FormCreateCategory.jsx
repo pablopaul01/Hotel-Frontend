@@ -74,7 +74,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
           Authorization: `Bearer ${token}`
         }
       })
-    
+      getCategories()
       handleCloseC()
     } catch (error) {
       Swal.fire({
