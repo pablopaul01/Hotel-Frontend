@@ -40,27 +40,35 @@ Tecnologias y bibliotecas principales
 
 - React Data Table Component: Esta biblioteca se utiliza para mostrar datos en tablas con funciones avanzadas.
 
-###Requisitos
+-------------
+
+#Requisitos
+
 Antes de ejecutar la aplicación, asegúrate de tener Node.js instalado en tu sistema.
 
-###Configuración
+#Configuración
+
 Clona este repositorio en tu máquina local:
 git clone https://github.com/tu-usuario/tu-proyecto.git
 Ve al directorio del proyecto:
 cd tu-proyecto
 
 Instala las dependencias:
+
 npm install
 
 ###Uso
+
 Una vez que hayas configurado el proyecto, puedes ejecutar la aplicación en tu entorno de desarrollo local utilizando el siguiente comando:
 npm run dev
 Esto iniciará un servidor de desarrollo y podrás acceder a la aplicación en tu navegador en http://localhost:3000.
 
 ###Repositorio
+
 https://github.com/pablopaul01/Hotel-Frontend.git
 
 ###Integrantes
+
 Franco Giacobbe
 Eliana Farias
 Juan Pablo Salomón
