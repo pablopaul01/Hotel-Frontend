@@ -3,7 +3,9 @@ import "./register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { REGISTRO_SCHEMA } from '../../helpers/validationsSchemas'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { axiosInstance } from '../../config/axiosInstance'
+import Swal from 'sweetalert2'
 
 
 
@@ -13,12 +15,30 @@ const Register = () => {
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
 
-    const onSubmit = (data) => {
-        console.log(data);
+
+
+    const navigate = useNavigate();
+
+    const onSubmit = async (data) => {
+        
+        try {
+            const response = await axiosInstance.post("/registrar", data);
+
+            navigate("/login");
+            Swal.fire({
+                icon: "success",
+                title: "Cuenta creada con éxito"
+            })
+        } catch (error) {
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema! Error${error.response.data.status}`,
+                text: `${error.response.data.mensaje}`
+            })
+        }
         reset();
     }
 
-    console.log(errors);
 
     return (
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
@@ -64,7 +84,7 @@ const Register = () => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Número de celular</label>
                 <div className="input-group">
-                    <span class="input-group-text" id="inputGroup-sizing-default">+54</span>
+                    <span className="input-group-text" id="inputGroup-sizing-default">+54</span>
                     <input
                         placeholder="No incluir el 0"
                         aria-describedby="inputGroup-sizing-default"

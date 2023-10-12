@@ -11,7 +11,7 @@ const LoginPage = () => {
                             <h2 className="titulo-login">Iniciar Sesión</h2>
                         </div>
                         <div className='d-none d-md-block d-lg-block'>
-                            <img src='../../public/RollingHotel-transparente.png' className="ms-5 img-fluid w-75" alt="logo-Rolling-Hotel" />
+                            <img src='https://res.cloudinary.com/dcv6aut2v/image/upload/v1697100801/RollingHotel-transparente_qah5k2.png' className="ms-5 img-fluid w-75" alt="logo-Rolling-Hotel" />
                         </div>
                     </div>
                     <Login />

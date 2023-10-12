@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import RegisterView from './pages/RegisterView'
 import { Routes, Route } from 'react-router-dom'
+import RegisterView from './pages/RegisterView'
 import LoginPage from './pages/LoginPage'
 import Home from './pages/Home'
 import GaleryPage from './pages/GaleryPage'
@@ -12,12 +12,17 @@ import FooterHotel from './components/footer/FooterHotel'
 import ScrollToTop from './helpers/ScrollToTop'
 import Usuarios from './pages/Usuarios'
 import RoomsAdmin from './pages/RoomsAdmin'
-import ThankYou from './pages/ThankYou'
+import PrivateRoutesUser from './Routes/PrivateRoutesUser'
+import PrivateRoutesAdmin from './Routes/PrivateRoutesAdmin'
+import Error404 from './pages/404'
+import Contacto from './pages/Contacto'
+import Nosotros from './pages/Nosotros'
+
 
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isAuthenticated = !!localStorage.getItem('token');
 
   return (
     <>
@@ -25,17 +30,25 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/registro' element={<RegisterView />} />
-        <Route path='/login' element={<LoginPage />} />
+        <Route path='/registro' element={!isAuthenticated && <RegisterView />} />
+        <Route path='/login' element={!isAuthenticated && <LoginPage />} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
-        <Route path='/reserva-habitaciones' element={<BookRoom />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
-        <Route path='/admin/users' element={<Usuarios />} />
-        <Route path='/admin/rooms' element={<RoomsAdmin/>} />
-        <Route path='/thankyou' element={<ThankYou/>} />
+        <Route path='*' element={<Error404 />} />
+        <Route path="/Contacto" element={<Contacto />} />
+        <Route path="/Nosotros" element={<Nosotros />} />
+
+        <Route element={<PrivateRoutesUser />}>
+          <Route path='/reserva-habitaciones' element={<BookRoom />} />
+        </Route>
+        
+        <Route element={<PrivateRoutesAdmin />}>
+          <Route path='/admin/users' element={<Usuarios />} />
+          <Route path='/admin/rooms' element={<RoomsAdmin />} />
+        </Route>
       </Routes>
-      <FooterHotel/>
+      <FooterHotel />
     </>
   )
 }

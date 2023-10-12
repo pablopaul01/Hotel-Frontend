@@ -3,9 +3,7 @@ import { GrUser } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
 import { categories } from '../../helpers/data';
 import ModalReserva from './ModalReserva';
-
-
-
+import "./room.css"
 
 
 const Room = ({date, category, guests, allDates}) => {
@@ -33,7 +31,7 @@ const Room = ({date, category, guests, allDates}) => {
 
     for (let index = 0; index < selectedRoomQty * 1; index++) {
         const roomNumber = category.roomNumbers[index].number;
-        const roomId = category.roomNumbers[index].id;
+        const roomId = category.roomNumbers[index]._id;
 
         updatedSelectedRooms.push({
             selectedRoomsNumber: roomNumber,
@@ -43,17 +41,16 @@ const Room = ({date, category, guests, allDates}) => {
     
     setSelectedRooms(updatedSelectedRooms);
     }
-
     return (
         <div className="card mb-3">
             <div className="row g-0">
-                <div className="col-md-12 col-lg-4 col-xl-4">
-                    <img src={category.imagen[1].img} className="img-fluid rounded-start" alt={category.title} />
+                <div className="col-md-12 col-lg-5 col-xl-5">
+                    <img src={category.imagenes[1].url} className="img-fluid rounded-start" alt={category.title} />
                 </div>
-                <div className="col-md-12 col-lg-8 col-xl-8">
-                    <div className="card-body h-100 justify-content-between d-flex flex-column">
-                        <h5 className="card-title">{category.title}</h5>
-                        <p className="card-text">{category.descripcion}</p>
+                <div className="col-md-12 col-lg-7 col-xl-7">
+                    <div className="card-body h-100 d-flex flex-column gap-0 justify-content-center py-1">
+                        <h5 className="card-title reserva">{category.title}</h5>
+                        <p className="card-text card-desc">{category.descripcion}</p>
                         <div className="row">
                             <div className="col-lg-5 col-md-6 text-center text-md-start ">
                                 <span className='fs-2 mb-0 text-danger'>
@@ -62,19 +59,19 @@ const Room = ({date, category, guests, allDates}) => {
                             </div>
                             <div className='col-lg-7 col-md-6   '>
                                 <div className="row">
-                                    <div className="col-lg-8 col-md-6 text-center">
+                                    <div className="col-lg-6 col-md-6 text-center">
                                         <p className='fs-7 text-secondary mx-0 mb-0'>{category.capacidadMax} personas </p>
                                         {Array.from({ length: capacidadMax }, (_, index) => (
                                             <GrUser key={index} />
                                         ))}
                                     </div>
-                                    <div className="col-lg-4 col-md-6 text-center">
-                                        <label className="input fs-7 text-secondary d-block">Habitaciones Disponibles</label>
+                                    <div className="col-lg-6 col-md-6 text-center">
+                                        <label className="input fs-7 text-secondary d-block">Habitaciones</label>
                                         <select className="mx-2 mb-2" onChange={handleSelect}>
                                             <option value="0" >0</option>
                                             {
                                                 category.roomNumbers.map((numRoom, index) => (
-                                                    <option value={index+1} id={numRoom.id} key={numRoom.id} >{index+1}</option>
+                                                    <option value={index+1} id={numRoom.id} key={numRoom._id} >{index+1}</option>
                                                 ))
                                                 
                                             }

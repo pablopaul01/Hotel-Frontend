@@ -16,12 +16,11 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
   }
 
   const handlechange = (e)=>{
-    console.log(e.target.name)
+   
     setGuests({...guests,[e.target.name]: e.target.value})
   }
 
   const handleSelect = (ranges) => {
-    setDate([ranges.selection]);
     setShowDateRange(false);
   };
 
@@ -41,15 +40,15 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
   return (
     <div className='container px-5 d-flex justify-content-between py-4 searchBar flex-column flex-md-row gap-2 gap-lg-0 mb-3' >
       <div className="optionsWrap d-flex gap-2 gap-lg-5 flex-column flex-md-row">
-        <div className="searchDate text-center">
+        <div className="searchDate text-center" ref={searchDateRef}>
           <p className='textDateRange mb-0' >Seleccionar fechas</p>
-          <span ref={searchDateRef} className='rangePlaceHolder'  onClick={()=>{
+          <span  className='rangePlaceHolder'  onClick={()=>{
             setOpen(!open)
             }}>
               {`${format(date[0].startDate, "dd/MM/yyyy")} hasta ${format(date[0].endDate, "dd/MM/yyyy")}`} <BiCalendar/>
           </span>
           {open && 
-                <div className="calendar d-flex flex-column" >
+                <div className="calendar d-flex flex-column ">
                   <DateRange
                     locale={es}
                     editableDateInputs={true}

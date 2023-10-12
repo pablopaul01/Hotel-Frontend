@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300;400;500;700&display=swap');
 
 .container-crud {
-    margin-top: 200px;
+    margin-top: 70px;
 }
 
 
@@ -18,8 +18,7 @@
 
 .btn.btn-brown {
     background-color: #c19b76;
-    color: #fff;
-    
+    color: #fff;    
 }
 
 .btn.btn-brown:hover {
@@ -28,8 +27,8 @@
 }
 
 .title-admin {
-    font-family: "Roboto";
-    font-weight: bold;
+    font-family: 'Gilda Display', serif;
+
 }
 
 .icon-crud {

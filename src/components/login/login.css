@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@100;300&display=swap');
 
-/* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', serif;
-    color: white;
-}   */
+
 
 .titulo {
     display: flex;
@@ -23,7 +17,7 @@
 
 .login {
     background-image: linear-gradient(rgba(5, 7, 12, .75), rgba(5, 7, 12, .75)),
-        url(../../public/fondo-login.jpg);
+        url("https://res.cloudinary.com/dcv6aut2v/image/upload/v1697100962/fondologin_ike6yt.jpg");
     background-repeat: no-repeat;
     background-size: cover; 
 } 
