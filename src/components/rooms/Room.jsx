@@ -6,9 +6,6 @@ import ModalReserva from './ModalReserva';
 import "./room.css"
 
 
-
-
-
 const Room = ({date, category, guests, allDates}) => {
     const [selectedRoomQty, setSelectedRoomQty] = useState("")
     const [selectedRooms, setSelectedRooms] = useState([{

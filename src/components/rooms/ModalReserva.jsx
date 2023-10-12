@@ -26,7 +26,7 @@ const ModalReserva = ({ show, handleClose, selectedRooms, category, date, guests
 
   const fechasEnFormatoISO = fechasReserva.map(fecha => {
     const [day, month, year] = fecha.split('/');
-    return `${year}-${month}-${day}T00:00:00.000Z`;
+    return `${year}-${month}-${day}T03:00:00.000Z`;
   });
   
 
