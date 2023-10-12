@@ -6,6 +6,7 @@ import { FiEdit } from 'react-icons/fi'
 import { axiosInstance } from '../../../config/axiosInstance'
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
@@ -16,6 +17,8 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
     const [editInputPhone, setEditInputPhone] = useState(true)
     //state con contenido del usuario a editar
     const [userData, SetUserData] = useState({})
+
+    const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(UPDATE_SCHEMA)
@@ -47,6 +50,7 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
     const onSubmit = async (data) => {
         const token = localStorage.getItem("token");
         try {
+            setLoading(true);
             const response = await axiosInstance.put(`/usuario/${idUser}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -64,11 +68,15 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
                 title: `Ocurrió un problema! Error${error.response.data.status}`,
                 text: `${error.response.data.mensaje}`
             })
+        } finally {
+            setLoading(false); // Oculta el spinner, ya sea éxito o error          
         }
     }
 
 
     return (
+
+
         < form className="text-white" onSubmit={handleSubmit(onSubmit)} >
             <div className="mb-2 pt-2">
                 <label className="form-label">Correo electrónico</label>
@@ -154,29 +162,35 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Rol de Usuario</label>
                 <select name="role" className="form-select" {...register("role")}>
-                    {
-                        userData.role === "admin" ?
-                            (
-                                <>
-                                    <option selected value="admin">admin</option>
-                                    <option value="user">user</option>
-                                </>
-                            )
-                            :
-                            (
-                                <>
-                                    <option selected value="user">user</option>
-                                    <option value="admin">admin</option>
-                                </>
-                            )
-                    }
+                    <option></option>
+                    <option value="user">user</option>
+                    <option value="admin">admin</option>
                 </select>
             </div >
-            <button className="btn btn-outline-light boton-login mt-3" type="submit" >Guardar Cambios</button>
-            <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
-                Cancelar
-            </Button>
+            <p className="text-danger my-1">
+                {errors.role?.message}
+            </p>
+            {
+                loading ?
+                    (
+                        <div className='text-center mt-4'>
+                            <Spinner />
+                        </div>
+                    )
+                    :
+                    (
+                        <>
+                            <button className="btn btn-outline-light boton-login mt-3" type="submit" >Guardar Cambios</button>
+                            <Button variant="light" className='mt-3 mx-2' onClick={handleClose}>
+                                Cancelar
+                            </Button>
+                        </>
+                    )
+            }
+
+
         </form >
+
     )
 }
 

@@ -1,14 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../../register/register.css"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { REGISTRO_SCHEMA } from '../../../helpers/validationsSchemas'
 import { axiosInstance } from '../../../config/axiosInstance'
 import Swal from 'sweetalert2'
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
 const FormCreate = ({ show, setShow, getAllUsers, users }) => {
+
+    const [loading, setLoading] = useState(false);
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(REGISTRO_SCHEMA)
@@ -18,6 +21,7 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
     const onSubmit = async (data) => {
 
         try {
+            setLoading(true);
             const response = await axiosInstance.post("/registrar", data);
 
             Swal.fire({
@@ -33,11 +37,15 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
                 title: `Ocurrió un problema! Error${error.response.data.status}`,
                 text: `${error.response.data.mensaje}`
             })
+        } finally {
+            setLoading(false); // Oculta el spinner, ya sea éxito o error          
         }
     }
 
 
     return (
+
+
         <form className="text-white" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-2 pt-2">
                 <label className="form-label">Nombre Completo</label>
@@ -130,9 +138,21 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
             <small className="text-secondary">La contraseña debe tener al entre 8 y 16 caracteres, al menos
                 un dígito, al menos una minúscula y al menos una
                 mayúscula.</small>
-            <div className="d-grid mt-2">
-                <button className="btn btn-outline-light boton-login" type="submit" >Crear Usuario</button>
-            </div>
+            {
+                loading ?
+                    (
+                        <div className="d-grid mt-2 justify-content-center mt-3 mb-3">
+                            <Spinner />
+                        </div>
+                    )
+                    :
+                    (
+                        <div className="d-grid mt-2">
+                            <button className="btn btn-outline-light boton-login" type="submit" >Crear Usuario</button>
+                        </div>
+                    )
+            }
+
         </form >
     )
 }
