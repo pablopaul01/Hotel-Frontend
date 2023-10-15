@@ -95,7 +95,7 @@ const NavHotel = ({isLogged, setIsLogged}) => {
                               <Link to="/admin/rooms" className="dropdown-item linknav" onClick={handleLinkClick}>Habitaciones</Link>
                             </li>
                           </ul>
-                        </li>
+                        </li> 
                       )
                       :
                       (
