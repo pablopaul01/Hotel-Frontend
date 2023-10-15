@@ -11,7 +11,7 @@ import { FaEyeSlash } from 'react-icons/fa'
 import Spinner from 'react-bootstrap/Spinner';
 
 
-const Login = () => {
+const Login = ({setIsLogged}) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [loading, setLoading] = useState(false);
@@ -42,6 +42,7 @@ const Login = () => {
                 text: `${error.response.data.mensaje}`
             })
         } finally {
+            setIsLogged(true)
             setLoading(false); // Oculta el spinner, ya sea éxito o error
             reset();
         }

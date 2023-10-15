@@ -7,20 +7,22 @@ import { useState } from "react"
 
 
 
-const NavbarLogin = () => {
+const NavbarLogin = ({isLogged, setIsLogged}) => {
 
+  let navigate = useNavigate();
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const isLogged = () => {
-    const token = localStorage.getItem("token");
-    return token ? true : false
-  }
+  // const isLogged = () => {
+  //   const token = localStorage.getItem("token");
+  //   return token ? true : false
+  // }
 
   const logOut = () => {
+    setIsLogged(false)
     localStorage.removeItem("token");
   }
 
@@ -30,7 +32,7 @@ const NavbarLogin = () => {
         <div className="row">
           <div className="col-12 d-flex justify-content-end gap-3 pe-5">
             {
-              isLogged() ?
+              isLogged ?
                 (
                   <>
                     <Link className='navLoginLink' onClick={handleShow}>Mi perfil</Link>

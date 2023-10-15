@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import RegisterView from './pages/RegisterView'
 import LoginPage from './pages/LoginPage'
@@ -22,16 +22,27 @@ import Nosotros from './pages/Nosotros'
 
 
 function App() {
+  const [isLogged, setIsLogged] = useState(false)
   const isAuthenticated = !!localStorage.getItem('token');
 
+  // useEffect(() => {
+  //   if (isAuthenticated){
+  //     setIsLogged  (true)
+  //   }
+  //   else
+  //   {
+  //     setIsLogged (false)
+  //   }
+  // }, [isAuthenticated])
+  
   return (
     <>
-      <NavHotel />
+      <NavHotel isLogged={isLogged} setIsLogged={setIsLogged}/>
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={!isAuthenticated && <RegisterView />} />
-        <Route path='/login' element={!isAuthenticated && <LoginPage />} />
+        <Route path='/login' element={!isAuthenticated && <LoginPage setIsLogged={setIsLogged}/>} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />

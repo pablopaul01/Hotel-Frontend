@@ -87,7 +87,7 @@ const CategorieTable = ({ categories, setCategories, getCategories }) => {
         },
         {
             name: "Precio",
-            selector: row => row.capacidadMax,
+            selector: row => row.precio,
             center: true,
             maxWidth: "140px",
             sortable: true,
