@@ -123,7 +123,7 @@ const RoomsTable = ({ categories, setCategories }) => {
           data={categorieById.roomNumbers}
           pagination
           paginationComponentOptions={paginationComponentOptions}
-          progressPending={isLoading}
+
         />
       )
         :
@@ -133,6 +133,7 @@ const RoomsTable = ({ categories, setCategories }) => {
             data={categories[0].roomNumbers}
             pagination
             paginationComponentOptions={paginationComponentOptions}
+            progressPending={isLoading}
           />
         )}
     </div>
