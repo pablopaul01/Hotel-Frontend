@@ -14,17 +14,26 @@ const RoomsAdmin = () => {
   const [showC, setShowC] = useState(false);
   const [categorieById, setCategorieById] = useState({})
   const [categories, setCategories] = useState([]);
-
+  const [pending, setPending] = useState(true);
 
   const getCategories = async () => {
     const token = localStorage.getItem("token");
-    const response = await axiosInstance.get("/categorias", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    setCategories(response.data.categories);
+    try {
+      setPending(true)
+      const response = await axiosInstance.get("/categorias", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setCategories(response.data.categories);
+      setPending(false)
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
+    }
   }
 
   useEffect(() => {
@@ -50,7 +59,7 @@ const RoomsAdmin = () => {
       <hr />
       <div className="row">
         <h3 className='mt-5 text-center mb-4'>Categorías de habitaciones</h3>
-        <div className="col "><CategorieTable categories={categories} setCategories={setCategories} getCategories={getCategories} /></div>
+        <div className="col "><CategorieTable categories={categories} setCategories={setCategories} getCategories={getCategories} pending={pending}/></div>
       </div>
       <div className="row d-flex justify-content-center mb-5">
         <div className="col-12 col-lg-8"><RoomsTable categories={categories} setCategories={setCategories} /></div>

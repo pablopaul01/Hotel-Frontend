@@ -22,18 +22,10 @@ import Nosotros from './pages/Nosotros'
 
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false)
+  const [isLogged, setIsLogged] = useState(()=>{
+    return !!localStorage.getItem('token') || false
+  })
   const isAuthenticated = !!localStorage.getItem('token');
-
-  // useEffect(() => {
-  //   if (isAuthenticated){
-  //     setIsLogged  (true)
-  //   }
-  //   else
-  //   {
-  //     setIsLogged (false)
-  //   }
-  // }, [isAuthenticated])
   
   return (
     <>

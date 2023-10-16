@@ -11,7 +11,7 @@ const Usuarios = () => {
   const [show, setShow] = useState(false);
   //state con arrays de los usuarios
   const [users, setUsers] = useState([]);
-
+  const [pending, setPending] = useState(true);
   //funciones para abrir y cerrar modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -20,12 +20,14 @@ const Usuarios = () => {
   const getAllUsers = async () => {
     const token = localStorage.getItem("token");
     try {
+      setPending(true)
       const response = await axiosInstance.get("/usuarios", {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
       setUsers(response.data.users);
+      setPending(false)
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -49,7 +51,7 @@ const Usuarios = () => {
 
       <hr />
       <div className="row">
-        <div className="col mt-5"><UserTable getAllUsers={getAllUsers} users={users} /></div>
+        <div className="col mt-5"><UserTable getAllUsers={getAllUsers} users={users} pending={pending}/></div>
       </div>
       <ModalCreate show={show} handleClose={handleClose} setShow={setShow} getAllUsers={getAllUsers} users={users} />
     </div>

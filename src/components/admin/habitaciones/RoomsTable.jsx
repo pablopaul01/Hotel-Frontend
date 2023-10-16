@@ -12,15 +12,23 @@ const RoomsTable = ({ categories, setCategories }) => {
 
   const [categorieSelected, setCategorieSelected] = useState("")
   const [categorieById, setCategorieById] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   const getCategoriesById = async (idx) => {
     let token = localStorage.getItem("token");
-    const response = await axiosInstance.get(`/categoria/${idx}`, null, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-    setCategorieById(response.data.categorie);
+    try {
+      setIsLoading(true)
+      const response = await axiosInstance.get(`/categoria/${idx}`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setIsLoading(false)
+      setCategorieById(response.data.categorie);
+    } catch (error) {
+      
+    }
+
   }
 
   const deleteRoom = async (row) => {
@@ -115,6 +123,7 @@ const RoomsTable = ({ categories, setCategories }) => {
           data={categorieById.roomNumbers}
           pagination
           paginationComponentOptions={paginationComponentOptions}
+          progressPending={isLoading}
         />
       )
         :
