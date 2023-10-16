@@ -2,16 +2,16 @@ import * as yup from "yup";
 
 export const REGISTRO_SCHEMA = yup.object({
   name: yup.string().matches(/^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/, "Los nombres no son válidos").required("El nombre completo es requerido"),
-  username: yup.string().matches(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i, "El email no es válido").required("El email es requerido"),
+  username: yup.string().matches(/^[a-zA-Z0-9._%+-ñáéíóúüÜ]+@[a-zA-Z0-9.-]+\.[a-zA-ZñáéíóúüÜ]{2,}$/i, "El email no es válido").required("El email es requerido"),
   password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, "La contraseña no es válida").required("La contraseña es requerida"),
   repassword: yup.string().oneOf([yup.ref("password"), null], "Las contraseñas no coinciden").required("La confirmación de contraseña es obligatoria"),
-  dni: yup.string().matches(/^\d{8}$/, "DNI no válido").required("El DNI es requerido"),
+  dni: yup.string().matches(/^\d{7,8}$/, "DNI no válido").required("El DNI es requerido"),
   phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/, "El número no es válido").required("El número de celular es requerido"),
   role: yup.string()
 });
 
 export const LOGIN_SCHEMA = yup.object({
-  username: yup.string().matches(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/, "El email no es válido").required("El email es requerido"),
+  username: yup.string().matches(/^[a-zA-Z0-9._%+-ñáéíóúüÜ]+@[a-zA-Z0-9.-]+\.[a-zA-ZñáéíóúüÜ]{2,}$/, "El email no es un formato válido").required("El email es requerido"),
   password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, "La contraseña no es válida").required("La contraseña es requerida")
 });
 
@@ -19,7 +19,7 @@ export const UPDATE_SCHEMA_PERFIL = yup.object({
   name: yup.string().matches(/^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/, "Los nombres no son válidos"),
   password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, "La contraseña no es válida"),
   repassword: yup.string().oneOf([yup.ref("password"), null], "Las contraseñas no coinciden"),
-  dni: yup.string().matches(/^\d{8}$/, "DNI no válido"),
+  dni: yup.string().matches(/^\d{7,8}$/, "DNI no válido"),
   phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/, "El número no es válido")
 });
 
@@ -27,7 +27,7 @@ export const UPDATE_SCHEMA_ADMIN = yup.object({
   name: yup.string().matches(/^([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+)(\s+([A-Za-zÑñÁáÉéÍíÓóÚú]+['\-]{0,1}[A-Za-zÑñÁáÉéÍíÓóÚú]+))*$/, "Los nombres no son válidos"),
   password: yup.string().matches(/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/, "La contraseña no es válida"),
   repassword: yup.string().oneOf([yup.ref("password"), null], "Las contraseñas no coinciden"),
-  dni: yup.string().matches(/^\d{8}$/, "DNI no válido"),
+  dni: yup.string().matches(/^\d{7,8}$/, "DNI no válido"),
   phone: yup.string().matches(/^\(?\d{2}\)?[\s\.-]?\d{4}[\s\.-]?\d{4}$/, "El número no es válido"),
   role: yup.string().required("Seleccione un rol")
 });
@@ -37,7 +37,7 @@ export const CREATEROOM_SCHEMA = yup.object({
 });
 
 export const CREATECATEGORY_SCHEMA = yup.object().shape({
-  title: yup.string().required('El título es requerido'),
+  title: yup.string().matches(/^[A-Za-z0-9\s]+$/, "Formato de nombre no válido").required('El título es requerido'),
   capacidadMax: yup.number().required('La capacidad máxima es requerida').positive('Debe ser un número positivo').integer('Debe ser un número entero'),
   descripcion: yup.string().required('La descripción es requerida'),
   precio: yup.number().required('El precio es requerido').positive('Debe ser un número positivo'),

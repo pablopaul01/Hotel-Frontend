@@ -8,10 +8,14 @@ import { axiosInstance } from '../../../config/axiosInstance'
 import Swal from 'sweetalert2';
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import ModalEditUser from './ModalEditUser';
+import jwtDecode from 'jwt-decode';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 
-const UserTable = ({ getAllUsers, users }) => {
+
+const UserTable = ({ getAllUsers, users, pending }) => {
 
     //state del modal
     const [show, setShow] = useState(false);
@@ -30,7 +34,17 @@ const UserTable = ({ getAllUsers, users }) => {
     //funcion para eliminar un usuario
     const deleteUser = async (row) => {
         const token = localStorage.getItem("token");
-
+        const decoded = jwtDecode(token);
+        if (row === decoded.sub){
+            Swal.fire({
+                icon: "error",
+                title: `Ocurrió un problema!`,
+                text: `No se puede eliminar un usuario logueado`
+            })
+        }
+        else
+        {
+            
         try {
             Swal.fire({
                 title: 'Esta seguro de eliminar el usuario?',
@@ -64,6 +78,7 @@ const UserTable = ({ getAllUsers, users }) => {
         } finally {
             getAllUsers();
         }
+        }
     }
     //funcion para cambiarle el estado de usuario a un usuario
     const disabledUser = async (row) => {
@@ -95,18 +110,14 @@ const UserTable = ({ getAllUsers, users }) => {
     const columns = [
         {
             name: "Nombre",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.name}</p>
-            },
+            selector: row => row.name || <Skeleton/>,
             sortable: true,
             center: true,
             maxWidth: "200px"
         },
         {
             name: "DNI",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.dni}</p>
-            },
+            selector: row => row.dni,
             sortable: true,
             center: true,
             maxWidth: "180px"
@@ -114,9 +125,7 @@ const UserTable = ({ getAllUsers, users }) => {
         },
         {
             name: "Celular",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.phone}</p>
-            },
+            selector: row => row.phone,
             sortable: true,
             center: true,
             maxWidth: "180px"
@@ -124,9 +133,7 @@ const UserTable = ({ getAllUsers, users }) => {
         },
         {
             name: "User",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.username}</p>
-            },
+            selector: row => row.username,
             sortable: true,
             center: true,
             maxWidth: "240px"
@@ -134,9 +141,7 @@ const UserTable = ({ getAllUsers, users }) => {
         },
         {
             name: "Rol",
-            selector: row => {
-                return <p className='mb-0 text-table'>{row.role}</p>
-            },
+            selector: row => row.role,
             sortable: true,
             center: true,
             maxWidth: "120px"
@@ -145,7 +150,7 @@ const UserTable = ({ getAllUsers, users }) => {
         {
             name: "Estado de Cuenta",
             selector: row => {
-                return <p className='mb-0 text-table'>{row.state ? ("activa") : ("desactivada")}</p>
+                return <p className='mb-0'>{row.state ? ("activa") : ("desactivada")}</p>
             },
             sortable: true,
             center: true,
@@ -176,15 +181,30 @@ const UserTable = ({ getAllUsers, users }) => {
 
    
     return (
-        <div className='d-flex flex-column align-items-end'>
-            <DataTable
-                columns={columns}
-                data={users}
-                pagination
-                paginationComponentOptions={paginationComponentOptions}
-            />
-            <ModalEditUser show={show} handleClose={handleClose} setShow={setShow} idUser={idUser} getAllUsers={getAllUsers} />
-        </div>
+<>
+{
+            pending ? 
+            (
+                <div>
+                    <Skeleton count={10} height={40} />
+                 </div>
+            )
+            :
+            (
+                <div className='d-flex flex-column align-items-end'>
+                <DataTable
+                    columns={columns}
+                    data={users}
+                    pagination
+                    paginationComponentOptions={paginationComponentOptions}
+                    progressPending={pending}
+                />
+                <ModalEditUser show={show} handleClose={handleClose} setShow={setShow} idUser={idUser} getAllUsers={getAllUsers} />
+            </div>
+            )
+        }
+</>
+
     )
 }
 

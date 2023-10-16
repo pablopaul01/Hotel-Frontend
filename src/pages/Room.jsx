@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { categories } from '../helpers/data'
 import RoomDetail from '../components/rooms/RoomDetail'
-import { useParams } from 'react-router'
 import { axiosInstance } from '../config/axiosInstance'
 import Swal from 'sweetalert2'
 

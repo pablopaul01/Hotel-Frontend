@@ -11,7 +11,7 @@ import { FaEyeSlash } from 'react-icons/fa'
 import Spinner from 'react-bootstrap/Spinner';
 
 
-const Login = () => {
+const Login = ({setIsLogged}) => {
 
     const [showPassword, setShowPassword] = useState(false)
     const [loading, setLoading] = useState(false);
@@ -42,6 +42,7 @@ const Login = () => {
                 text: `${error.response.data.mensaje}`
             })
         } finally {
+            setIsLogged(true)
             setLoading(false); // Oculta el spinner, ya sea éxito o error
             reset();
         }
@@ -59,6 +60,7 @@ const Login = () => {
                     className="form-control"
                     name="username"
                     {...register("username")}
+                    maxLength={40}
                 />
             </div>
             <p className="text-danger my-1 text-center">
@@ -71,6 +73,8 @@ const Login = () => {
                     className="form-control"
                     name="password"
                     {...register("password")}
+                    minLength={8}
+                    maxLength={16}
                 />
                 <span
                     className={showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
@@ -84,6 +88,7 @@ const Login = () => {
             <p className="text-danger my-1 text-center">
                 {errors.password?.message}
             </p>
+            
             {
                 loading ?
                     (

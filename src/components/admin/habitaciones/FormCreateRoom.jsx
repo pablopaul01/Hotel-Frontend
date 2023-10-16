@@ -76,6 +76,8 @@ const FormCreate = ({ getCategories, show, setShow }) => {
             className="form-control"
             name="number"
             {...register("number")}
+            min={1}
+            max={999}
           />
         </div>
         <p className="text-danger my-1">

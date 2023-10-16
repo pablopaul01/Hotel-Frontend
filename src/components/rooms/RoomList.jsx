@@ -1,19 +1,33 @@
 import React, { useState, useEffect } from "react";
 import Room from "./Room";
 import { axiosInstance } from "../../config/axiosInstance";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const RoomList = ({ date, guests, isFilter }) => {
   const [categories, setCategories] = useState([]);
+  const [loading, setloading] = useState(false)
 
   const getCategories = async () => {
     const token = localStorage.getItem("token");
-    const response = await axiosInstance.get("/categorias", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    try {
+      setloading(true)
+      const response = await axiosInstance.get("/categorias", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      setCategories(response.data.categories);
+      setloading (false)
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
+    }
 
-    setCategories(response.data.categories);
   };
 
   useEffect(() => {
@@ -73,6 +87,13 @@ const RoomList = ({ date, guests, isFilter }) => {
 
   const availableRooms = getAvailableRooms(categories);
   return (
+<>
+    {loading ? 
+    (
+      <Skeleton count={10} height={40}/>
+    )
+  :
+  (
     <div className="container">
       {
         availableRooms.map((category) => (
@@ -88,6 +109,9 @@ const RoomList = ({ date, guests, isFilter }) => {
         ))
       }
     </div>
+
+  )}
+</>
   );
 };
 
