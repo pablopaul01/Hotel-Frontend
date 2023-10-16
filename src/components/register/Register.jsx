@@ -7,12 +7,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import { axiosInstance } from '../../config/axiosInstance'
 import Swal from 'sweetalert2'
 import Spinner from 'react-bootstrap/Spinner';
-
+import datos from '../../helpers/data'
+import { FaEye } from 'react-icons/fa'
+import { FaEyeSlash } from 'react-icons/fa'
 
 const Register = () => {
 
     const [loading, setLoading] = useState(false);
-
+    const [showPassword, setShowPassword] = useState(false)
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: yupResolver(REGISTRO_SCHEMA)
     })
@@ -56,6 +58,7 @@ const Register = () => {
                     className="form-control"
                     name="name"
                     {...register("name")}
+                    maxLength="40"
                 />
             </div>
             <p className="text-danger my-1">
@@ -69,6 +72,7 @@ const Register = () => {
                     className="form-control"
                     name="username"
                     {...register("username")}
+                    maxLength="40"
                 />
             </div>
             <p className="text-danger my-1">
@@ -82,6 +86,8 @@ const Register = () => {
                     className="form-control"
                     name="dni"
                     {...register("dni")}
+                    maxLength="8"
+                    min={0}
                 />
             </div>
             <p className="text-danger my-1">
@@ -90,7 +96,12 @@ const Register = () => {
             <div className="mb-2 pt-2">
                 <label className="form-label">Número de celular</label>
                 <div className="input-group">
-                    <span className="input-group-text" id="inputGroup-sizing-default">+54</span>
+                    <select name="phoneCountry"  className="input-group-text" id="inputGroup-sizing-default">
+
+                        {datos.map((tel, idx) => {
+                        return    <option value={tel.codigo} key={idx}>{tel.codigo}</option>
+                        })}
+                    </select>
                     <input
                         placeholder="No incluir el 0"
                         aria-describedby="inputGroup-sizing-default"
@@ -99,6 +110,9 @@ const Register = () => {
                         className="form-control"
                         name="phone"
                         {...register("phone")}
+                        min={0}
+                        maxLength={15}
+                        minLength={6}
                     />
                 </div>
             </div>
@@ -107,24 +121,48 @@ const Register = () => {
             </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Contraseña</label>
+                <div className="input-group">
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="form-control"
                     name="password"
                     {...register("password")}
+                    maxLength={16}
+                    minLength={8}
                 />
+                                <span
+                    className={showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ cursor: "pointer" }} >
+                    {
+                        showPassword ? (<FaEye />) : (<FaEyeSlash />)
+                    }
+                </span>
+                </div>
             </div>
             <p className="text-danger my-1">
                 {errors.password?.message}
             </p>
             <div className="mb-2 pt-2">
                 <label className="form-label">Repetir Contraseña</label>
+                <div className="input-group">
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="form-control"
                     name="repassword"
                     {...register("repassword")}
+                    maxLength={16}
+                    minLength={8}
                 />
+                <span
+                    className={showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{ cursor: "pointer" }} >
+                    {
+                        showPassword ? (<FaEye />) : (<FaEyeSlash />)
+                    }
+                </span>
+                </div>
             </div>
             <p className="text-danger my-1">
                 {errors.repassword?.message}

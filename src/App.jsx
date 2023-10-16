@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import RegisterView from './pages/RegisterView'
 import LoginPage from './pages/LoginPage'
@@ -17,21 +17,25 @@ import PrivateRoutesAdmin from './Routes/PrivateRoutesAdmin'
 import Error404 from './pages/404'
 import Contacto from './pages/Contacto'
 import Nosotros from './pages/Nosotros'
-
+import Thankyou from "./pages/ThankYou"
+import ThankYou from './pages/ThankYou'
 
 
 
 function App() {
+  const [isLogged, setIsLogged] = useState(()=>{
+    return !!localStorage.getItem('token') || false
+  })
   const isAuthenticated = !!localStorage.getItem('token');
-
+  
   return (
     <>
-      <NavHotel />
+      <NavHotel isLogged={isLogged} setIsLogged={setIsLogged}/>
       <ScrollToTop />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/registro' element={!isAuthenticated && <RegisterView />} />
-        <Route path='/login' element={!isAuthenticated && <LoginPage />} />
+        <Route path='/login' element={!isAuthenticated && <LoginPage setIsLogged={setIsLogged}/>} />
         <Route path='/galeria-imagenes' element={<GaleryPage />} />
         <Route path='/categoria-habitaciones' element={<RoomsPage />} />
         <Route path='/reserva-habitaciones/:id' element={<Room />} />
@@ -41,6 +45,7 @@ function App() {
 
         <Route element={<PrivateRoutesUser />}>
           <Route path='/reserva-habitaciones' element={<BookRoom />} />
+          <Route path='/thankyou' element={<ThankYou />} />
         </Route>
         
         <Route element={<PrivateRoutesAdmin />}>

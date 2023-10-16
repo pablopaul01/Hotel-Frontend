@@ -1,0 +1,13 @@
+.thankyou {
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+.thankyou_title {
+    font-family: "Gilda Display";
+    font-weight: bold;
+}
+
+.thankyou_text {
+    font-family: "Gilda Display";
+}

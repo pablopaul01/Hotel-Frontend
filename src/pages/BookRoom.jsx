@@ -3,7 +3,6 @@ import RoomList from '../components/rooms/RoomList'
 import SearchDate from '../components/date/SearchDate'
 
 
-
 const BookRoom = () => {
 
 

@@ -8,13 +8,14 @@ import Swal from 'sweetalert2'
 const CategoryRooms = () => {
 
     const [categories, setCategories] = useState([])
+ 
 
     const getCategories = async () => {
 
         try {
             const response = await axiosInstance.get("/categorias")
             setCategories(response.data.categories)
-
+            
         } catch (error) {
             Swal.fire({
                 icon: "error",
@@ -22,6 +23,7 @@ const CategoryRooms = () => {
                 text: `${error.response.data.mensaje}`
             })
         }
+
     }
 
     useEffect(() => {
@@ -43,7 +45,7 @@ const CategoryRooms = () => {
                     <div className="row">
                         {
                             categories.map((category) => (
-                                <CategoryItem category={category} key={category._id} />
+                                <CategoryItem category={category} key={category._id}/>
                             ))
                         }
                     </div>

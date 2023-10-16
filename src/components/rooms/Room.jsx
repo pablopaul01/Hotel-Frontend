@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { GrUser } from 'react-icons/gr'
 import { Link } from 'react-router-dom';
-import { categories } from '../../helpers/data';
 import ModalReserva from './ModalReserva';
 import "./room.css"
 

@@ -1,170 +1,238 @@
-
-export const categories = [
-    {
-        id: 1,
-        title: "DOBLE TWIN STANDARD",
-        capacidadMax: 2,
-        descripcion: "Las habitaciones disponen de ropa de cama de colores vivos y suelo de moqueta de color beige. Todas están equipadas con TV por cable, teléfono y baño privado. En las zonas comunes hay Wi-Fi gratuita.",
-        precio: 5349.12,
-        imagen: [
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 1
-            },
-            {
-                img: "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 2
-            },
-            {
-                img: "https://images.unsplash.com/photo-1619128395560-8a749ac9926d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-                id: 3
-            },
-            {
-                img: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 4
-            },
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 5
-            }],
-        roomNumbers: [
-            {
-                id: 11,
-                number: 101,
-                unavailableDates: ["10-5-2023","10-6-2023"]
-            },
-            {
-                id: 12,
-                number: 102,
-                unavailableDates: ["10-7-2023"]
-            },
-            {
-                id: 13,
-                number: 103,
-                unavailableDates: []
-            },
-            {
-                id: 14,
-                number: 104,
-                unavailableDates: []
-            }],
-    },
-    {
-        id: 2,
-        title: "DOBLE MATRIMONIAL",
-        capacidadMax: 4,
-        descripcion: "Las habitaciones son cómodas y cuentan con TV de pantalla plana y baño privado. También incluyen caja fuerte. Hay servicio de lavandería.",
-        precio: 8349.12,
-        imagen: [
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 1
-            },
-            {
-                img: "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 2
-            },
-            {
-                img: "https://images.unsplash.com/photo-1619128395560-8a749ac9926d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-                id: 3
-            },
-            {
-                img: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 4
-            },
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 5
-            }],
-        roomNumbers: [
-            {
-                id: 21,
-                number: 201,
-                unavailableDates: []
-            },
-            {
-                id: 22,
-                number: 202,
-                unavailableDates: []
-            },
-            {
-                id: 23,
-                number: 203,
-                unavailableDates: []
-            }],
-    },
-    {
-        id: 3,
-        title: "TRIPLE STANDARD",
-        capacidadMax: 3,
-        descripcion: "Sus habitaciones cuentan con TV por cable; cama sommier en todos los cuartos; teléfono con DDI/DDN; secador de Cabello; servicio de cuna; baño privado en cada cuarto; calefacción central; cofre de seguridad con medidas especiales para notebooks hasta 16”",
-        precio: 10349.12,
-        imagen: [
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 1
-            },
-            {
-                img: "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 2
-            },
-            {
-                img: "https://images.unsplash.com/photo-1619128395560-8a749ac9926d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-                id: 3
-            },
-            {
-                img: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 4
-            },
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 5
-            }],
-        roomNumbers: [
-            {
-                id: 31,
-                number: 301,
-                unavailableDates: []
-            },
-            {
-                id: 32,
-                number: 302,
-                unavailableDates: []
-            }],
-    },
-    {
-        id: 4,
-        title: "SUITE",
-        capacidadMax: 2,
-        descripcion: "Artículos de aseo gratis Caja fuerte Bidet WC Bañera o ducha Suelo de madera o parquet Toallas Ropa de cama. Escritorio TV Teléfono Habitaciones comunicadas disponibles Calefacción Secador de pelo Ventilador Canales por cable. Acceso a pisos superiores en ascensor",
-        precio: 12349.12,
-        imagen: [
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 1
-            },
-            {
-                img: "https://images.unsplash.com/photo-1631049421450-348ccd7f8949?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 2
-            },
-            {
-                img: "https://images.unsplash.com/photo-1619128395560-8a749ac9926d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
-                id: 3
-            },
-            {
-                img: "https://images.unsplash.com/photo-1613553474179-e1eda3ea5734?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 4
-            },
-            {
-                img: "https://images.unsplash.com/photo-1605346576608-92f1346b67d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                id: 5
-            }],
-        roomNumbers: [
-            {
-                id: 35,
-                number: 305,
-                unavailableDates: []
-            }],
-    }
-]
-
+const datos = [
+    { codigo: "+54" },
+    { codigo: "+93" },
+    { codigo: "+355" },
+    { codigo: "+49" },
+    { codigo: "+213" },
+    { codigo: "+376" },
+    { codigo: "+244" },
+    { codigo: "+1 264" },
+    { codigo: "+672" },
+    { codigo: "+1 268" },
+    { codigo: "+599" },
+    { codigo: "+966" },
+    { codigo: "+374" },
+    { codigo: "+297" },
+    { codigo: "+61" },
+    { codigo: "+43" },
+    { codigo: "+994" },
+    { codigo: "+1 242" },
+    { codigo: "+973" },
+    { codigo: "+880" },
+    { codigo: "+1 246" },
+    { codigo: "+32" },
+    { codigo: "+501" },
+    { codigo: "+229" },
+    { codigo: "+975" },
+    { codigo: "+375" },
+    { codigo: "+95" },
+    { codigo: "+591" },
+    { codigo: "+387" },
+    { codigo: "+267" },
+    { codigo: "+55" },
+    { codigo: "+673" },
+    { codigo: "+359" },
+    { codigo: "+226" },
+    { codigo: "+257" },
+    { codigo: "+238" },
+    { codigo: "+855" },
+    { codigo: "+237" },
+    { codigo: "+1" },
+    { codigo: "+235" },
+    { codigo: "+56" },
+    { codigo: "+86" },
+    { codigo: "+357" },
+    { codigo: "+39" },
+    { codigo: "+57" },
+    { codigo: "+269" },
+    { codigo: "+242" },
+    { codigo: "+243" },
+    { codigo: "+850" },
+    { codigo: "+82" },
+    { codigo: "+225" },
+    { codigo: "+506" },
+    { codigo: "+385" },
+    { codigo: "+53" },
+    { codigo: "+45" },
+    { codigo: "+1 767" },
+    { codigo: "+593" },
+    { codigo: "+20" },
+    { codigo: "+503" },
+    { codigo: "+971" },
+    { codigo: "+291" },
+    { codigo: "+44" },
+    { codigo: "+421" },
+    { codigo: "+386" },
+    { codigo: "+34" },
+    { codigo: "+1" },
+    { codigo: "+372" },
+    { codigo: "+251" },
+    { codigo: "+63" },
+    { codigo: "+358" },
+    { codigo: "+679" },
+    { codigo: "+33" },
+    { codigo: "+241" },
+    { codigo: "+44" },
+    { codigo: "+220" },
+    { codigo: "+995" },
+    { codigo: "+233" },
+    { codigo: "+350" },
+    { codigo: "+1 473" },
+    { codigo: "+30" },
+    { codigo: "+299" },
+    { codigo: "+1 671" },
+    { codigo: "+502" },
+    { codigo: "+224" },
+    { codigo: "+240" },
+    { codigo: "+245" },
+    { codigo: "+592" },
+    { codigo: "+509" },
+    { codigo: "+504" },
+    { codigo: "+852" },
+    { codigo: "+36" },
+    { codigo: "+91" },
+    { codigo: "+62" },
+    { codigo: "+44" },
+    { codigo: "+964" },
+    { codigo: "+98" },
+    { codigo: "+353" },
+    { codigo: "+44" },
+    { codigo: "+44" },
+    { codigo: "+61" },
+    { codigo: "+354" },
+    { codigo: "+1 441" },
+    { codigo: "+1 345" },
+    { codigo: "+61" },
+    { codigo: "+682" },
+    { codigo: "+298" },
+    { codigo: "+960" },
+    { codigo: "+500" },
+    { codigo: "+1 670" },
+    { codigo: "+692" },
+    { codigo: "+870" },
+    { codigo: "+677" },
+    { codigo: "+1 649" },
+    { codigo: "+1 284" },
+    { codigo: "+1 340" },
+    { codigo: "+972" },
+    { codigo: "+39" },
+    { codigo: "+1 876" },
+    { codigo: "+81" },
+    { codigo: "+962" },
+    { codigo: "+7" },
+    { codigo: "+254" },
+    { codigo: "+996" },
+    { codigo: "+686" },
+    { codigo: "+965" },
+    { codigo: "+856" },
+    { codigo: "+266" },
+    { codigo: "+371" },
+    { codigo: "+961" },
+    { codigo: "+231" },
+    { codigo: "+218" },
+    { codigo: "+423" },
+    { codigo: "+370" },
+    { codigo: "+352" },
+    { codigo: "+853" },
+    { codigo: "+389" },
+    { codigo: "+261" },
+    { codigo: "+60" },
+    { codigo: "+265" },
+    { codigo: "+223" },
+    { codigo: "+356" },
+    { codigo: "+212" },
+    { codigo: "+230" },
+    { codigo: "+222" },
+    { codigo: "+262" },
+    { codigo: "+52" },
+    { codigo: "+691" },
+    { codigo: "+373" },
+    { codigo: "+377" },
+    { codigo: "+976" },
+    { codigo: "+382" },
+    { codigo: "+1 664" },
+    { codigo: "+258" },
+    { codigo: "+264" },
+    { codigo: "+674" },
+    { codigo: "+977" },
+    { codigo: "+505" },
+    { codigo: "+227" },
+    { codigo: "+234" },
+    { codigo: "+683" },
+    { codigo: "+47" },
+    { codigo: "+687" },
+    { codigo: "+64" },
+    { codigo: "+968" },
+    { codigo: "+31" },
+    { codigo: "+92" },
+    { codigo: "+680" },
+    { codigo: "+507" },
+    { codigo: "+675" },
+    { codigo: "+595" },
+    { codigo: "+51" },
+    { codigo: "+689" },
+    { codigo: "+48" },
+    { codigo: "+351" },
+    { codigo: "+1" },
+    { codigo: "+974" },
+    { codigo: "+44" },
+    { codigo: "+236" },
+    { codigo: "+420" },
+    { codigo: "+1 809" },
+    { codigo: "+250" },
+    { codigo: "+40" },
+    { codigo: "+7" },
+    { codigo: "+685" },
+    { codigo: "+1 684" },
+    { codigo: "+590" },
+    { codigo: "+1 869" },
+    { codigo: "+378" },
+    { codigo: "+1 599" },
+    { codigo: "+508" },
+    { codigo: "+1 784" },
+    { codigo: "+290" },
+    { codigo: "+1 758" },
+    { codigo: "+239" },
+    { codigo: "+221" },
+    { codigo: "+381" },
+    { codigo: "+248" },
+    { codigo: "+232" },
+    { codigo: "+65" },
+    { codigo: "+963" },
+    { codigo: "+252" },
+    { codigo: "+94" },
+    { codigo: "+27" },
+    { codigo: "+249" },
+    { codigo: "+46" },
+    { codigo: "+41" },
+    { codigo: "+597" },
+    { codigo: "+268" },
+    { codigo: "+992" },
+    { codigo: "+66" },
+    { codigo: "+886" },
+    { codigo: "+255" },
+    { codigo: "+670" },
+    { codigo: "+228" },
+    { codigo: "+690" },
+    { codigo: "+676" },
+    { codigo: "+1 868" },
+    { codigo: "+216" },
+    { codigo: "+993" },
+    { codigo: "+90" },
+    { codigo: "+688" },
+    { codigo: "+380" },
+    { codigo: "+256" },
+    { codigo: "+598" },
+    { codigo: "+998" },
+    { codigo: "+678" },
+    { codigo: "+58" },
+    { codigo: "+84" },
+    { codigo: "+681" },
+    { codigo: "+967" },
+    { codigo: "+253" },
+    { codigo: "+260" },
+    { codigo: "+263" }
+  ];
+  
+  export default datos;
+  

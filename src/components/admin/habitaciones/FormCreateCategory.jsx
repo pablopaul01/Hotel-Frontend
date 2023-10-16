@@ -6,8 +6,8 @@ import Spinner from 'react-bootstrap/Spinner';
 
 const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
   const [categories, setCategories] = useState([]);
-  const [idCategorie, setIdCategorie] = useState("")
   const [imgFile, setImgFile] = useState([])
+  const [errors, setErrors] = useState({});
   const [formDatos, setFormDatos] = useState({
     title: "",
     capacidadMax: "",
@@ -33,8 +33,20 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
 
   }, [])
 
+  const validateCategoryName = (name) => {
+    const regex = /^[A-Za-z0-9\s]+$/;
+    return regex.test(name);
+  };
+
 
   const handleChangeDatos = (e) => {
+
+    const { name, value } = e.target;
+    if (name === "title") {
+      const isValid = validateCategoryName(value);
+      setErrors({ ...errors, [name]: !isValid });
+    }
+
     if (e.target.name.startsWith("roomNumbers")) {
       const index = parseInt(e.target.name.match(/\[(\d+)\]/)[1]);
       const newRoomNumbers = [...formDatos.roomNumbers];
@@ -58,6 +70,10 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
   const handleSubmit = async (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
+      // Verificar si hay errores antes de enviar el formulario
+    if (Object.values(errors).some(error => error)) {
+    return; // No envíes el formulario si hay errores
+  }
     try {
       setLoading(true);
       const formData = new FormData();
@@ -93,10 +109,13 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
           <label className="form-label">Nombre de Categoría</label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control ${errors.title ? 'is-invalid' : ''}`}
             name="title"
             onChange={handleChangeDatos}
+            maxLength={40}
+            required
           />
+           {errors.title && <div className="invalid-feedback">Ingresa un nombre válido.</div>}
         </div>
 
         <div className="mb-2 pt-2">
@@ -106,6 +125,8 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
             className="form-control"
             name="precio"
             onChange={handleChangeDatos}
+            min={0}
+            required
           />
         </div>
 
@@ -116,6 +137,8 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
             className="form-control"
             name="capacidadMax"
             onChange={handleChangeDatos}
+            min={1}
+            required
           />
         </div>
 
@@ -126,6 +149,7 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
             name="descripcion"
             onChange={handleChangeDatos}
             style={{ height: "100px" }}
+            maxLength={200}
           />
         </div>
 
@@ -149,6 +173,8 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
                   className="form-control"
                   name={`roomNumbers[${index}].number`}
                   onChange={handleChangeDatos}
+                  min={1}
+                  max={999}
                 />
 
               </div>

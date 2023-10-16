@@ -1,7 +1,7 @@
 import React from 'react'
 import Login from '../components/login/Login'
 
-const LoginPage = () => {
+const LoginPage = ({setIsLogged}) => {
     return (
         <div className="container-fluid shadow login">
             <div className="row justify-content-center row-login">
@@ -14,7 +14,7 @@ const LoginPage = () => {
                             <img src='https://res.cloudinary.com/dcv6aut2v/image/upload/v1697100801/RollingHotel-transparente_qah5k2.png' className="ms-5 img-fluid w-75" alt="logo-Rolling-Hotel" />
                         </div>
                     </div>
-                    <Login />
+                    <Login setIsLogged={setIsLogged}/>
                 </div>
             </div>
         </div>

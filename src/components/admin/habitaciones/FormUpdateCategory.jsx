@@ -65,6 +65,7 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
               disabled={editInputTitle}
               placeholder={categorie.title}
               {...register("title")}
+              maxLength={40}
             />
             <button
               className={editInputTitle ? ("btn btn-outline-light") : ("btn btn-danger")}
@@ -86,6 +87,7 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
               name="precio"
               disabled={editInputPrice}
               placeholder={categorie.precio}
+              min={0}
               {...register("precio")}
             />
             <button
@@ -109,6 +111,7 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
               disabled={editInputGuest}
               placeholder={categorie.capacidadMax}
               {...register("capacidadMax")}
+              min={1}
             />
             <button
               className={editInputGuest ? ("btn btn-outline-light") : ("btn btn-danger")}
@@ -131,6 +134,7 @@ const FormUpdateCategory = ({ categorie, setCategorie, show, handleClose, getCat
               placeholder={categorie.descripcion}
               style={{ height: "100px" }}
               {...register("descripcion")}
+              maxLength={200}
             />
             <button
               className={editInputDesc ? ("btn btn-outline-light") : ("btn btn-danger")}
