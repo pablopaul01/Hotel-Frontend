@@ -60,6 +60,7 @@ const Login = ({setIsLogged}) => {
                     className="form-control"
                     name="username"
                     {...register("username")}
+                    maxLength={40}
                 />
             </div>
             <p className="text-danger my-1 text-center">
@@ -72,6 +73,8 @@ const Login = ({setIsLogged}) => {
                     className="form-control"
                     name="password"
                     {...register("password")}
+                    minLength={8}
+                    maxLength={16}
                 />
                 <span
                     className={showPassword ? ("input-group-text btn btn-danger") : ("input-group-text btn btn-outline-danger")}
@@ -85,6 +88,7 @@ const Login = ({setIsLogged}) => {
             <p className="text-danger my-1 text-center">
                 {errors.password?.message}
             </p>
+            
             {
                 loading ?
                     (

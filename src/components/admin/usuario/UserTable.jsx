@@ -35,7 +35,6 @@ const UserTable = ({ getAllUsers, users, pending }) => {
     const deleteUser = async (row) => {
         const token = localStorage.getItem("token");
         const decoded = jwtDecode(token);
-        console.log("token", decoded)
         if (row === decoded.sub){
             Swal.fire({
                 icon: "error",

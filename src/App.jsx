@@ -17,7 +17,8 @@ import PrivateRoutesAdmin from './Routes/PrivateRoutesAdmin'
 import Error404 from './pages/404'
 import Contacto from './pages/Contacto'
 import Nosotros from './pages/Nosotros'
-
+import Thankyou from "./pages/ThankYou"
+import ThankYou from './pages/ThankYou'
 
 
 
@@ -44,6 +45,7 @@ function App() {
 
         <Route element={<PrivateRoutesUser />}>
           <Route path='/reserva-habitaciones' element={<BookRoom />} />
+          <Route path='/thankyou' element={<ThankYou />} />
         </Route>
         
         <Route element={<PrivateRoutesAdmin />}>
