@@ -35,6 +35,7 @@ const Login = ({setIsLogged}) => {
                 icon: "success",
                 title: "Bienvenido"
             })
+            setIsLogged(true)
         } catch (error) {
             Swal.fire({
                 icon: "error",
@@ -42,7 +43,7 @@ const Login = ({setIsLogged}) => {
                 text: `${error.response.data.mensaje}`
             })
         } finally {
-            setIsLogged(true)
+
             setLoading(false); // Oculta el spinner, ya sea éxito o error
             reset();
         }

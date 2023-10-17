@@ -84,7 +84,7 @@ const Room = ({ date, category, guests, allDates, isFilter }) => {
                             <button disabled={!isFilter} className="btn btn-outline-light me-2" onClick={handleClick}>Reservar</button>
                             <Link to={`/reserva-habitaciones/${category._id}`} id={category._id} className="btn btn-dark">Ver más...</Link>
                         </div>
-                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date} guests={guests} allDates={allDates} categories={categories} />
+                        <ModalReserva show={show} handleClose={handleClose} selectedRooms={selectedRooms} category={category} date={date} guests={guests} allDates={allDates} />
                     </div>
                 </div>
             </div>

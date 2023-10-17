@@ -3,19 +3,21 @@ import "./categoryRooms.css"
 import CategoryItem from './CategoryItem'
 import { axiosInstance } from '../../config/axiosInstance'
 import Swal from 'sweetalert2'
-
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const CategoryRooms = () => {
 
     const [categories, setCategories] = useState([])
- 
+    const [loading, setLoading] = useState(true)
 
     const getCategories = async () => {
 
         try {
+            setLoading(true)
             const response = await axiosInstance.get("/categorias")
             setCategories(response.data.categories)
-            
+            setLoading(false)
         } catch (error) {
             Swal.fire({
                 icon: "error",
@@ -42,13 +44,21 @@ const CategoryRooms = () => {
                     <img src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1697101850/banner-rooms_jziidf.jpg" alt="" className='img-fluid rounded' />
                 </div>
                 <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div className="row">
+                    {
+                        loading ? (
+                            <Skeleton count={8} height={40}/>
+                        ) 
+                        : 
+                        (
+                            <div className="row">
                         {
                             categories.map((category) => (
                                 <CategoryItem category={category} key={category._id}/>
                             ))
                         }
                     </div>
+                        )
+                    }
                 </div>
             </div>
         </>

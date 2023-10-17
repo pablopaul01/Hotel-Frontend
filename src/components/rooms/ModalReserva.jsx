@@ -16,7 +16,6 @@ const ModalReserva = ({
   date,
   guests,
   allDates,
-  categories,
 }) => {
   const [loading, setLoading] = useState(false)
   const cantidad = selectedRooms.length * category.precio;

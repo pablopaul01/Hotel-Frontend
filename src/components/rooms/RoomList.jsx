@@ -90,7 +90,7 @@ const RoomList = ({ date, guests, isFilter }) => {
 <>
     {loading ? 
     (
-      <Skeleton count={10} height={40}/>
+      <Skeleton count={15} height={40}/>
     )
   :
   (
