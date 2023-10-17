@@ -9,6 +9,8 @@ import Swal from 'sweetalert2';
 import { RiDeleteBin6Line } from 'react-icons/ri'
 import ModalEditUser from './ModalEditUser';
 import jwtDecode from 'jwt-decode';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 
