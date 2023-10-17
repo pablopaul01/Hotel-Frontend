@@ -44,7 +44,7 @@ const RoomDetail = () => {
   return (
     <>
       <nav id="navbar-example2" className="navbar bg-dark px-3 mb-3 mt-5">
-        <p className="navbar-brand titulo-galery fs-2 text-light text-align-center my-auto" >{category.data.title}</p>
+        <p className="navbar-brand titulo-galery fs-2 text-light text-align-center my-auto text-wrap" >{category.data.title}</p>
         <ul className="nav nav-pills">
           <li className="nav-item">
             <a className="nav-link btn-outline-light text-light" href="#scrollspyHeading1">Descripción</a>
