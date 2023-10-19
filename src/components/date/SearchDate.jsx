@@ -63,11 +63,11 @@ const SearchDate = ({date,setDate,setIsFilter, isFilter, guests, setGuests}) => 
         <div className="qtyPeople d-flex gap-2 justify-content-center">
           <div className="adultsContainer text-center">
             <p className='textDateRange mb-0' name="adults">Adultos</p>
-            <input type="number" name="adults" defaultValue={1} className='inputSearchPeople' onChange={handlechange}/>
+            <input type="number" name="adults" min={1} defaultValue={1} className='inputSearchPeople' onChange={handlechange}/>
           </div>
           <div className="adultsContainer text-center">
             <p className='textDateRange mb-0'>Niños</p>
-            <input type="number" name='kids' defaultValue={0} className='inputSearchPeople' onChange={handlechange}/>
+            <input type="number" name='kids' min={0} defaultValue={0} className='inputSearchPeople' onChange={handlechange}/>
           </div>
         </div>
       </div>

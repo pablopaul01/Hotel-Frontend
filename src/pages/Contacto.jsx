@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { FORM_SCHEMA } from '../helpers/validationsSchemas'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Swal from "sweetalert2";
+import { axiosInstance } from '../config/axiosInstance'
 
 
 const Contacto = () => {
@@ -19,17 +20,27 @@ const Contacto = () => {
     resolver: yupResolver(FORM_SCHEMA)
   })
 
-  const onSubmit = () => {
+  const onSubmit = async (data) => {
 
-    Swal.fire({
-      icon: "success",
-      title: "El formulario se mando correctamente!",
-      text: "Pronto le estaremos contestando"
-    })
+    try {
+      const response = await axiosInstance.post("/formulario", data);
+      Swal.fire({
+        icon: "success",
+        title: "El formulario se mando correctamente!",
+        text: "Pronto le estaremos contestando"
+      })
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: `Ocurrió un problema! Error${error.response.data.status}`,
+        text: `${error.response.data.mensaje}`
+      })
+    }
+
     reset();
   }
 
-  
+
   return (
     <div>
       <div className="title-container ">
