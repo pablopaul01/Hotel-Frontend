@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -12,10 +12,11 @@ import { FORM_SCHEMA } from '../helpers/validationsSchemas'
 import { yupResolver } from '@hookform/resolvers/yup'
 import Swal from "sweetalert2";
 import { axiosInstance } from '../config/axiosInstance'
+import { Spinner } from "react-bootstrap";
 
 
 const Contacto = () => {
-
+  const [loading, setLoading] = useState(false)
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(FORM_SCHEMA)
   })
@@ -23,12 +24,14 @@ const Contacto = () => {
   const onSubmit = async (data) => {
 
     try {
+      setLoading(true)
       const response = await axiosInstance.post("/formulario", data);
       Swal.fire({
         icon: "success",
         title: "El formulario se mando correctamente!",
         text: "Pronto le estaremos contestando"
       })
+      setLoading(false)
     } catch (error) {
       Swal.fire({
         icon: "error",
@@ -36,8 +39,10 @@ const Contacto = () => {
         text: `${error.response.data.mensaje}`
       })
     }
-
-    reset();
+    finally {
+      setLoading(false)
+      reset();
+    }
   }
 
 
@@ -105,7 +110,14 @@ const Contacto = () => {
               </p>
             </Row>
             <Row>
-              <button type="submit" className="btn btn-brown">Enviar</button>
+              { loading ? (
+                  <div className="text-center">
+                      <Spinner />
+                  </div>
+              ) : (
+                <button type="submit" className="btn btn-brown">Enviar</button>
+              )}
+
             </Row>
           </Form>
         </div>
