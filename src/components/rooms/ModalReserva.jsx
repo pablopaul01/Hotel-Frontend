@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { axiosInstance } from "../../config/axiosInstance";
 import Spinner from 'react-bootstrap/Spinner';
 import { Navigate, useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 
 const ModalReserva = ({
@@ -18,7 +19,7 @@ const ModalReserva = ({
   allDates,
 }) => {
   const [loading, setLoading] = useState(false)
-  const cantidad = selectedRooms.length * category.precio;
+  const cantidad = selectedRooms.length * category.precio * allDates.length;
   const { startDate, endDate } = date[0];
 
   const navigate = useNavigate()
@@ -42,14 +43,22 @@ const ModalReserva = ({
     return `${year}-${month}-${day}T03:00:00.000Z`;
   });
 
-  const reserveRoom = async (fecha, roomID) => {
+  const reserveRoom = async (fecha, roomID, infoReserva) => {
     const date = fecha; // fecha en formato ISO
-
+    const token = localStorage.getItem("token");
+    const { nights, adults, kids, rooms, priceNight, price } = infoReserva
     const data = {
       date,
       roomID,
+      user: jwtDecode(token),
+      nights,
+      adults,
+      kids,
+      rooms,
+      priceNight,
+      price,
+      category
     };
-    const token = localStorage.getItem("token");
     try {
       setLoading(true)
       const resp = await axiosInstance.put(
@@ -82,8 +91,17 @@ const ModalReserva = ({
     selectedRooms.forEach((room) => {
       const roomNumber = room.selectedRoomsNumber;
       const roomID = room.selectedRoomsId;
+      const infoReserva = {
+        nights: allDates.length,
+        adults: guests.adults,
+        kids: guests.kids,
+        rooms: selectedRooms.length,
+        priceNight: category.precio,
+        price: cantidad,
+        category: category.title
+      }
       fechasEnFormatoISO.forEach((fecha) => {
-        reserveRoom(fecha, roomID);
+        reserveRoom(fecha, roomID, infoReserva);
       });
     });
   };
@@ -161,12 +179,12 @@ const ModalReserva = ({
           <div className="d-flex justify-content-center">
             {loading ? (
               <Spinner />
-            ): 
-            (
-              <button className="btn btn-brown" onClick={handleClick}>
-              confirmar reserva
-            </button>
-            )}
+            ) :
+              (
+                <button className="btn btn-brown" onClick={handleClick}>
+                  Confirmar Reserva
+                </button>
+              )}
           </div>
         </Modal.Body>
       </Modal>

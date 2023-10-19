@@ -141,7 +141,8 @@ const FormPerfil = ({ show, setShow, handleClose }) => {
             })}
           </select>
           <input
-            placeholder="No incluir el 0"
+            disabled={editInputPhone}
+            placeholder={decode.phone}
             aria-describedby="inputGroup-sizing-default"
             aria-label="Sizing example input"
             type="number"
