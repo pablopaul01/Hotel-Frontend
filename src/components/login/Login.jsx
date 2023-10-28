@@ -44,7 +44,7 @@ const Login = ({setIsLogged}) => {
             })
         } finally {
 
-            setLoading(false); // Oculta el spinner, ya sea éxito o error
+            setLoading(false); 
             reset();
         }
     }

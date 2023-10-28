@@ -42,7 +42,7 @@ const FormCreate = ({ show, setShow, getAllUsers, users }) => {
         text: `${error.response.data.mensaje}`,
       });
     } finally {
-      setLoading(false); // Oculta el spinner, ya sea éxito o error
+      setLoading(false); 
     }
   };
 

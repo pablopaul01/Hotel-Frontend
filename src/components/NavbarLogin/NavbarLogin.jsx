@@ -16,11 +16,6 @@ const NavbarLogin = ({isLogged, setIsLogged}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const isLogged = () => {
-  //   const token = localStorage.getItem("token");
-  //   return token ? true : false
-  // }
-
   const logOut = () => {
     setIsLogged(false)
     localStorage.removeItem("token");

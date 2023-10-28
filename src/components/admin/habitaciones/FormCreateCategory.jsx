@@ -70,9 +70,8 @@ const FormCreateCategory = ({ getCategories, showC, handleCloseC }) => {
   const handleSubmit = async (e) => {
     const token = localStorage.getItem("token");
     e.preventDefault();
-      // Verificar si hay errores antes de enviar el formulario
     if (Object.values(errors).some(error => error)) {
-    return; // No envíes el formulario si hay errores
+    return; 
   }
     try {
       setLoading(true);

@@ -17,21 +17,17 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 const UserTable = ({ getAllUsers, users, pending }) => {
 
-    //state del modal
+
     const [show, setShow] = useState(false);
-    //state que guarda el id de cada usuario 
     const [idUser, setIdUser] = useState("")
 
-    //funciones para abrir y cerrar modal
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    //funcion para guardar el id del usuario que se desea editar
     const handleClick = (row) => {
         handleShow();
         setIdUser(row);
     }
 
-    //funcion para eliminar un usuario
     const deleteUser = async (row) => {
         const token = localStorage.getItem("token");
         const decoded = jwtDecode(token);
@@ -80,7 +76,7 @@ const UserTable = ({ getAllUsers, users, pending }) => {
         }
         }
     }
-    //funcion para cambiarle el estado de usuario a un usuario
+
     const disabledUser = async (row) => {
         const token = localStorage.getItem("token");
         try {
@@ -106,7 +102,6 @@ const UserTable = ({ getAllUsers, users, pending }) => {
         }
     }
 
-    //empiezan datos de la tabla
     const columns = [
         {
             name: "Nombre",

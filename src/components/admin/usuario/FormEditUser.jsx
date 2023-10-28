@@ -10,11 +10,9 @@ import Spinner from "react-bootstrap/Spinner";
 import datos from "../../../helpers/data";
 
 const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
-  //states para habilitar edicion de inputs
   const [editInputName, setEditInputName] = useState(true);
   const [editInputDni, setEditInputDni] = useState(true);
   const [editInputPhone, setEditInputPhone] = useState(true);
-  //state con contenido del usuario a editar
   const [userData, SetUserData] = useState({});
 
   const [loading, setLoading] = useState(false);
@@ -27,7 +25,7 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
   } = useForm({
     resolver: yupResolver(UPDATE_SCHEMA_ADMIN),
   });
-  //obtengo información del usuario
+  
   const getUserById = async () => {
     const token = localStorage.getItem("token");
     try {
@@ -45,12 +43,10 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
       });
     }
   };
-  //ejecuto la funcion cuando carga la página
   useEffect(() => {
     getUserById();
   }, []);
 
-  //funcion que recibe la data del formulario
   const onSubmit = async (data) => {
     const token = localStorage.getItem("token");
     try {
@@ -73,7 +69,7 @@ const FormEditUser = ({ show, setShow, handleClose, idUser, getAllUsers }) => {
         text: `${error.response.data.mensaje}`,
       });
     } finally {
-      setLoading(false); // Oculta el spinner, ya sea éxito o error
+      setLoading(false); 
     }
   };
 

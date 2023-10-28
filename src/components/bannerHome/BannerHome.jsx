@@ -13,7 +13,7 @@ const BannerHome = () => {
           setShowControls(true);
         }
 
-    }, []); // Asegúrate de pasar un array vacío como segundo argumento para que este efecto se ejecute solo una vez
+    }, []); 
   
   return (
         <Carousel fade className='w-100' controls={showControls}>

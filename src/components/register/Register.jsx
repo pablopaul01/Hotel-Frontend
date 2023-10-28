@@ -42,7 +42,7 @@ const Register = () => {
                 text: `${error.response.data.mensaje}`
             })
         } finally {
-            setLoading(false); // Oculta el spinner, ya sea éxito o error
+            setLoading(false); 
             reset();
         }
     }

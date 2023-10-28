@@ -7,16 +7,12 @@ import Swal from 'sweetalert2'
 
 
 const Usuarios = () => {
-  //state del modal
   const [show, setShow] = useState(false);
-  //state con arrays de los usuarios
   const [users, setUsers] = useState([]);
   const [pending, setPending] = useState(true);
-  //funciones para abrir y cerrar modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //funcion asincrona que busca los usuarios en la base de datos mediante axios
   const getAllUsers = async () => {
     const token = localStorage.getItem("token");
     try {

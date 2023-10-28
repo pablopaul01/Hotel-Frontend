@@ -25,7 +25,7 @@ const ModalReserva = ({
   const navigate = useNavigate()
   const formatDate = (date) => {
     const day = date.getDate();
-    const month = date.getMonth() + 1; // ¡Atención! Los meses en JavaScript son 0-indexados
+    const month = date.getMonth() + 1; 
     const year = date.getFullYear();
 
     return `${day.toString().padStart(2, "0")}/${month
@@ -44,7 +44,7 @@ const ModalReserva = ({
   });
 
   const reserveRoom = async (fecha, roomID, infoReserva) => {
-    const date = fecha; // fecha en formato ISO
+    const date = fecha; 
     const token = localStorage.getItem("token");
     const { nights, adults, kids, rooms, priceNight, price } = infoReserva
     const data = {

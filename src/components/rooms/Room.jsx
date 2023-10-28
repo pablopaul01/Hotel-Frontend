@@ -25,7 +25,7 @@ const Room = ({ date, category, guests, allDates, isFilter }) => {
     }
 
     const handleClick = () => {
-        let updatedSelectedRooms = []; // Inicializamos un nuevo arreglo
+        let updatedSelectedRooms = []; 
         handleShow()
 
         for (let index = 0; index < selectedRoomQty * 1; index++) {
