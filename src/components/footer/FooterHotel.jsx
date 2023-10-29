@@ -13,11 +13,13 @@ const FooterHotel = () => {
       <div className="footer-container container-fluid">
         <div className="row py-4 text-center text-md-start">
           <div className="col-md-4 col-12 d-flex justify-content-center">
-            <img
-              src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1695793253/RollingHotel-transparente_vk9yak.png"
-              alt="logo Rolling"
-              style={{ width: "140px" }}
-            />
+            <Link to="/">
+              <img
+                src="https://res.cloudinary.com/dcv6aut2v/image/upload/v1695793253/RollingHotel-transparente_vk9yak.png"
+                alt="logo Rolling"
+                style={{ width: "140px" }}
+              />
+            </Link>
           </div>
           <div className="ubicacion-col col-lg-4 col-md-4 col-12">
             <h3 className="title-footer">Ubicación</h3>
