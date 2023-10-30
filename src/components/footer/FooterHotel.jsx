@@ -30,10 +30,18 @@ const FooterHotel = () => {
             <p className="subtitle-footer mb-0">Tel.:(54-381)0000000</p>
             <p className="subtitle-footer mb-0">reservas@rollingranhotel.com</p>
             <div className="d-flex justify-content-center justify-content-md-start mb-3 mb-md-0 mt-1 gap-2">
-              <FaInstagram />
-              <FaFacebookSquare />
-              <FaYoutube />
-              <FaTiktok />
+              <Link to={"/error"} className="linkRedes">
+                <FaInstagram />
+              </Link>
+              <Link to={"/error"} className="linkRedes">
+                <FaFacebookSquare />
+              </Link>
+              <Link to={"/error"} className="linkRedes">
+                <FaYoutube />
+              </Link>
+              <Link to={"/error"} className="linkRedes">
+                <FaTiktok />
+              </Link>
             </div>
           </div>
           <div className="reserva-col col-lg-4 col-md-4 col-12">
